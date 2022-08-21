@@ -100,7 +100,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="m0J-97-7Co" secondAttribute="trailing" constant="30" id="v9L-Cn-gGm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="MOe-cs-z0e"/>
+                    <navigationItem key="navigationItem" title="Hello!!" id="MOe-cs-z0e"/>
                     <connections>
                         <outlet property="appleLoginBtn" destination="toO-1c-5nc" id="GBT-We-kfw"/>
                         <outlet property="kakaoLoginBtn" destination="zhE-Mh-kby" id="FR1-Cc-YLa"/>

@@ -20,11 +20,7 @@ class LogInModal: UIViewController{
         super.viewDidLoad()
     }
     @IBAction func selfLoginBtn(_ sender: UIButton) {
-//        let vc = UIStoryboard(name: "SelfLogInStoryboard", bundle: nil).instantiateViewController(withIdentifier: SelfLogInVC.identifier) as! SelfLogInVC
-//        self.myParent?.navigationController?.pushViewController(vc, animated: true)
-//        print("canrun")
-//        self.completionAction
-            self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: true, completion: self.completionAction)
     }
 }
 extension LogInModal : PanModalPresentable {

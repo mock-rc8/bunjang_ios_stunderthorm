@@ -17,20 +17,23 @@ class LogInVC: UIViewController{
         kakaoLoginBtn.layer.borderColor = UIColor(white: 1, alpha: 1).cgColor
         appleLoginBtn.layer.borderColor = UIColor.black.cgColor
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
     @IBAction func otherLoginAction(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: LogInModal.identifier) as! LogInModal
         vc.myParent = self
         vc.completionAction = {
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {
-                let vc = UIStoryboard(name: "SelfLogInStoryboard", bundle: nil).instantiateViewController(withIdentifier: SelfLogInVC.identifier) as! SelfLogInVC
-                self.navigationController?.pushViewController(vc, animated: true)
-            })
+            let vc = UIStoryboard(name: "SelfLogInStoryboard", bundle: nil).instantiateViewController(withIdentifier: SelfLogInVC.identifier) as! SelfLogInVC
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         presentPanModal(vc)
     }
     @IBAction func kakaoLoginAction(_ sender: Any) {
-        let vc = UIStoryboard(name: "SelfLogInStoryboard", bundle: nil).instantiateViewController(withIdentifier: SelfLogInVC.identifier) as! SelfLogInVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            let vc = UIStoryboard(name: "SelfLogInStoryboard", bundle: nil).instantiateViewController(withIdentifier: SelfLogInVC.identifier) as! SelfLogInVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        })
     }
 }
 
@@ -53,11 +56,11 @@ struct onBoardData{
 }
 class OnBoardingSlider: UIView,SliderDelegate{
     var data: [onBoardData] = [//취향을 잇는 거래,\n 번개장터
-    onBoardData(title: "hELLO WORLD\n nice to meet you", contents: "요즘 유행하는 메이저 취향부터\n 나만 알고 싶은 마이너 취향까지", imageName: "onboard1"),
+        onBoardData(title: "hELLO WORLD\n nice to meet you", contents: "요즘 유행하는 메이저 취향부터\n 나만 알고 싶은 마이너 취향까지", imageName: "onboard1"),
         //안전하게 취향을 잇습니다 //안전하게\n 취향을 잇습니다.
-    onBoardData(title: "hELLO WORLD\n nice to meet you", contents: "번개톡, 번개페이로\n거래의 시작부터 끝까지 안전하게", imageName: "onboard2"),
-    onBoardData(title: "편리하게 취향을 잇습니다.", contents: "포장택배 서비스로 픽업/포장/배송을 한번에", imageName: "onboard3"),
-    onBoardData(title: "번개장터에서\n취향을 거래해보세요.", contents: "지금 바로 번개장터에서\n당신의 취향에 맞는 아이템을 찾아보세요!", imageName: "onboard4")]
+        onBoardData(title: "hELLO WORLD\n nice to meet you", contents: "번개톡, 번개페이로\n거래의 시작부터 끝까지 안전하게", imageName: "onboard2"),
+        onBoardData(title: "편리하게 취향을 잇습니다.", contents: "포장택배 서비스로 픽업/포장/배송을 한번에", imageName: "onboard3"),
+        onBoardData(title: "번개장터에서\n취향을 거래해보세요.", contents: "지금 바로 번개장터에서\n당신의 취향에 맞는 아이템을 찾아보세요!", imageName: "onboard4")]
     var onBoardSliderManager: OnBoardSliderManager?
     var sliderCollection: UICollectionView!
     var sliderPageControl: UIPageControl!
