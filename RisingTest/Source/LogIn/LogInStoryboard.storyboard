@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mkB-CH-gSc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,6 +10,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Q68-e7-tW4">
+            <objects>
+                <navigationController id="mkB-CH-gSc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rEn-2z-iKQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="hoc-V0-VlL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vut-RN-YIb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-725" y="84"/>
+        </scene>
         <!--LogInVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
@@ -19,28 +35,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="m0J-97-7Co">
-                                <rect key="frame" x="20" y="94" width="374" height="738"/>
+                                <rect key="frame" x="30" y="138" width="354" height="694"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9U-7O-Uyi">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="498.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9U-7O-Uyi" customClass="OnBoardingSlider" customModule="RisingTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="515"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="h9U-7O-Uyi" secondAttribute="height" multiplier="3:4" id="BBY-mi-sJb"/>
+                                            <constraint firstAttribute="width" secondItem="h9U-7O-Uyi" secondAttribute="height" multiplier="11:16" id="BBY-mi-sJb"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NjF-OS-pFz" userLabel="OAuthLogInStack">
-                                        <rect key="frame" x="0.0" y="518.5" width="374" height="219.5"/>
+                                        <rect key="frame" x="0.0" y="535" width="354" height="159"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhE-Mh-kby" userLabel="KakaoLogIn" customClass="LogInBtn" customModule="RisingTest" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="66.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="46.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="카카오톡으로 로그인">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <imageReference key="image" image="message" catalog="system" symbolScale="medium"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="kakaoLoginAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9Uj-F5-Iq5"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toO-1c-5nc" userLabel="AppleLogin" customClass="LogInBtn" customModule="RisingTest" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="76.5" width="374" height="66.5"/>
+                                                <rect key="frame" x="0.0" y="56.5" width="354" height="46"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Apple로 로그인">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -48,14 +67,17 @@
                                                 </state>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0h-7T-i7x" userLabel="OtherLogin Wrapper">
-                                                <rect key="frame" x="0.0" y="153" width="374" height="66.5"/>
+                                                <rect key="frame" x="0.0" y="112.5" width="354" height="46.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBC-Jq-XgI">
-                                                        <rect key="frame" x="116.5" y="18" width="141" height="31"/>
+                                                        <rect key="frame" x="106.5" y="8" width="141" height="31"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="다른 방법으로 로그인">
                                                             <color key="baseForegroundColor" systemColor="systemGrayColor"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="otherLoginAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7o4-9C-ySN"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -73,11 +95,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="m0J-97-7Co" secondAttribute="bottom" constant="30" id="2jr-S6-GSO"/>
-                            <constraint firstItem="m0J-97-7Co" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Wk0-HB-bnt"/>
+                            <constraint firstItem="m0J-97-7Co" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="Wk0-HB-bnt"/>
                             <constraint firstItem="m0J-97-7Co" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="qlh-RT-7ng"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="m0J-97-7Co" secondAttribute="trailing" constant="20" id="v9L-Cn-gGm"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="m0J-97-7Co" secondAttribute="trailing" constant="30" id="v9L-Cn-gGm"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="MOe-cs-z0e"/>
                     <connections>
                         <outlet property="appleLoginBtn" destination="toO-1c-5nc" id="GBT-We-kfw"/>
                         <outlet property="kakaoLoginBtn" destination="zhE-Mh-kby" id="FR1-Cc-YLa"/>
@@ -87,8 +110,190 @@
             </objects>
             <point key="canvasLocation" x="133" y="91"/>
         </scene>
+        <!--LogInModal-->
+        <scene sceneID="K2a-u1-sUg">
+            <objects>
+                <viewController storyboardIdentifier="LogInModalVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RVl-6e-hgh" userLabel="LogInModal" customClass="LogInModal" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z7D-PG-kBb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="4cg-Nn-pl4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="333.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uZ-if-tAc" userLabel="TopWrapper">
+                                        <rect key="frame" x="25" y="0.0" width="389" height="39"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="4uZ-if-tAc" secondAttribute="height" multiplier="10:1" id="9fr-qC-sMH"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다른 방법으로 로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnI-o0-K4l">
+                                        <rect key="frame" x="25" y="64" width="389" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NMd-B0-ePL" userLabel="InnerStack">
+                                        <rect key="frame" x="25" y="127.5" width="389" height="206"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WZ-hl-Nz4" userLabel="FaceBookBtn">
+                                                <rect key="frame" x="0.0" y="0.0" width="389" height="48.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="itK-ao-Av7" userLabel="CircleImgWrapper" customClass="CircleWrapperView" customModule="RisingTest" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="48.5"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FaceBook" translatesAutoresizingMaskIntoConstraints="NO" id="Km9-k2-U3L" userLabel="FBImg" customClass="CircleWrapperImageView" customModule="RisingTest" customModuleProvider="target">
+                                                                <rect key="frame" x="-3.5" y="5" width="56" height="38.5"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.092759154740000002" green="0.4678601027" blue="0.94901353119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="itK-ao-Av7" secondAttribute="height" multiplier="1:1" id="PgP-QO-QIA"/>
+                                                            <constraint firstItem="Km9-k2-U3L" firstAttribute="height" secondItem="itK-ao-Av7" secondAttribute="height" multiplier="0.8" id="ssN-Tp-pjR"/>
+                                                            <constraint firstItem="Km9-k2-U3L" firstAttribute="centerY" secondItem="itK-ao-Av7" secondAttribute="centerY" id="uar-Ik-l3D"/>
+                                                            <constraint firstItem="Km9-k2-U3L" firstAttribute="centerX" secondItem="itK-ao-Av7" secondAttribute="centerX" id="xDy-GZ-TuT"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="페이스북으로 시작하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aua-RH-Z1k">
+                                                        <rect key="frame" x="58.5" y="14.5" width="142.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="0WZ-hl-Nz4" secondAttribute="height" multiplier="8:1" id="8vK-rd-4ss"/>
+                                                    <constraint firstItem="itK-ao-Av7" firstAttribute="leading" secondItem="0WZ-hl-Nz4" secondAttribute="leading" id="JuI-9g-gQc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="itK-ao-Av7" secondAttribute="bottom" id="VyY-kM-p3c"/>
+                                                    <constraint firstItem="aua-RH-Z1k" firstAttribute="centerY" secondItem="itK-ao-Av7" secondAttribute="centerY" id="kDL-J4-sZQ"/>
+                                                    <constraint firstItem="aua-RH-Z1k" firstAttribute="leading" secondItem="itK-ao-Av7" secondAttribute="trailing" constant="10" id="nSi-DC-o1Z"/>
+                                                    <constraint firstItem="itK-ao-Av7" firstAttribute="top" secondItem="0WZ-hl-Nz4" secondAttribute="top" id="onf-gm-4it"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDd-ew-6Qs" userLabel="NaverBtn">
+                                                <rect key="frame" x="0.0" y="68.5" width="389" height="48.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSb-iX-HOF" userLabel="CircleImgWrapper" customClass="CircleWrapperView" customModule="RisingTest" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="48.5"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Naver" translatesAutoresizingMaskIntoConstraints="NO" id="s46-x1-E0e" userLabel="FBImg" customClass="CircleWrapperImageView" customModule="RisingTest" customModuleProvider="target">
+                                                                <rect key="frame" x="-4.5" y="5" width="58" height="39"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.034833334389999998" green="0.80651575330000003" blue="0.36665344239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="s46-x1-E0e" firstAttribute="centerY" secondItem="uSb-iX-HOF" secondAttribute="centerY" id="FTF-W4-qif"/>
+                                                            <constraint firstItem="s46-x1-E0e" firstAttribute="height" secondItem="uSb-iX-HOF" secondAttribute="height" multiplier="0.8" id="VXp-Ck-5qm"/>
+                                                            <constraint firstItem="s46-x1-E0e" firstAttribute="centerX" secondItem="uSb-iX-HOF" secondAttribute="centerX" id="jIm-bX-3c7"/>
+                                                            <constraint firstAttribute="width" secondItem="uSb-iX-HOF" secondAttribute="height" multiplier="1:1" id="zbl-bi-ybq"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="네이버로 시작하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wka-Np-Fwl">
+                                                        <rect key="frame" x="58.5" y="14.5" width="115" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="uSb-iX-HOF" secondAttribute="bottom" id="5t8-hl-2uN"/>
+                                                    <constraint firstAttribute="width" secondItem="LDd-ew-6Qs" secondAttribute="height" multiplier="8:1" id="9Dd-BI-VtO"/>
+                                                    <constraint firstItem="uSb-iX-HOF" firstAttribute="top" secondItem="LDd-ew-6Qs" secondAttribute="top" id="KFx-2v-22c"/>
+                                                    <constraint firstItem="wka-Np-Fwl" firstAttribute="centerY" secondItem="uSb-iX-HOF" secondAttribute="centerY" id="Rz3-iz-c58"/>
+                                                    <constraint firstItem="wka-Np-Fwl" firstAttribute="leading" secondItem="uSb-iX-HOF" secondAttribute="trailing" constant="10" id="dN5-uC-ilk"/>
+                                                    <constraint firstItem="uSb-iX-HOF" firstAttribute="leading" secondItem="LDd-ew-6Qs" secondAttribute="leading" id="s94-iM-i3v"/>
+                                                </constraints>
+                                            </view>
+                                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQ0-ga-WLO" userLabel="SelfBtn">
+                                                <rect key="frame" x="0.0" y="137" width="389" height="49"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6m-B2-eMB" userLabel="CircleImgWrapper" customClass="CircleWrapperView" customModule="RisingTest" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="49"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Self" translatesAutoresizingMaskIntoConstraints="NO" id="1zK-Rl-puO" userLabel="FBImg" customClass="CircleWrapperImageView" customModule="RisingTest" customModuleProvider="target">
+                                                                <rect key="frame" x="-0.5" y="5" width="50" height="39"/>
+                                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.59889453650000002" green="0.59889453650000002" blue="0.59889453650000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="1zK-Rl-puO" firstAttribute="height" secondItem="o6m-B2-eMB" secondAttribute="height" multiplier="0.8" id="Loj-1U-pgL"/>
+                                                            <constraint firstAttribute="width" secondItem="o6m-B2-eMB" secondAttribute="height" multiplier="1:1" id="YRF-g1-dTO"/>
+                                                            <constraint firstItem="1zK-Rl-puO" firstAttribute="centerY" secondItem="o6m-B2-eMB" secondAttribute="centerY" id="boP-OP-36o"/>
+                                                            <constraint firstItem="1zK-Rl-puO" firstAttribute="centerX" secondItem="o6m-B2-eMB" secondAttribute="centerX" id="iqV-GQ-IYC"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="본인 인증으로 시작하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVK-P7-3BW">
+                                                        <rect key="frame" x="58.5" y="14.5" width="146.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFu-TB-gRH" userLabel="SelfBtn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="389" height="49"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <connections>
+                                                            <action selector="selfLoginBtn:" destination="RVl-6e-hgh" eventType="touchUpInside" id="HoD-Lg-dT1"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="HVK-P7-3BW" firstAttribute="leading" secondItem="o6m-B2-eMB" secondAttribute="trailing" constant="10" id="0hK-5u-LFj"/>
+                                                    <constraint firstItem="o6m-B2-eMB" firstAttribute="top" secondItem="UQ0-ga-WLO" secondAttribute="top" id="6XI-d3-mF8"/>
+                                                    <constraint firstItem="jFu-TB-gRH" firstAttribute="leading" secondItem="UQ0-ga-WLO" secondAttribute="leading" id="Au2-p5-dWx"/>
+                                                    <constraint firstAttribute="width" secondItem="UQ0-ga-WLO" secondAttribute="height" multiplier="8:1" id="Fet-WW-qbd"/>
+                                                    <constraint firstItem="o6m-B2-eMB" firstAttribute="leading" secondItem="UQ0-ga-WLO" secondAttribute="leading" id="TFV-fU-dK8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jFu-TB-gRH" secondAttribute="trailing" id="Tje-D2-Mzs"/>
+                                                    <constraint firstItem="HVK-P7-3BW" firstAttribute="centerY" secondItem="1zK-Rl-puO" secondAttribute="centerY" id="Wdc-ih-uNE"/>
+                                                    <constraint firstAttribute="bottom" secondItem="o6m-B2-eMB" secondAttribute="bottom" id="Xcd-AH-G4N"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jFu-TB-gRH" secondAttribute="bottom" id="bls-mJ-GiB"/>
+                                                    <constraint firstItem="jFu-TB-gRH" firstAttribute="top" secondItem="UQ0-ga-WLO" secondAttribute="top" id="p12-1f-u9p"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70X-oE-bu4" userLabel="BottomWrapper">
+                                                <rect key="frame" x="0.0" y="206" width="389" height="0.0"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="fQ1-gs-E7H"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="25" bottom="0.0" trailing="0.0"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Dj5-tF-bTF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Dj5-tF-bTF" firstAttribute="top" secondItem="4cg-Nn-pl4" secondAttribute="top" id="Yhb-66-Enx"/>
+                            <constraint firstItem="4cg-Nn-pl4" firstAttribute="leading" secondItem="Dj5-tF-bTF" secondAttribute="leading" id="ntL-JZ-vG6"/>
+                            <constraint firstItem="Dj5-tF-bTF" firstAttribute="trailing" secondItem="4cg-Nn-pl4" secondAttribute="trailing" id="zR3-v1-goM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="faceBookBtn" destination="0WZ-hl-Nz4" id="sXR-Ch-ouX"/>
+                        <outlet property="naverBtn" destination="LDd-ew-6Qs" id="q3f-Jy-Hjf"/>
+                        <outlet property="selfBtn" destination="UQ0-ga-WLO" id="4O2-uF-jqM"/>
+                        <outlet property="stackView" destination="4cg-Nn-pl4" id="wG6-Z5-yHK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eCN-EM-gUE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1033" y="90"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="FaceBook" width="56" height="57"/>
+        <image name="Naver" width="58" height="58"/>
+        <image name="Self" width="50" height="50"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

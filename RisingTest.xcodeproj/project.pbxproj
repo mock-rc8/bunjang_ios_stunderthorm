@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6302BDC528B278AF00D5C7CB /* SelfLogInStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6302BDC428B278AF00D5C7CB /* SelfLogInStoryboard.storyboard */; };
+		6302BDC728B278CF00D5C7CB /* SelfLogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302BDC628B278CF00D5C7CB /* SelfLogInVC.swift */; };
+		632983E128B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632983DF28B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift */; };
+		632983E228B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632983E028B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib */; };
+		632983E528B251C6002C4EC9 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 632983E428B251C6002C4EC9 /* PanModal */; };
+		632983E728B26383002C4EC9 /* LogInModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632983E628B26383002C4EC9 /* LogInModalVC.swift */; };
 		6341BA0428B232B7007A8BDB /* UI_Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6341B9FD28B232B7007A8BDB /* UI_Components.swift */; };
 		6341BA0528B232B7007A8BDB /* HorizontalScrollViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6341B9FE28B232B7007A8BDB /* HorizontalScrollViewCell.xib */; };
 		6341BA0628B232B7007A8BDB /* ImgSliderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6341B9FF28B232B7007A8BDB /* ImgSliderCollectionViewCell.xib */; };
@@ -15,7 +21,6 @@
 		6341BA0928B232B7007A8BDB /* ImgSliderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6341BA0228B232B7007A8BDB /* ImgSliderManager.swift */; };
 		6341BA0A28B232B7007A8BDB /* HorizontalSliderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6341BA0328B232B7007A8BDB /* HorizontalSliderManager.swift */; };
 		6341BA0D28B23330007A8BDB /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 6341BA0C28B23330007A8BDB /* Tabman */; };
-		6341BA1028B23518007A8BDB /* OnBoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6341BA0E28B23518007A8BDB /* OnBoardCollectionViewCell.swift */; };
 		6341BA1328B2368B007A8BDB /* OnBoardSliderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6341BA1228B2368B007A8BDB /* OnBoardSliderManager.swift */; };
 		6370048928B213A3003EE383 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6370047F28B213A3003EE383 /* IndicatorView.swift */; };
 		6370048A28B213A3003EE383 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6370048128B213A3003EE383 /* Date.swift */; };
@@ -31,7 +36,6 @@
 		637004ED28B21EBF003EE383 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637004EC28B21EBF003EE383 /* SplashVC.swift */; };
 		637004F028B21F03003EE383 /* LogInStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637004EF28B21F03003EE383 /* LogInStoryboard.storyboard */; };
 		637004F228B21F0C003EE383 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637004F128B21F0C003EE383 /* LogInVC.swift */; };
-		63B66B7F28B237E900FAADED /* OnBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B66B7E28B237E900FAADED /* OnBoardCollectionViewCell.xib */; };
 		63CE351028B211940007EF95 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE350A28B211940007EF95 /* BaseViewController.swift */; };
 		63CE351128B211940007EF95 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE350B28B211940007EF95 /* Constant.swift */; };
 		63CE351228B211940007EF95 /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63CE350D28B211940007EF95 /* NotoSansCJKkr-Medium.otf */; };
@@ -47,6 +51,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6302BDC428B278AF00D5C7CB /* SelfLogInStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelfLogInStoryboard.storyboard; sourceTree = "<group>"; };
+		6302BDC628B278CF00D5C7CB /* SelfLogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfLogInVC.swift; sourceTree = "<group>"; };
+		632983DF28B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardCollectionViewCell.swift; sourceTree = "<group>"; };
+		632983E028B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardCollectionViewCell.xib; sourceTree = "<group>"; };
+		632983E628B26383002C4EC9 /* LogInModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModalVC.swift; sourceTree = "<group>"; };
 		6341B9FD28B232B7007A8BDB /* UI_Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UI_Components.swift; sourceTree = "<group>"; };
 		6341B9FE28B232B7007A8BDB /* HorizontalScrollViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalScrollViewCell.xib; sourceTree = "<group>"; };
 		6341B9FF28B232B7007A8BDB /* ImgSliderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImgSliderCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -54,7 +63,6 @@
 		6341BA0128B232B7007A8BDB /* ImgSliderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgSliderCollectionViewCell.swift; sourceTree = "<group>"; };
 		6341BA0228B232B7007A8BDB /* ImgSliderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImgSliderManager.swift; sourceTree = "<group>"; };
 		6341BA0328B232B7007A8BDB /* HorizontalSliderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalSliderManager.swift; sourceTree = "<group>"; };
-		6341BA0E28B23518007A8BDB /* OnBoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		6341BA1228B2368B007A8BDB /* OnBoardSliderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardSliderManager.swift; sourceTree = "<group>"; };
 		6370047F28B213A3003EE383 /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		6370048128B213A3003EE383 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -70,7 +78,6 @@
 		637004EC28B21EBF003EE383 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		637004EF28B21F03003EE383 /* LogInStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogInStoryboard.storyboard; sourceTree = "<group>"; };
 		637004F128B21F0C003EE383 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
-		63B66B7E28B237E900FAADED /* OnBoardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardCollectionViewCell.xib; sourceTree = "<group>"; };
 		63CE350A28B211940007EF95 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		63CE350B28B211940007EF95 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		63CE350D28B211940007EF95 /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
@@ -93,12 +100,22 @@
 			files = (
 				63CE351828B211EA0007EF95 /* Alamofire in Frameworks */,
 				6341BA0D28B23330007A8BDB /* Tabman in Frameworks */,
+				632983E528B251C6002C4EC9 /* PanModal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6302BDC328B2789D00D5C7CB /* SelfLogIn */ = {
+			isa = PBXGroup;
+			children = (
+				6302BDC428B278AF00D5C7CB /* SelfLogInStoryboard.storyboard */,
+				6302BDC628B278CF00D5C7CB /* SelfLogInVC.swift */,
+			);
+			path = SelfLogIn;
+			sourceTree = "<group>";
+		};
 		6341B9FC28B232B7007A8BDB /* UI_Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,11 +193,13 @@
 		637004EE28B21EF8003EE383 /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
+				6302BDC328B2789D00D5C7CB /* SelfLogIn */,
 				637004EF28B21F03003EE383 /* LogInStoryboard.storyboard */,
 				637004F128B21F0C003EE383 /* LogInVC.swift */,
-				6341BA0E28B23518007A8BDB /* OnBoardCollectionViewCell.swift */,
 				6341BA1228B2368B007A8BDB /* OnBoardSliderManager.swift */,
-				63B66B7E28B237E900FAADED /* OnBoardCollectionViewCell.xib */,
+				632983DF28B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift */,
+				632983E028B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib */,
+				632983E628B26383002C4EC9 /* LogInModalVC.swift */,
 			);
 			path = LogIn;
 			sourceTree = "<group>";
@@ -265,6 +284,7 @@
 			packageProductDependencies = (
 				63CE351728B211EA0007EF95 /* Alamofire */,
 				6341BA0C28B23330007A8BDB /* Tabman */,
+				632983E428B251C6002C4EC9 /* PanModal */,
 			);
 			productName = RisingTest;
 			productReference = 63DD9B5728B2034E0075746A /* RisingTest.app */;
@@ -297,6 +317,7 @@
 			packageReferences = (
 				63CE351628B211EA0007EF95 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				6341BA0B28B23330007A8BDB /* XCRemoteSwiftPackageReference "Tabman" */,
+				632983E328B251C6002C4EC9 /* XCRemoteSwiftPackageReference "PanModal" */,
 			);
 			productRefGroup = 63DD9B5828B2034E0075746A /* Products */;
 			projectDirPath = "";
@@ -317,9 +338,10 @@
 				637004E628B21404003EE383 /* Main.storyboard in Resources */,
 				63DD9B6A28B2034E0075746A /* LaunchScreen.storyboard in Resources */,
 				637004F028B21F03003EE383 /* LogInStoryboard.storyboard in Resources */,
+				6302BDC528B278AF00D5C7CB /* SelfLogInStoryboard.storyboard in Resources */,
 				6341BA0628B232B7007A8BDB /* ImgSliderCollectionViewCell.xib in Resources */,
 				63DD9B6728B2034E0075746A /* Assets.xcassets in Resources */,
-				63B66B7F28B237E900FAADED /* OnBoardCollectionViewCell.xib in Resources */,
+				632983E228B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib in Resources */,
 				637004EB28B21EB3003EE383 /* SplashStoryboard.storyboard in Resources */,
 				63CE351228B211940007EF95 /* NotoSansCJKkr-Medium.otf in Resources */,
 				63CE351428B211940007EF95 /* NotoSansCJKkr-Bold.otf in Resources */,
@@ -337,8 +359,8 @@
 				6341BA0428B232B7007A8BDB /* UI_Components.swift in Sources */,
 				6370048B28B213A3003EE383 /* UIColor.swift in Sources */,
 				6341BA0928B232B7007A8BDB /* ImgSliderManager.swift in Sources */,
-				6341BA1028B23518007A8BDB /* OnBoardCollectionViewCell.swift in Sources */,
 				63CE351028B211940007EF95 /* BaseViewController.swift in Sources */,
+				632983E728B26383002C4EC9 /* LogInModalVC.swift in Sources */,
 				6341BA0728B232B7007A8BDB /* HorizontalScrollViewCell.swift in Sources */,
 				6370049128B213A3003EE383 /* Device.swift in Sources */,
 				6341BA1328B2368B007A8BDB /* OnBoardSliderManager.swift in Sources */,
@@ -348,6 +370,7 @@
 				6341BA0A28B232B7007A8BDB /* HorizontalSliderManager.swift in Sources */,
 				63DD9B5D28B2034E0075746A /* SceneDelegate.swift in Sources */,
 				6370048C28B213A3003EE383 /* String.swift in Sources */,
+				632983E128B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift in Sources */,
 				6370048A28B213A3003EE383 /* Date.swift in Sources */,
 				6370048E28B213A3003EE383 /* UIViewController.swift in Sources */,
 				6341BA0828B232B7007A8BDB /* ImgSliderCollectionViewCell.swift in Sources */,
@@ -356,6 +379,7 @@
 				6370049028B213A3003EE383 /* UIFont.swift in Sources */,
 				637004ED28B21EBF003EE383 /* SplashVC.swift in Sources */,
 				63CE351128B211940007EF95 /* Constant.swift in Sources */,
+				6302BDC728B278CF00D5C7CB /* SelfLogInVC.swift in Sources */,
 				6370048F28B213A3003EE383 /* UINavigationBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,6 +594,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		632983E328B251C6002C4EC9 /* XCRemoteSwiftPackageReference "PanModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/slackhq/PanModal.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6341BA0B28B23330007A8BDB /* XCRemoteSwiftPackageReference "Tabman" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/uias/Tabman.git";
@@ -589,6 +621,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		632983E428B251C6002C4EC9 /* PanModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 632983E328B251C6002C4EC9 /* XCRemoteSwiftPackageReference "PanModal" */;
+			productName = PanModal;
+		};
 		6341BA0C28B23330007A8BDB /* Tabman */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6341BA0B28B23330007A8BDB /* XCRemoteSwiftPackageReference "Tabman" */;

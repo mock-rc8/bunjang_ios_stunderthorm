@@ -16,6 +16,12 @@ class OnBoardSliderManager:NSObject,UICollectionViewDataSource,UICollectionViewD
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnBoardCollectionViewCell", for: indexPath) as! OnBoardCollectionViewCell
+        let idx = indexPath.item
+        print(idx)
+        cell.setData()
+        cell.titleLabel.text = data[idx].title
+        cell.contentLabel.text = data[idx].contents
+        cell.imageView.image = UIImage(named: data[idx].imageName)
         return cell
     }
     init(data:[onBoardData],updater:SliderDelegate){
