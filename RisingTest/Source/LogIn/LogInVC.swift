@@ -49,29 +49,29 @@ class LogInBtn: UIButton{
         self.layer.borderWidth = 2
     }
 }
-struct onBoardData{
+struct OnboardData{
     let title: String
     let contents:String
     let imageName:String
 }
 class OnBoardingSlider: UIView,SliderDelegate{
-    var data: [onBoardData] = [//취향을 잇는 거래,\n 번개장터
-        onBoardData(title: "hELLO WORLD\n nice to meet you", contents: "요즘 유행하는 메이저 취향부터\n 나만 알고 싶은 마이너 취향까지", imageName: "onboard1"),
+    var data: [OnboardData] = [//취향을 잇는 거래,\n 번개장터
+        OnboardData(title: "hELLO WORLD\n nice to meet you", contents: "요즘 유행하는 메이저 취향부터\n 나만 알고 싶은 마이너 취향까지", imageName: "onboard1"),
         //안전하게 취향을 잇습니다 //안전하게\n 취향을 잇습니다.
-        onBoardData(title: "hELLO WORLD\n nice to meet you", contents: "번개톡, 번개페이로\n거래의 시작부터 끝까지 안전하게", imageName: "onboard2"),
-        onBoardData(title: "편리하게 취향을 잇습니다.", contents: "포장택배 서비스로 픽업/포장/배송을 한번에", imageName: "onboard3"),
-        onBoardData(title: "번개장터에서\n취향을 거래해보세요.", contents: "지금 바로 번개장터에서\n당신의 취향에 맞는 아이템을 찾아보세요!", imageName: "onboard4")]
-    var onBoardSliderManager: OnBoardSliderManager?
+        OnboardData(title: "hELLO WORLD\n nice to meet you", contents: "번개톡, 번개페이로\n거래의 시작부터 끝까지 안전하게", imageName: "onboard2"),
+        OnboardData(title: "편리하게 취향을 잇습니다.", contents: "포장택배 서비스로 픽업/포장/배송을 한번에", imageName: "onboard3"),
+        OnboardData(title: "번개장터에서\n취향을 거래해보세요.", contents: "지금 바로 번개장터에서\n당신의 취향에 맞는 아이템을 찾아보세요!", imageName: "onboard4")]
+    var onBoardSliderManager: OnboardSliderManager?
     var sliderCollection: UICollectionView!
     var sliderPageControl: UIPageControl!
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        onBoardSliderManager = OnBoardSliderManager(data: self.data, updater: self)
-        self.sliderCollection = UICollectionView(frame: .zero, collectionViewLayout: OnBoardSliderManager.createSliderCompositionalLayout())
+        onBoardSliderManager = OnboardSliderManager(data: self.data, updater: self)
+        self.sliderCollection = UICollectionView(frame: .zero, collectionViewLayout: OnboardSliderManager.createSliderCompositionalLayout())
         self.sliderCollection.register(UINib(nibName: "OnBoardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "OnBoardCollectionViewCell")
         self.sliderCollection.dataSource = onBoardSliderManager
         self.sliderCollection.delegate = onBoardSliderManager
-        self.sliderCollection.collectionViewLayout = OnBoardSliderManager.createSliderCompositionalLayout()
+        self.sliderCollection.collectionViewLayout = OnboardSliderManager.createSliderCompositionalLayout()
         //Page Controller
         self.sliderPageControl = UIPageControl()
         self.sliderPageControl.pageIndicatorTintColor = .systemGray5
@@ -94,7 +94,7 @@ class OnBoardingSlider: UIView,SliderDelegate{
             self.sliderPageControl.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
-    func setData(data:[onBoardData]){
+    func setData(data:[OnboardData]){
         self.data = data
         self.onBoardSliderManager?.setData(data: self.data)
     }

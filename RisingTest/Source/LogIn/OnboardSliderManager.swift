@@ -5,8 +5,8 @@
 //  Created by 김태윤 on 2022/08/21.
 //
 import UIKit
-class OnBoardSliderManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
-    var data:[onBoardData]
+class OnboardSliderManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
+    var data:[OnboardData]
     var controllerProtocol:SliderDelegate!
     private var willIdx: Int = 0
     private var didIdx: Int = 0
@@ -24,7 +24,7 @@ class OnBoardSliderManager:NSObject,UICollectionViewDataSource,UICollectionViewD
         cell.imageView.image = UIImage(named: data[idx].imageName)
         return cell
     }
-    init(data:[onBoardData],updater:SliderDelegate){
+    init(data:[OnboardData],updater:SliderDelegate){
         self.data = data
         self.controllerProtocol = updater
     }
@@ -63,7 +63,7 @@ class OnBoardSliderManager:NSObject,UICollectionViewDataSource,UICollectionViewD
             self.controllerProtocol.currentPage(index: self.willIdx)
         }
     }
-    func setData(data:[onBoardData]){
+    func setData(data:[OnboardData]){
         self.data = data
     }
 }

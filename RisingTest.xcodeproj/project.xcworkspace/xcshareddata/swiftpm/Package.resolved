@@ -35,6 +35,15 @@
         "branch" : "main",
         "revision" : "4a4f7c755b875ffd4f9ef10d67a67883669d2465"
       }
+    },
+    {
+      "identity" : "tweetextfield",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/oleghnidets/TweeTextField.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "790fc253b534e1f72525ca03150a5dd1264cbcf4"
+      }
     }
   ],
   "version" : 2

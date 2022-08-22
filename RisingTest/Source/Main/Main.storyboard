@@ -153,6 +153,7 @@
                         <viewLayoutGuide key="safeArea" id="azW-qG-I9I"/>
                         <color key="backgroundColor" systemColor="systemRedColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="G6F-5t-Oom"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIV-Ed-A6Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -167,6 +168,9 @@
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="Utw-Qd-eiL" kind="relationship" relationship="rootViewController" id="FiM-ih-4gj"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7EY-eM-mDX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
