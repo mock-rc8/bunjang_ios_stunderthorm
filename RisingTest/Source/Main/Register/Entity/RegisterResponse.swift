@@ -9,9 +9,9 @@ struct RegisterResponse: Decodable {
     var isSuccess: Bool
     var code : Int
     var message: String
-    var result: RegisterResult
+    var result: RegisterResult?
 }
 
 struct RegisterResult: Decodable {
-    var post_idx: Int
+    var postIdx: Int
 }

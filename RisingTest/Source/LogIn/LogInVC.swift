@@ -36,6 +36,7 @@ class LogInVC: UIViewController{
         self.navigationController?.popToRootViewController(animated: true)
         let splashStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let splashViewController = splashStoryboard.instantiateViewController(identifier: "MainTabBarController")
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.LogIn, object: nil)
         self.changeRootViewController(splashViewController)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +53,9 @@ class LogInVC: UIViewController{
     }
     @IBAction func kakaoLoginAction(_ sender: Any) {
         self.kakaoLogin()
+    }
+    @IBAction func tampMainBtn(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name.LogIn,object: nil,userInfo:nil)
     }
 }
 //MARK: -- Kakao Login

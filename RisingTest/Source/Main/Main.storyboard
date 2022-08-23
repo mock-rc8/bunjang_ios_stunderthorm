@@ -119,33 +119,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tu2-lJ-RzK">
-                                <rect key="frame" x="95" y="346.66666666666669" width="200" height="200.00000000000006"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="43o-uz-etc">
+                                <rect key="frame" x="75" y="195" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="13u-hs-iVa"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="AnZ-dG-j64"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wv3-hY-Yb8" userLabel="BottomWrapper">
+                                <rect key="frame" x="0.0" y="663.66666666666663" width="390" height="97.333333333333371"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvt-Q9-X4a" userLabel="RegisterBtn">
+                                        <rect key="frame" x="300.33333333333331" y="14.000000000000004" width="69.666666666666686" height="46.333333333333343"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.17485795020552697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Hvt-Q9-X4a" secondAttribute="height" multiplier="3:2" id="izK-eG-I8b"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="등록">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="registerBtnAction:" destination="h7u-OL-xFh" eventType="touchUpInside" id="Byj-pf-KJn"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydk-sa-7jV" userLabel="SafePaymentWrapper">
+                                        <rect key="frame" x="20" y="14.000000000000004" width="285.33333333333331" height="46.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwe-Kf-ccz">
+                                                <rect key="frame" x="20.000000000000004" y="12.999999999999998" width="41.333333333333343" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Mwe-Kf-ccz" firstAttribute="leading" secondItem="Ydk-sa-7jV" secondAttribute="leading" constant="20" id="4ls-KK-7Et"/>
+                                            <constraint firstItem="Mwe-Kf-ccz" firstAttribute="centerY" secondItem="Ydk-sa-7jV" secondAttribute="centerY" id="Jf2-t5-VBZ"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2lE-sB-Ihj" userLabel="TextStack">
+                                        <rect key="frame" x="53" y="65.333333333333371" width="284" height="27"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="빠르게 팔고 싶으면 안전결제 환영을 이용하세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vB-Pj-fnF">
+                                                <rect key="frame" x="0.0" y="0.0" width="247" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUc-rS-Zwv">
+                                                <rect key="frame" x="252" y="0.0" width="32" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="자세히">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="lZ3-iM-D3T"/>
-                                    <constraint firstAttribute="width" constant="200" id="ndT-Qf-Zqk"/>
+                                    <constraint firstItem="Hvt-Q9-X4a" firstAttribute="top" secondItem="Wv3-hY-Yb8" secondAttribute="top" constant="14" id="8Ap-yf-VF1"/>
+                                    <constraint firstItem="Hvt-Q9-X4a" firstAttribute="bottom" secondItem="2lE-sB-Ihj" secondAttribute="top" constant="-5" id="LDG-Fg-ziX"/>
+                                    <constraint firstAttribute="bottom" secondItem="2lE-sB-Ihj" secondAttribute="bottom" constant="5" id="OsK-Mc-Nnz"/>
+                                    <constraint firstItem="Ydk-sa-7jV" firstAttribute="centerY" secondItem="Hvt-Q9-X4a" secondAttribute="centerY" id="QOy-TT-PLa"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hvt-Q9-X4a" secondAttribute="trailing" constant="20" id="R3o-Pu-AEw"/>
+                                    <constraint firstItem="2lE-sB-Ihj" firstAttribute="centerX" secondItem="Wv3-hY-Yb8" secondAttribute="centerX" id="TBB-nw-yav"/>
+                                    <constraint firstItem="Ydk-sa-7jV" firstAttribute="trailing" secondItem="Hvt-Q9-X4a" secondAttribute="leading" constant="5" id="agw-xh-Uk4"/>
+                                    <constraint firstItem="Ydk-sa-7jV" firstAttribute="height" secondItem="Hvt-Q9-X4a" secondAttribute="height" id="cPB-mf-BzC"/>
+                                    <constraint firstItem="Ydk-sa-7jV" firstAttribute="leading" secondItem="Wv3-hY-Yb8" secondAttribute="leading" constant="20" id="dyP-ux-O7X"/>
+                                    <constraint firstAttribute="width" secondItem="Wv3-hY-Yb8" secondAttribute="height" multiplier="4:1" id="s4I-OP-ji4"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Post 버튼"/>
-                                <connections>
-                                    <action selector="registerBtnAction:" destination="Pf6-UK-2Eh" eventType="touchUpInside" id="ZGi-RP-bvK"/>
-                                    <action selector="registerBtnAction:" destination="h7u-OL-xFh" eventType="touchUpInside" id="uXO-rt-UL4"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BUy-V2-GLf"/>
                         <color key="backgroundColor" systemColor="systemMintColor"/>
                         <constraints>
-                            <constraint firstItem="Tu2-lJ-RzK" firstAttribute="centerX" secondItem="BUy-V2-GLf" secondAttribute="centerX" id="pye-gp-KgG"/>
-                            <constraint firstItem="Tu2-lJ-RzK" firstAttribute="centerY" secondItem="BUy-V2-GLf" secondAttribute="centerY" id="wTS-hr-Ucq"/>
+                            <constraint firstItem="BUy-V2-GLf" firstAttribute="bottom" secondItem="Wv3-hY-Yb8" secondAttribute="bottom" id="GIM-Wb-61u"/>
+                            <constraint firstItem="Wv3-hY-Yb8" firstAttribute="leading" secondItem="BUy-V2-GLf" secondAttribute="leading" id="cvo-F2-sfB"/>
+                            <constraint firstItem="BUy-V2-GLf" firstAttribute="trailing" secondItem="Wv3-hY-Yb8" secondAttribute="trailing" id="mKE-Eu-mCz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TPo-4N-m1F"/>
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A44-qi-SEt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="Pf6-UK-2Eh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="265" y="1415"/>
         </scene>

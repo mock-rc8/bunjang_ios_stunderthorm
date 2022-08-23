@@ -8,15 +8,16 @@
 import Foundation
 
 struct RegisterRequest: Encodable {
-    var postImg_url: [String]
-    var tradeRegion: String
-    var postTitle: String
-    var categoryIdx: Int
-    var hashTagName: [String]
-    var price: Int
-    var deliveryFee: String
-    var quantity: Int
-    var prodStatus: String
-    var exchange: String
-    var payStatus: String
+    let postImg_url : [String]
+    let tradeRegion : String
+    let postTitle : String
+    let postContent : String
+    let categoryIdx : Int
+    let hashTagName : [String]
+    let price : Int
+    let deliveryFee : String
+    let quantity : Int
+    let prodStatus : String
+    let exchange : String
+    let payStatus : String
 }
