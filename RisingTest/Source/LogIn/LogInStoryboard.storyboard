@@ -58,14 +58,10 @@
                                                     <action selector="kakaoLoginAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9Uj-F5-Iq5"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toO-1c-5nc" userLabel="AppleLogin" customClass="LogInBtn" customModule="RisingTest" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hoj-26-3FH" userLabel="appleLogInView">
                                                 <rect key="frame" x="0.0" y="56.5" width="354" height="46"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <state key="normal" title="Apple로 로그인">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <imageReference key="image" image="message" catalog="system" symbolScale="medium"/>
-                                                </state>
-                                            </button>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0h-7T-i7x" userLabel="OtherLogin Wrapper">
                                                 <rect key="frame" x="0.0" y="112.5" width="354" height="46.5"/>
                                                 <subviews>
@@ -102,7 +98,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Hello!!" id="MOe-cs-z0e"/>
                     <connections>
-                        <outlet property="appleLoginBtn" destination="toO-1c-5nc" id="GBT-We-kfw"/>
+                        <outlet property="appleLogInView" destination="Hoj-26-3FH" id="ZdC-gM-y6T"/>
                         <outlet property="kakaoLoginBtn" destination="zhE-Mh-kby" id="FR1-Cc-YLa"/>
                     </connections>
                 </viewController>

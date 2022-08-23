@@ -6,19 +6,31 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import KakaoSDKUser
+import AuthenticationServices
 extension Notification.Name{
     static let LogIn = Notification.Name("LogIn")
 }
 class LogInVC: UIViewController{
     @IBOutlet weak var kakaoLoginBtn: LogInBtn!
-    @IBOutlet weak var appleLoginBtn: LogInBtn!
+    @IBOutlet weak var appleLogInView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         kakaoLoginBtn.backgroundColor = .yellow
         kakaoLoginBtn.layer.borderColor = UIColor(white: 1, alpha: 1).cgColor
-        appleLoginBtn.layer.borderColor = UIColor.black.cgColor
+        self.appleLogInView.layer.borderColor = UIColor.black.cgColor
         NotificationCenter.default.addObserver(self, selector: #selector(goHome(notification:)), name: Notification.Name.LogIn, object: nil)
+        // Apple Login Button
+        let appleLoginButton = ASAuthorizationAppleIDButton()
+        appleLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        self.appleLogInView.addSubview(appleLoginButton)
+        appleLoginButton.topAnchor.constraint(equalTo: appleLogInView.topAnchor).isActive = true
+        appleLoginButton.bottomAnchor.constraint(equalTo: appleLogInView.bottomAnchor).isActive = true
+        appleLoginButton.leadingAnchor.constraint(equalTo: appleLogInView.leadingAnchor).isActive = true
+        appleLoginButton.trailingAnchor.constraint(equalTo: appleLogInView.trailingAnchor).isActive = true
+        appleLoginButton.addTarget(self, action: #selector(appleLogin(_:)), for: .touchUpInside)
     }
     @objc func goHome(notification: Notification?){
         self.navigationController?.popToRootViewController(animated: true)
@@ -39,10 +51,75 @@ class LogInVC: UIViewController{
         presentPanModal(vc)
     }
     @IBAction func kakaoLoginAction(_ sender: Any) {
-        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-            let vc = UIStoryboard(name: "SelfLogInStoryboard", bundle: nil).instantiateViewController(withIdentifier: SelfLogInVC.identifier) as! SelfLogInVC
-            self.navigationController?.pushViewController(vc, animated: true)
-        })
+        self.kakaoLogin()
+    }
+}
+//MARK: -- Kakao Login
+extension LogInVC{
+    fileprivate func kakaoLogin(){
+        // 카카오톡 설치 여부 확인
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoTalk() success.")
+                    //do something
+                    _ = oauthToken
+                }
+            }
+        }else{
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("loginWithKakaoAccount() success.")
+                    //do something
+                    _ = oauthToken
+                }
+            }
+        }
+    }
+}
+// MARK: Apple Login
+extension LogInVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    @objc func appleLogin(_ sender: ASAuthorizationAppleIDButton) {
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.email, .fullName]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.presentationContextProvider = self
+        controller.performRequests()
+    }
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let userIdentifier = credential.user
+            let email = credential.email
+            let familyName = credential.fullName?.familyName ?? ""
+            let givenName = credential.fullName?.givenName ?? ""
+            let fullName = familyName + givenName
+            
+            self.presentAlert(
+                title: "애플로그인 성공",
+                message: """
+                    userIdentifier : \(userIdentifier)
+                    email : \(email ?? "불러오지 못함")
+                    fullName : \((fullName.count > 0) ? fullName : "불러오지 못함")
+                """
+            )
+            
+            // 자동로그인을 위해 토근 저장
+            UserDefaults.standard.set(userIdentifier, forKey: "AppleLoginUserIdentifier")
+        } else {
+            self.presentAlert(title: "애플로그인 실패")
+        }
     }
 }
 
@@ -56,6 +133,11 @@ class LogInBtn: UIButton{
         self.tintColor = .black
         self.layer.cornerRadius = CGFloat(Int(self.frame.height / 2))
         self.layer.borderWidth = 2
+    }
+}
+class AppleLogInView: UIView{
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 }
 struct OnboardData{
