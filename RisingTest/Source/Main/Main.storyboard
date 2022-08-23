@@ -114,17 +114,38 @@
         <!--RegiVC-->
         <scene sceneID="GiG-BK-Gr7">
             <objects>
-                <viewController id="h7u-OL-xFh" userLabel="RegiVC" sceneMemberID="viewController">
+                <viewController id="h7u-OL-xFh" userLabel="RegiVC" customClass="RegiVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h3Q-6K-Edv">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tu2-lJ-RzK">
+                                <rect key="frame" x="95" y="346.66666666666669" width="200" height="200.00000000000006"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="lZ3-iM-D3T"/>
+                                    <constraint firstAttribute="width" constant="200" id="ndT-Qf-Zqk"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Post 버튼"/>
+                                <connections>
+                                    <action selector="registerBtnAction:" destination="Pf6-UK-2Eh" eventType="touchUpInside" id="ZGi-RP-bvK"/>
+                                    <action selector="registerBtnAction:" destination="h7u-OL-xFh" eventType="touchUpInside" id="uXO-rt-UL4"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="BUy-V2-GLf"/>
                         <color key="backgroundColor" systemColor="systemMintColor"/>
+                        <constraints>
+                            <constraint firstItem="Tu2-lJ-RzK" firstAttribute="centerX" secondItem="BUy-V2-GLf" secondAttribute="centerX" id="pye-gp-KgG"/>
+                            <constraint firstItem="Tu2-lJ-RzK" firstAttribute="centerY" secondItem="BUy-V2-GLf" secondAttribute="centerY" id="wTS-hr-Ucq"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TPo-4N-m1F"/>
                     <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A44-qi-SEt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Pf6-UK-2Eh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="265" y="1415"/>
         </scene>

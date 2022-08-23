@@ -7,7 +7,9 @@
 
 import UIKit
 import CoreData
-
+import KakaoSDKCommon
+import KakaoSDKAuth
+import KakaoSDKUser
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // 번들 Config에서 앱 키 가져오기
+        let nativeAppKey = Bundle.main.infoDictionary?["KAKAO_NATIVE_APP_KEY"] ?? ""
+        KakaoSDK.initSDK(appKey: nativeAppKey as! String)
         return true
     }
 
