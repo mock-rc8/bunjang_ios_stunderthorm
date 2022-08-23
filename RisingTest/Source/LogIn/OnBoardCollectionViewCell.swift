@@ -20,14 +20,15 @@ class OnBoardCollectionViewCell: UICollectionViewCell {
 //        self.titleLabel.backgroundColor = .white
 //        self.titleLabel.textColor = .black
 //        self.titleLabel.sizeToFit()
+        self.titleLabel.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+        
     }
     func setData(){
-        print("setData")
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        //self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.numberOfLines = 0
         self.titleLabel.backgroundColor = .white
         self.titleLabel.textColor = .black
         self.titleLabel.sizeToFit()
-        self.titleLabel.font = .systemFont(ofSize: 32, weight: .black)
+        self.titleLabel.font = .systemFont(ofSize: 32, weight: .bold)
     }
 }

@@ -18,8 +18,8 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="생년월일을 입력해주세요" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6o-x0-QIg">
-                        <rect key="frame" x="20" y="64" width="125" height="57.5"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                        <rect key="frame" x="0.0" y="64" width="166.5" height="76.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -27,7 +27,7 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="K6o-x0-QIg" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="20" id="MFg-Gq-0wm"/>
+                <constraint firstItem="K6o-x0-QIg" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="MFg-Gq-0wm"/>
                 <constraint firstItem="K6o-x0-QIg" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="20" id="w2v-Z2-beP"/>
             </constraints>
             <size key="customSize" width="403" height="271"/>

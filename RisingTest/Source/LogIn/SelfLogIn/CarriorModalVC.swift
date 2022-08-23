@@ -39,6 +39,8 @@ class CarriorModalVC: UIViewController{
         selectedBtn(idx)
         self.parentView?.selectedCarriorViewIdx = idx
         self.parentView?.setCarriorName(carriorName[idx])
+        self.parentView?.confirmBtnShow()
+        self.parentView?.nextFieldShow()
         self.dismiss(animated: true, completion: nil)
     }
     func selectedBtn(_ idx: Int){

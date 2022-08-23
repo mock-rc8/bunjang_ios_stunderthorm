@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6302BDC528B278AF00D5C7CB /* SelfLogInStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6302BDC428B278AF00D5C7CB /* SelfLogInStoryboard.storyboard */; };
 		6302BDC728B278CF00D5C7CB /* SelfLogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302BDC628B278CF00D5C7CB /* SelfLogInVC.swift */; };
+		630669FD28B486650032C923 /* SignUpDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630669FC28B486650032C923 /* SignUpDataManager.swift */; };
+		63066A0028B4870A0032C923 /* SignUpEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630669FF28B4870A0032C923 /* SignUpEntity.swift */; };
+		63066A0628B4B9A10032C923 /* RegiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63066A0528B4B9A10032C923 /* RegiVC.swift */; };
 		632983E128B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632983DF28B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift */; };
 		632983E228B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632983E028B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib */; };
 		632983E528B251C6002C4EC9 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 632983E428B251C6002C4EC9 /* PanModal */; };
@@ -41,6 +44,10 @@
 		637004ED28B21EBF003EE383 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637004EC28B21EBF003EE383 /* SplashVC.swift */; };
 		637004F028B21F03003EE383 /* LogInStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637004EF28B21F03003EE383 /* LogInStoryboard.storyboard */; };
 		637004F228B21F0C003EE383 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637004F128B21F0C003EE383 /* LogInVC.swift */; };
+		63AAC25B28B3D03000E3A3C1 /* AgreeModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAC25A28B3D03000E3A3C1 /* AgreeModalVC.swift */; };
+		63AAC25E28B3D51D00E3A3C1 /* AgreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAC25C28B3D51D00E3A3C1 /* AgreeTableViewCell.swift */; };
+		63AAC25F28B3D51D00E3A3C1 /* AgreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63AAC25D28B3D51D00E3A3C1 /* AgreeTableViewCell.xib */; };
+		63AAC26128B3DD6E00E3A3C1 /* AgreeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AAC26028B3DD6E00E3A3C1 /* AgreeModel.swift */; };
 		63CE351028B211940007EF95 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE350A28B211940007EF95 /* BaseViewController.swift */; };
 		63CE351128B211940007EF95 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CE350B28B211940007EF95 /* Constant.swift */; };
 		63CE351228B211940007EF95 /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63CE350D28B211940007EF95 /* NotoSansCJKkr-Medium.otf */; };
@@ -58,6 +65,9 @@
 /* Begin PBXFileReference section */
 		6302BDC428B278AF00D5C7CB /* SelfLogInStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelfLogInStoryboard.storyboard; sourceTree = "<group>"; };
 		6302BDC628B278CF00D5C7CB /* SelfLogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfLogInVC.swift; sourceTree = "<group>"; };
+		630669FC28B486650032C923 /* SignUpDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDataManager.swift; sourceTree = "<group>"; };
+		630669FF28B4870A0032C923 /* SignUpEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEntity.swift; sourceTree = "<group>"; };
+		63066A0528B4B9A10032C923 /* RegiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiVC.swift; sourceTree = "<group>"; };
 		632983DF28B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		632983E028B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardCollectionViewCell.xib; sourceTree = "<group>"; };
 		632983E628B26383002C4EC9 /* LogInModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModalVC.swift; sourceTree = "<group>"; };
@@ -87,6 +97,10 @@
 		637004EC28B21EBF003EE383 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		637004EF28B21F03003EE383 /* LogInStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogInStoryboard.storyboard; sourceTree = "<group>"; };
 		637004F128B21F0C003EE383 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
+		63AAC25A28B3D03000E3A3C1 /* AgreeModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeModalVC.swift; sourceTree = "<group>"; };
+		63AAC25C28B3D51D00E3A3C1 /* AgreeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeTableViewCell.swift; sourceTree = "<group>"; };
+		63AAC25D28B3D51D00E3A3C1 /* AgreeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreeTableViewCell.xib; sourceTree = "<group>"; };
+		63AAC26028B3DD6E00E3A3C1 /* AgreeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeModel.swift; sourceTree = "<group>"; };
 		63CE350A28B211940007EF95 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		63CE350B28B211940007EF95 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		63CE350D28B211940007EF95 /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
@@ -120,6 +134,7 @@
 		6302BDC328B2789D00D5C7CB /* SelfLogIn */ = {
 			isa = PBXGroup;
 			children = (
+				63AAC25928B3D02000E3A3C1 /* Agree */,
 				6302BDC428B278AF00D5C7CB /* SelfLogInStoryboard.storyboard */,
 				6302BDC628B278CF00D5C7CB /* SelfLogInVC.swift */,
 				634CDABD28B37EE400C137A1 /* SelfLoginManager.swift */,
@@ -128,6 +143,30 @@
 				634CDAC328B3A16100C137A1 /* CarriorModalVC.swift */,
 			);
 			path = SelfLogIn;
+			sourceTree = "<group>";
+		};
+		630669FB28B4863B0032C923 /* SignUpNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				630669FC28B486650032C923 /* SignUpDataManager.swift */,
+				630669FF28B4870A0032C923 /* SignUpEntity.swift */,
+			);
+			path = SignUpNetwork;
+			sourceTree = "<group>";
+		};
+		63066A0328B4B7BE0032C923 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		63066A0428B4B9910032C923 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				63066A0528B4B9A10032C923 /* RegiVC.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		6341B9FC28B232B7007A8BDB /* UI_Components */ = {
@@ -199,6 +238,8 @@
 		637004AE28B21404003EE383 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				63066A0428B4B9910032C923 /* Register */,
+				63066A0328B4B7BE0032C923 /* Home */,
 				637004C728B21404003EE383 /* Main.storyboard */,
 			);
 			path = Main;
@@ -216,6 +257,18 @@
 				632983E628B26383002C4EC9 /* LogInModalVC.swift */,
 			);
 			path = LogIn;
+			sourceTree = "<group>";
+		};
+		63AAC25928B3D02000E3A3C1 /* Agree */ = {
+			isa = PBXGroup;
+			children = (
+				630669FB28B4863B0032C923 /* SignUpNetwork */,
+				63AAC25A28B3D03000E3A3C1 /* AgreeModalVC.swift */,
+				63AAC25C28B3D51D00E3A3C1 /* AgreeTableViewCell.swift */,
+				63AAC25D28B3D51D00E3A3C1 /* AgreeTableViewCell.xib */,
+				63AAC26028B3DD6E00E3A3C1 /* AgreeModel.swift */,
+			);
+			path = Agree;
 			sourceTree = "<group>";
 		};
 		63CE350128B210330007EF95 /* Configuration */ = {
@@ -355,6 +408,7 @@
 				63DD9B6A28B2034E0075746A /* LaunchScreen.storyboard in Resources */,
 				637004F028B21F03003EE383 /* LogInStoryboard.storyboard in Resources */,
 				634CDAC228B3801200C137A1 /* SelfLogInCollectionViewCell.xib in Resources */,
+				63AAC25F28B3D51D00E3A3C1 /* AgreeTableViewCell.xib in Resources */,
 				6302BDC528B278AF00D5C7CB /* SelfLogInStoryboard.storyboard in Resources */,
 				6341BA0628B232B7007A8BDB /* ImgSliderCollectionViewCell.xib in Resources */,
 				63DD9B6728B2034E0075746A /* Assets.xcassets in Resources */,
@@ -372,8 +426,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63AAC26128B3DD6E00E3A3C1 /* AgreeModel.swift in Sources */,
 				6370048928B213A3003EE383 /* IndicatorView.swift in Sources */,
 				6341BA0428B232B7007A8BDB /* UI_Components.swift in Sources */,
+				630669FD28B486650032C923 /* SignUpDataManager.swift in Sources */,
 				6370048B28B213A3003EE383 /* UIColor.swift in Sources */,
 				6341BA0928B232B7007A8BDB /* ImgSliderManager.swift in Sources */,
 				63CE351028B211940007EF95 /* BaseViewController.swift in Sources */,
@@ -390,17 +446,21 @@
 				6370048C28B213A3003EE383 /* String.swift in Sources */,
 				632983E128B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift in Sources */,
 				634CDABE28B37EE400C137A1 /* SelfLoginManager.swift in Sources */,
+				63AAC25E28B3D51D00E3A3C1 /* AgreeTableViewCell.swift in Sources */,
 				6370048A28B213A3003EE383 /* Date.swift in Sources */,
 				634CDAC128B3801200C137A1 /* SelfLogInCollectionViewCell.swift in Sources */,
 				6370048E28B213A3003EE383 /* UIViewController.swift in Sources */,
 				6341BA0828B232B7007A8BDB /* ImgSliderCollectionViewCell.swift in Sources */,
+				63066A0628B4B9A10032C923 /* RegiVC.swift in Sources */,
 				63DD9B6528B2034E0075746A /* RisingTest.xcdatamodeld in Sources */,
 				6370048D28B213A3003EE383 /* UIButton.swift in Sources */,
 				6370049028B213A3003EE383 /* UIFont.swift in Sources */,
 				637004ED28B21EBF003EE383 /* SplashVC.swift in Sources */,
+				63066A0028B4870A0032C923 /* SignUpEntity.swift in Sources */,
 				63CE351128B211940007EF95 /* Constant.swift in Sources */,
 				6302BDC728B278CF00D5C7CB /* SelfLogInVC.swift in Sources */,
 				6370048F28B213A3003EE383 /* UINavigationBar.swift in Sources */,
+				63AAC25B28B3D03000E3A3C1 /* AgreeModalVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

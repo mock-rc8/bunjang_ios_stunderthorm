@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+extension Notification.Name{
+    static let LogIn = Notification.Name("LogIn")
+}
 class LogInVC: UIViewController{
     @IBOutlet weak var kakaoLoginBtn: LogInBtn!
     @IBOutlet weak var appleLoginBtn: LogInBtn!
@@ -16,6 +18,13 @@ class LogInVC: UIViewController{
         kakaoLoginBtn.backgroundColor = .yellow
         kakaoLoginBtn.layer.borderColor = UIColor(white: 1, alpha: 1).cgColor
         appleLoginBtn.layer.borderColor = UIColor.black.cgColor
+        NotificationCenter.default.addObserver(self, selector: #selector(goHome(notification:)), name: Notification.Name.LogIn, object: nil)
+    }
+    @objc func goHome(notification: Notification?){
+        self.navigationController?.popToRootViewController(animated: true)
+        let splashStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let splashViewController = splashStoryboard.instantiateViewController(identifier: "MainTabBarController")
+        self.changeRootViewController(splashViewController)
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
@@ -55,11 +64,11 @@ struct OnboardData{
     let imageName:String
 }
 class OnBoardingSlider: UIView,SliderDelegate{
-    var data: [OnboardData] = [//취향을 잇는 거래,\n 번개장터
-        OnboardData(title: "hELLO WORLD\n nice to meet you", contents: "요즘 유행하는 메이저 취향부터\n 나만 알고 싶은 마이너 취향까지", imageName: "onboard1"),
+    var data: [OnboardData] = [//
+        OnboardData(title: "취향을 잇는 거래,\n 번개장터", contents: "요즘 유행하는 메이저 취향부터\n 나만 알고 싶은 마이너 취향까지", imageName: "onboard1"),
         //안전하게 취향을 잇습니다 //안전하게\n 취향을 잇습니다.
-        OnboardData(title: "hELLO WORLD\n nice to meet you", contents: "번개톡, 번개페이로\n거래의 시작부터 끝까지 안전하게", imageName: "onboard2"),
-        OnboardData(title: "편리하게 취향을 잇습니다.", contents: "포장택배 서비스로 픽업/포장/배송을 한번에", imageName: "onboard3"),
+        OnboardData(title: "안전하게\n 취향을 잇습니다.", contents: "번개톡, 번개페이로\n거래의 시작부터 끝까지 안전하게", imageName: "onboard2"),
+        OnboardData(title: "편리하게\n 취향을 잇습니다.", contents: "포장택배 서비스로 픽업/포장/배송을 한번에", imageName: "onboard3"),
         OnboardData(title: "번개장터에서\n취향을 거래해보세요.", contents: "지금 바로 번개장터에서\n당신의 취향에 맞는 아이템을 찾아보세요!", imageName: "onboard4")]
     var onBoardSliderManager: OnboardSliderManager?
     var sliderCollection: UICollectionView!
@@ -71,6 +80,7 @@ class OnBoardingSlider: UIView,SliderDelegate{
         self.sliderCollection.register(UINib(nibName: "OnBoardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "OnBoardCollectionViewCell")
         self.sliderCollection.dataSource = onBoardSliderManager
         self.sliderCollection.delegate = onBoardSliderManager
+        self.sliderCollection.alwaysBounceVertical = false
         self.sliderCollection.collectionViewLayout = OnboardSliderManager.createSliderCompositionalLayout()
         //Page Controller
         self.sliderPageControl = UIPageControl()

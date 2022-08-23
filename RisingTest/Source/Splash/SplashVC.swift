@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
+class SplashVC: UIViewController{
+    static let identifier = "SplashVC"
+}
