@@ -52,8 +52,6 @@ extension AgreeModalVC{
         //self.dismissKeyboard()
         self.showIndicator()
         dataManager.postSignIn(requestData!, delegate: self)
-        
-        
     }
     func didSuccessSignIn(_ result: SignInResult) {
         self.presentAlert(title: "로그인에 성공하였습니다", message: result.token)
