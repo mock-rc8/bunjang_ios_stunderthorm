@@ -8,7 +8,8 @@
 import UIKit
 
 class RecommendCollectionViewCell: UICollectionViewCell {
-static let identifier = "RecommendCollectionViewCell"
+    @IBOutlet weak var safePayView: UIImageView!
+    static let identifier = "RecommendCollectionViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

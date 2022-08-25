@@ -24,6 +24,11 @@ class HomeVC: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(ScrollToTop(notification:)), name: Notification.Name.ScrollToTop, object: nil)
         print("headerStack")
         self.headerFrameHeight = self.headerStack.frame.height
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     @objc func ScrollToTop(notification: Notification){
         print(self.headerStack.frame.height - self.headerLabel.frame.height)
@@ -33,6 +38,21 @@ class HomeVC: UIViewController{
             self.scrollView.contentOffset.y = (self.headerStack.frame.height - self.headerLabel.frame.height)
             self.view.layoutIfNeeded()
         })
+    }
+    // 푸시지만 present와 같은 에니메이션
+    @IBAction func hamburgerAction(_ sender: UIBarButtonItem) {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "HomeStoryboard", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: EntireMenuVC.identifier) as! EntireMenuVC
+
+        let navigationController = self.navigationController
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+        navigationController?.view.layer.add(transition, forKey: nil)
+        navigationController?.pushViewController(vc, animated: false)
     }
     deinit{
         NotificationCenter.default.removeObserver(self, name: Notification.Name.ScrollToTop, object: nil)

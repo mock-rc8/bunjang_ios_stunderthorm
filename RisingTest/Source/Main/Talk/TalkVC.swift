@@ -26,10 +26,6 @@ class TalkVC: UIViewController{
 extension TalkVC:UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y
-
-        let swipingDown = y <= 0
-        let shouldSnap = y > 30
-        let headerWrapperHeight = wrapperStack.frame.height // label + spacer (102)
         let isEnableScroll = y > (self.wrapperStack.frame.height - 20)
         
         //print("\(y) HeaderHeight: \(self.wrapperStack.frame.height)"

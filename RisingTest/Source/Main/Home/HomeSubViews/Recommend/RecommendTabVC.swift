@@ -45,11 +45,15 @@ class RecommendTabVC: UIViewController{
 }
 extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return 40
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
+        if 2 == indexPath.item {
+            cell.safePayView.isHidden = true
+        }else if 3 == indexPath.item{
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -60,10 +64,10 @@ extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
         let layout = UICollectionViewCompositionalLayout{
             (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             // 아이템에 대한 사이즈 - absolute는 고정값, estimated는 추측, fraction 퍼센트
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalWidth(0.5))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalWidth(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             // 아이템 간의 간격 설정
-            item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
             // 그룹 사이즈
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: itemSize.heightDimension)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item,item])
@@ -89,8 +93,6 @@ extension RecommendTabVC:UIScrollViewDelegate{
                     self.collectionView.isScrollEnabled = false
                     NotificationCenter.default.post(name: Notification.Name.ScrollToTop,object: nil,userInfo:nil)
                 }
-                
-                
                 
             }
         }

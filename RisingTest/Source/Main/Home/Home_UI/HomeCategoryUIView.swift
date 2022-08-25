@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeCategoryUIView: UIView{
-    var data: [String] = ["안녕하세요!!","반갑습니다!!","잘 부탁 드림!!","잘 부탁 드림!!","잘 부탁 드림!!","잘 부탁 드림!!","잘 부탁 드림!!","잘 부탁 드림!!","잘 부탁 드림!!"]
+    var data: [String] = ["찜","헬스/요가/필라데스","스니커즈","내폰시세","자전거","스타굿즈","시계","뷰티/미용","디지털/가전"]
     var horizontalScrollViewManager: HomeCategoryManager?
     var sliderCollection: UICollectionView!
     required init?(coder: NSCoder) {
@@ -18,7 +18,6 @@ class HomeCategoryUIView: UIView{
         self.sliderCollection.register(UINib(nibName: HomeCategoryCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)
         self.sliderCollection.dataSource = horizontalScrollViewManager
         self.sliderCollection.delegate = horizontalScrollViewManager
-        self.sliderCollection.backgroundColor = .blue
         self.sliderCollection.alwaysBounceVertical = false
         //self.sliderCollection.isScrollEnabled = false
         self.sliderCollection.collectionViewLayout = HomeCategoryManager.createSliderCompositionalLayout(self.frame.height)
@@ -50,6 +49,9 @@ class HomeCategoryManager:NSObject,UICollectionViewDataSource,UICollectionViewDe
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as! HomeCategoryCollectionViewCell
+        let idx = indexPath.item
+        cell.categoryLabel.text = data[idx]
+        cell.imageView.image = UIImage(named: data[idx].replacingOccurrences(of: "/", with: ":"))
         return cell
     }
     init(data:[String]){

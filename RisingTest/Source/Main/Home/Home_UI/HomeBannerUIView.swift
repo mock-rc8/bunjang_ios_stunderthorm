@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 class HomeImgSlider: UIView,SliderDelegate{
-    var data: [String] = ["onboard1","onboard2","onboard3","onboard4"]
+    var data: [String] = ["banner1","banner2"]
     var homeImgSliderManager : HomeImgSliderManager?
     var sliderCollection: UICollectionView!
     var sliderPageControl: UIView!
@@ -78,7 +78,7 @@ class HomeImgSliderManager:NSObject,UICollectionViewDataSource,UICollectionViewD
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeImgCollectionViewCell.identifier, for: indexPath) as! HomeImgCollectionViewCell
-        //cell.tempLabel.text = data[indexPath.item]
+        cell.imgaeView.image = UIImage(named: data[indexPath.item])
         return cell
     }
     init(data:[String],updater:SliderDelegate){
