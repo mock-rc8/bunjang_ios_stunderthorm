@@ -44,7 +44,7 @@ extension ServiceEntireVC: UITableViewDelegate,UITableViewDataSource{
         return header
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200
+        return 50
     }
 }
 class ServiceEntireHeader: UITableViewHeaderFooterView {
@@ -56,7 +56,7 @@ class ServiceEntireHeader: UITableViewHeaderFooterView {
     }
     private let label: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.font = .systemFont(ofSize: 21, weight: .bold)
         label.textAlignment = .left
         return label
     }()
@@ -71,6 +71,6 @@ class ServiceEntireHeader: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
         label.sizeToFit()
-        label.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height)
+        label.frame = CGRect(x: 20, y: 0, width: contentView.frame.width, height: contentView.frame.height)
     }
 }

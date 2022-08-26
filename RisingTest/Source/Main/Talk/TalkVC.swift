@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-class TalkVC: UIViewController{
+class TalkVC: MainUIViewController{
     @IBOutlet weak var innerTableView: UIView!
     @IBOutlet weak var wrapperStack: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!

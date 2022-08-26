@@ -20,6 +20,9 @@
 		6302BDC528B278AF00D5C7CB /* SelfLogInStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6302BDC428B278AF00D5C7CB /* SelfLogInStoryboard.storyboard */; };
 		6302BDC728B278CF00D5C7CB /* SelfLogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6302BDC628B278CF00D5C7CB /* SelfLogInVC.swift */; };
 		6303238F28B66F9E004734FD /* HomeTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6303238E28B66F9E004734FD /* HomeTitleLabel.swift */; };
+		6305E4EE28B91E490062BFBF /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305E4ED28B91E490062BFBF /* MainTabbarController.swift */; };
+		6305E4F228B920EF0062BFBF /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305E4F128B920EF0062BFBF /* SearchVC.swift */; };
+		6305E4F528B930210062BFBF /* MyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305E4F428B930210062BFBF /* MyVC.swift */; };
 		630669FD28B486650032C923 /* SignUpDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630669FC28B486650032C923 /* SignUpDataManager.swift */; };
 		63066A0028B4870A0032C923 /* SignUpEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630669FF28B4870A0032C923 /* SignUpEntity.swift */; };
 		63066A0628B4B9A10032C923 /* RegiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63066A0528B4B9A10032C923 /* RegiVC.swift */; };
@@ -144,6 +147,9 @@
 		6302BDC428B278AF00D5C7CB /* SelfLogInStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelfLogInStoryboard.storyboard; sourceTree = "<group>"; };
 		6302BDC628B278CF00D5C7CB /* SelfLogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfLogInVC.swift; sourceTree = "<group>"; };
 		6303238E28B66F9E004734FD /* HomeTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleLabel.swift; sourceTree = "<group>"; };
+		6305E4ED28B91E490062BFBF /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
+		6305E4F128B920EF0062BFBF /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		6305E4F428B930210062BFBF /* MyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVC.swift; sourceTree = "<group>"; };
 		630669FC28B486650032C923 /* SignUpDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDataManager.swift; sourceTree = "<group>"; };
 		630669FF28B4870A0032C923 /* SignUpEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEntity.swift; sourceTree = "<group>"; };
 		63066A0528B4B9A10032C923 /* RegiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegiVC.swift; sourceTree = "<group>"; };
@@ -303,6 +309,22 @@
 				634CDAC328B3A16100C137A1 /* CarriorModalVC.swift */,
 			);
 			path = SelfLogIn;
+			sourceTree = "<group>";
+		};
+		6305E4F028B920E40062BFBF /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6305E4F128B920EF0062BFBF /* SearchVC.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		6305E4F328B930190062BFBF /* My */ = {
+			isa = PBXGroup;
+			children = (
+				6305E4F428B930210062BFBF /* MyVC.swift */,
+			);
+			path = My;
 			sourceTree = "<group>";
 		};
 		630669FB28B4863B0032C923 /* SignUpNetwork */ = {
@@ -472,10 +494,13 @@
 		637004AE28B21404003EE383 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				6305E4F328B930190062BFBF /* My */,
+				6305E4F028B920E40062BFBF /* Search */,
 				631AA59C28B63E45008A2BC5 /* Talk */,
 				63066A0428B4B9910032C923 /* Register */,
 				63066A0328B4B7BE0032C923 /* Home */,
 				637004C728B21404003EE383 /* Main.storyboard */,
+				6305E4ED28B91E490062BFBF /* MainTabbarController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -844,6 +869,7 @@
 				634CDAC428B3A16100C137A1 /* CarriorModalVC.swift in Sources */,
 				631AA59028B61FCD008A2BC5 /* HomeTabVC.swift in Sources */,
 				6370049128B213A3003EE383 /* Device.swift in Sources */,
+				6305E4F528B930210062BFBF /* MyVC.swift in Sources */,
 				6341BA1328B2368B007A8BDB /* OnboardSliderManager.swift in Sources */,
 				63DD9B5F28B2034E0075746A /* ViewController.swift in Sources */,
 				631AA59B28B62B13008A2BC5 /* ItemVC.swift in Sources */,
@@ -866,6 +892,7 @@
 				63B9F7C428B77CD400F3F6AB /* RegisterCategoryTableViewCell.swift in Sources */,
 				6370048A28B213A3003EE383 /* Date.swift in Sources */,
 				638E8FA128B689C30074F8ED /* EntireMenuVC.swift in Sources */,
+				6305E4F228B920EF0062BFBF /* SearchVC.swift in Sources */,
 				63726EDA28B8D7F50003F9B1 /* SafePayModalVC.swift in Sources */,
 				63726EDE28B8EF4E0003F9B1 /* BrandTableViewCell.swift in Sources */,
 				634CDAC128B3801200C137A1 /* SelfLogInCollectionViewCell.swift in Sources */,
@@ -878,6 +905,7 @@
 				6303238F28B66F9E004734FD /* HomeTitleLabel.swift in Sources */,
 				6370048D28B213A3003EE383 /* UIButton.swift in Sources */,
 				63B9F7B928B7501300F3F6AB /* RegisterCategoryVC.swift in Sources */,
+				6305E4EE28B91E490062BFBF /* MainTabbarController.swift in Sources */,
 				638E8FA828B68E690074F8ED /* CategoryTabVC.swift in Sources */,
 				631AA57B28B5E13C008A2BC5 /* HomeVC.swift in Sources */,
 				6370049028B213A3003EE383 /* UIFont.swift in Sources */,

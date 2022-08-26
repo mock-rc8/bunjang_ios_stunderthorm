@@ -11,7 +11,7 @@ extension Notification.Name{
     static let ScrollToTop = Notification.Name("ScrollToTop")
     
 }
-class HomeVC: UIViewController{
+class HomeVC: MainUIViewController{
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var homeBannerView: HomeImgSlider!
     @IBOutlet weak var headerStack: UIStackView!
@@ -31,6 +31,11 @@ class HomeVC: UIViewController{
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        let tabbarvc = self.tabBarController as! MainTabbarController
+//        tabbarvc.tabBarDidLoad(vc: self)
+//    }
     @objc func ScrollToTop(notification: Notification){
         print(self.headerStack.frame.height - self.headerLabel.frame.height)
         print(self.headerLabel.frame.height)
@@ -42,10 +47,8 @@ class HomeVC: UIViewController{
     }
     // 푸시지만 present와 같은 에니메이션
     @IBAction func hamburgerAction(_ sender: UIBarButtonItem) {
-        
         let storyBoard: UIStoryboard = UIStoryboard(name: "HomeStoryboard", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: EntireMenuVC.identifier) as! EntireMenuVC
-
         let navigationController = self.navigationController
         let transition = CATransition()
         transition.duration = 0.5

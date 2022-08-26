@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Main Tabbar Controller-->
         <scene sceneID="7uv-RX-De5">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="MKz-A3-ATa" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="MKz-A3-ATa" customClass="MainTabbarController" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="VpY-HN-Cma"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aBP-N1-zR3">
@@ -23,8 +23,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="6cV-Ib-MMw" kind="relationship" relationship="viewControllers" id="tef-b1-vbF"/>
-                        <segue destination="EZb-12-1xr" kind="relationship" relationship="viewControllers" id="0ZZ-PB-qXV"/>
-                        <segue destination="N2t-AC-29v" kind="relationship" relationship="viewControllers" id="Ie5-6H-MLB"/>
+                        <segue destination="AJl-9H-lQG" kind="relationship" relationship="viewControllers" id="zma-Oo-5x4"/>
+                        <segue destination="JYA-Zf-Vtr" kind="relationship" relationship="viewControllers" id="lnN-Yt-6Yy"/>
                         <segue destination="OV6-qd-pra" kind="relationship" relationship="viewControllers" id="R0O-MR-KnS"/>
                         <segue destination="9ge-cS-iyJ" kind="relationship" relationship="viewControllers" id="m8h-e7-f86"/>
                     </connections>
@@ -32,24 +32,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B2h-Po-hJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-129" y="-119"/>
-        </scene>
-        <!--SearchNavVC-->
-        <scene sceneID="5pd-Z6-Bdp">
-            <objects>
-                <navigationController id="EZb-12-1xr" userLabel="SearchNavVC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="XHj-hC-j98"/>
-                    <navigationItem key="navigationItem" id="xOB-4c-WcM"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="daa-TI-J03">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="EFQ-uJ-qkP" kind="relationship" relationship="rootViewController" id="gYh-nL-17h"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GrV-Xa-FLJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-478" y="702"/>
         </scene>
         <!--HomeNavVC-->
         <scene sceneID="KZg-4x-NtV">
@@ -168,7 +150,7 @@
         <!--SearchVC-->
         <scene sceneID="8h5-qv-4jt">
             <objects>
-                <viewController id="EFQ-uJ-qkP" userLabel="SearchVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EFQ-uJ-qkP" userLabel="SearchVC" customClass="SearchVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a9R-bs-phD">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,13 +166,13 @@
         <!--RegiVC-->
         <scene sceneID="GiG-BK-Gr7">
             <objects>
-                <viewController id="h7u-OL-xFh" userLabel="RegiVC" customClass="RegiVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegiVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h7u-OL-xFh" userLabel="RegiVC" customClass="RegiVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h3Q-6K-Edv">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="43o-uz-etc">
-                                <rect key="frame" x="10" y="88" width="370" height="580.66666666666663"/>
+                                <rect key="frame" x="10" y="44" width="370" height="673.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="B6C-k0-ESs">
                                         <rect key="frame" x="0.0" y="0.0" width="370" height="572.66666666666663"/>
@@ -313,7 +295,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYa-Ux-QtZ" userLabel="FieldWrapper">
-                                                <rect key="frame" x="0.0" y="187.33333333333331" width="370" height="46.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="187.33333333333334" width="370" height="46.333333333333343"/>
                                                 <subviews>
                                                     <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="# 태그" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="hXF-fX-sBE" userLabel="TagField" customClass="TweeAttributedTextField" customModule="TweeTextField">
                                                         <rect key="frame" x="0.0" y="0.0" width="370" height="46.333333333333336"/>
@@ -530,7 +512,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="AnZ-dG-j64"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wv3-hY-Yb8" userLabel="BottomWrapper">
-                                <rect key="frame" x="10" y="668.66666666666663" width="370" height="92.333333333333371"/>
+                                <rect key="frame" x="10" y="717.66666666666663" width="370" height="92.333333333333371"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvt-Q9-X4a" userLabel="RegisterBtn">
                                         <rect key="frame" x="287" y="14.000000000000004" width="83" height="41.333333333333343"/>
@@ -752,7 +734,7 @@
         <!--MyVC-->
         <scene sceneID="Y6i-kd-BXh">
             <objects>
-                <viewController id="Utw-Qd-eiL" userLabel="MyVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Utw-Qd-eiL" userLabel="MyVC" customClass="MyVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4gj-fj-ZDR">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -797,22 +779,37 @@
             </objects>
             <point key="canvasLocation" x="3239" y="-234"/>
         </scene>
-        <!--RegiNavVC-->
-        <scene sceneID="cnd-WY-lkd">
+        <!--SearchBtnVC-->
+        <scene sceneID="9N2-bU-GZa">
             <objects>
-                <navigationController id="N2t-AC-29v" userLabel="RegiNavVC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="등록" image="plus.circle" catalog="system" id="Hhq-RD-AKT"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XK0-mn-26z">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="h7u-OL-xFh" kind="relationship" relationship="rootViewController" id="dhw-m8-Jnj"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ku2-wz-uik" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="SearchBtnVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AJl-9H-lQG" userLabel="SearchBtnVC" customClass="SearchBtnVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZkL-kP-dxc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1EQ-zw-JFS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="magnifyingglass" catalog="system" id="dq9-s6-xq2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0re-P5-aS6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="265" y="702"/>
+            <point key="canvasLocation" x="-491" y="716"/>
+        </scene>
+        <!--등록-->
+        <scene sceneID="LkS-DX-xbe">
+            <objects>
+                <viewController storyboardIdentifier="RegisterBtnVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JYA-Zf-Vtr" customClass="RegisterBtnVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V54-0M-vSx">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="msJ-ER-2uc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="등록" image="plus.circle" catalog="system" id="8Go-f1-1wy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wkd-mx-rOo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="234" y="710"/>
         </scene>
         <!--TalkNavVC-->
         <scene sceneID="L3v-ZT-GAD">
@@ -878,9 +875,6 @@
             <point key="canvasLocation" x="-1252" y="2175"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="uNF-iw-k4f"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="SafePay" width="70" height="30"/>
         <image name="bell" catalog="system" width="128" height="124"/>

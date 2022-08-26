@@ -8,6 +8,7 @@
 import UIKit
 import TweeTextField
 class RegiVC: UIViewController{
+    static let identifer = "RegiVC"
     @IBOutlet weak var optionTextView: UITextView!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -28,11 +29,13 @@ class RegiVC: UIViewController{
     lazy var dataManager: RegisterDataManager = RegisterDataManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
         self.scrollView.showsVerticalScrollIndicator = false
         self.dismissKeyboardWhenTappedAround()
         self.categoryField.isUserInteractionEnabled = false
         self.tagField.isUserInteractionEnabled = false
         self.priceTextField.delegate = self
+        self.navigationSettings()
         collectionViewSettings()
         textFieldSettings()
         self.style()
@@ -40,6 +43,25 @@ class RegiVC: UIViewController{
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.view.endEditing(true)
+    }
+    func navigationSettings(){
+        self.navigationItem.leftBarButtonItem = {
+            let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.closeView))
+            item.image = UIImage(systemName: "chevron.left")
+            item.tintColor = .black
+            return item
+        }()
+        self.view.backgroundColor = .white
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+    @objc func closeView() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.reveal
+        transition.subtype = CATransitionSubtype.fromBottom
+        navigationController?.view.layer.add(transition, forKey: nil)
+        _ = navigationController?.popViewController(animated: false)
     }
     func style(){
         self.safePayWrapper.layer.borderWidth = 1

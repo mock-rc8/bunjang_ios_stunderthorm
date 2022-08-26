@@ -8,14 +8,32 @@
 import Foundation
 import UIKit
 class BrandEntireVC: UIViewController{
+    @IBOutlet weak var deliveryFeeBtn: UIButton!
+    @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     static let identifier = "BrandEntireVC"
+    var deliveryFee = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.filterBtn.semanticContentAttribute = .forceRightToLeft
         self.tableView.register(UINib(nibName: BrandTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BrandTableViewCell.identifier)
-        print(BrandEntireVC.identifier)
+        self.deliveryBtnStyle()
+    }
+    @IBAction func deliverBtnAction(_ sender: UIButton) {
+        self.deliveryFee.toggle()
+        self.deliveryBtnStyle()
+    }
+    func deliveryBtnStyle(){
+        if deliveryFee == false{
+            self.deliveryFeeBtn.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
+            self.deliveryFeeBtn.tintColor = .gray
+            
+        }else{
+                self.deliveryFeeBtn.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+                self.deliveryFeeBtn.tintColor = .red
+        }
     }
 }
 extension BrandEntireVC: UITableViewDelegate,UITableViewDataSource{
@@ -31,20 +49,12 @@ extension BrandEntireVC: UITableViewDelegate,UITableViewDataSource{
         return 50
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = RegisterCategoryVC()
-//        var dataList = Array(self.categoryDataList)
-//        dataList.append("여성의류")
-//        vc.categoryDataList = dataList
-//        self.navigationController?.pushViewController(vc, animated: true)
+        //        let vc = RegisterCategoryVC()
+        //        var dataList = Array(self.categoryDataList)
+        //        dataList.append("여성의류")
+        //        vc.categoryDataList = dataList
+        //        self.navigationController?.pushViewController(vc, animated: true)
     }
     //헤더 뷰 설정!!
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = "추천"
-        return label
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
-    }
 }
 

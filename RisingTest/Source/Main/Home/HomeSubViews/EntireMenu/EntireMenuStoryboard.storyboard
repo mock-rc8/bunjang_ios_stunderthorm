@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,7 +46,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BwP-6V-35O" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="8Sv-QM-etS"/>
                             <constraint firstItem="BwP-6V-35O" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GsL-ab-ctE"/>
@@ -71,27 +72,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-ii-Nyz">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="브랜드 검색" translatesAutoresizingMaskIntoConstraints="NO" id="jxr-sv-uzM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="83"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jxr-sv-uzM" secondAttribute="height" multiplier="5:1" id="pvI-bV-jkN"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-ii-Nyz">
+                                <rect key="frame" x="0.0" y="127" width="414" height="735"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="Jss-bT-Shc">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmq-Hu-Lem">
+                                            <rect key="frame" x="20" y="9" width="106.5" height="26"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="가나다순  ">
+                                                <color key="titleColor" red="0.02525628307" green="0.02525628307" blue="0.02525628307" alpha="0.97465067979999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <imageReference key="image" image="chevron.down" catalog="system" symbolScale="large"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="filterBtn:" destination="SoK-Df-2d4" eventType="touchUpInside" id="Tyj-lp-mEw"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wL-SA-gu1">
+                                            <rect key="frame" x="316" y="0.0" width="78" height="44"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                            <color key="tintColor" systemColor="systemGray2Color"/>
+                                            <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="3" maxY="0.0"/>
+                                            <state key="normal" title="배송비포함">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <imageReference key="image" image="checkmark.circle" catalog="system" symbolScale="medium"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="deliverBtnAction:" destination="QVO-T6-Hty" eventType="touchUpInside" id="6Zc-C4-QYD"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="5wL-SA-gu1" firstAttribute="top" secondItem="Jss-bT-Shc" secondAttribute="top" id="Toy-3d-bu6"/>
+                                        <constraint firstItem="tmq-Hu-Lem" firstAttribute="centerY" secondItem="Jss-bT-Shc" secondAttribute="centerY" id="ggE-iz-cZX"/>
+                                        <constraint firstItem="tmq-Hu-Lem" firstAttribute="leading" secondItem="Jss-bT-Shc" secondAttribute="leading" constant="20" id="uLB-mw-ldM"/>
+                                        <constraint firstAttribute="bottom" secondItem="5wL-SA-gu1" secondAttribute="bottom" id="v3H-Uk-64D"/>
+                                        <constraint firstAttribute="trailing" secondItem="5wL-SA-gu1" secondAttribute="trailing" constant="20" id="vCN-26-W2H"/>
+                                        <constraint firstItem="5wL-SA-gu1" firstAttribute="centerY" secondItem="Jss-bT-Shc" secondAttribute="centerY" id="vbF-Xy-Pgh"/>
+                                    </constraints>
+                                </view>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UnV-VN-RFX"/>
-                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="UnV-VN-RFX" firstAttribute="trailing" secondItem="hWA-ii-Nyz" secondAttribute="trailing" id="bxz-Q7-qse"/>
+                            <constraint firstItem="jxr-sv-uzM" firstAttribute="leading" secondItem="UnV-VN-RFX" secondAttribute="leading" id="cH1-AS-NFk"/>
                             <constraint firstItem="hWA-ii-Nyz" firstAttribute="leading" secondItem="UnV-VN-RFX" secondAttribute="leading" id="dLa-CP-EQP"/>
-                            <constraint firstItem="hWA-ii-Nyz" firstAttribute="top" secondItem="UnV-VN-RFX" secondAttribute="top" id="n3q-FV-1p6"/>
+                            <constraint firstItem="UnV-VN-RFX" firstAttribute="trailing" secondItem="jxr-sv-uzM" secondAttribute="trailing" id="m5X-gt-djP"/>
+                            <constraint firstItem="hWA-ii-Nyz" firstAttribute="top" secondItem="jxr-sv-uzM" secondAttribute="bottom" id="n3q-FV-1p6"/>
                             <constraint firstItem="UnV-VN-RFX" firstAttribute="bottom" secondItem="hWA-ii-Nyz" secondAttribute="bottom" id="pon-gV-X72"/>
+                            <constraint firstItem="jxr-sv-uzM" firstAttribute="top" secondItem="UnV-VN-RFX" secondAttribute="top" id="qLc-BB-18W"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deliveryFeeBtn" destination="5wL-SA-gu1" id="pIZ-a9-xCY"/>
+                        <outlet property="filterBtn" destination="tmq-Hu-Lem" id="tsA-8O-ldD"/>
                         <outlet property="tableView" destination="hWA-ii-Nyz" id="Z7p-he-1vo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMD-Dj-zCd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="SoK-Df-2d4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1970" y="80"/>
+            <point key="canvasLocation" x="1969.5652173913045" y="79.6875"/>
         </scene>
         <!--Service EntireVC-->
         <scene sceneID="kfH-SN-cIs">
@@ -107,7 +164,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gsy-ee-sLP"/>
-                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ceA-hH-xe7" firstAttribute="top" secondItem="gsy-ee-sLP" secondAttribute="top" id="3qG-5R-55T"/>
                             <constraint firstItem="gsy-ee-sLP" firstAttribute="bottom" secondItem="ceA-hH-xe7" secondAttribute="bottom" id="ovW-HC-TyR"/>
@@ -125,20 +182,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
