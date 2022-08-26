@@ -7,8 +7,8 @@
 
 import Foundation
 import UIKit
-class BrandVC: UIViewController{
-    static let identifier = "BrandVC"
+class BrandHomeVC: UIViewController{
+    static let identifier = "BrandHomeVC"
     override func viewDidLoad() {
         super.viewDidLoad()
     }

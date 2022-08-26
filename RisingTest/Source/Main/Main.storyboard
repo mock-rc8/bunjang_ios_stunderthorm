@@ -55,7 +55,7 @@
         <scene sceneID="KZg-4x-NtV">
             <objects>
                 <navigationController id="6cV-Ib-MMw" userLabel="HomeNavVC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="홈" image="homekit" catalog="system" id="Y08-1s-1pu"/>
+                    <tabBarItem key="tabBarItem" title="홈" image="house" catalog="system" id="Y08-1s-1pu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cfm-8V-nMa">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -189,7 +189,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43o-uz-etc">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="43o-uz-etc">
                                 <rect key="frame" x="10" y="88" width="370" height="580.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="B6C-k0-ESs">
@@ -658,6 +658,7 @@
                         <outlet property="priceTextField" destination="zDU-1F-ckS" id="5bw-7y-mB8"/>
                         <outlet property="safePayCheckMark" destination="MUK-pI-vwp" id="0Ap-2C-WER"/>
                         <outlet property="safePayWrapper" destination="Ydk-sa-7jV" id="Xt5-ga-5oC"/>
+                        <outlet property="scrollView" destination="43o-uz-etc" id="TbY-t0-eIj"/>
                         <outlet property="statusLabel" destination="fdD-VC-lkS" id="jni-wY-wBs"/>
                         <outlet property="tagField" destination="hXF-fX-sBE" id="33E-K9-TSm"/>
                         <outlet property="textField" destination="41g-sc-8K3" id="JLf-Le-VOl"/>
@@ -885,7 +886,7 @@
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
-        <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="house" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="117"/>

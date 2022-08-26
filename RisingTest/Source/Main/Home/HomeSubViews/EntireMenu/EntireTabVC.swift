@@ -18,12 +18,12 @@ class EntireTabVC: TabmanViewController{
         return nextVC
         }(), {
         let storyboard = UIStoryboard(name : "EntireMenuStoryboard", bundle: nil)
-            let nextVC = storyboard.instantiateViewController(withIdentifier: BrandVC.identifier) as! BrandVC
+            let nextVC = storyboard.instantiateViewController(withIdentifier: BrandEntireVC.identifier) as! BrandEntireVC
         return nextVC
         }(),
         {
         let storyboard = UIStoryboard(name : "EntireMenuStoryboard", bundle: nil)
-            let nextVC = storyboard.instantiateViewController(withIdentifier:ServiceVC.identifier) as! ServiceVC
+            let nextVC = storyboard.instantiateViewController(withIdentifier:ServiceEntireVC.identifier) as! ServiceEntireVC
         return nextVC
         }()
     ] as [UIViewController]

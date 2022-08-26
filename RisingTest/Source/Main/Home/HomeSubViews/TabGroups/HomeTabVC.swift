@@ -18,7 +18,7 @@ class HomeTabVC: TabmanViewController{
         return nextVC
         }(), {
         let storyboard = UIStoryboard(name : "HomeStoryboard", bundle: nil)
-            let nextVC = storyboard.instantiateViewController(withIdentifier:BrandTabVC.identifier) as! BrandTabVC
+            let nextVC = storyboard.instantiateViewController(withIdentifier: BrandHomeVC.identifier) as! BrandHomeVC
         return nextVC
         }()
     ] as [UIViewController]

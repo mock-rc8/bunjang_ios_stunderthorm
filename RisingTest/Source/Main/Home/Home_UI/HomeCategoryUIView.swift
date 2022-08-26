@@ -21,6 +21,7 @@ class HomeCategoryUIView: UIView{
         self.sliderCollection.alwaysBounceVertical = false
         //self.sliderCollection.isScrollEnabled = false
         self.sliderCollection.collectionViewLayout = HomeCategoryManager.createSliderCompositionalLayout(self.frame.height)
+        self.sliderCollection.isScrollEnabled = false
         self.layout()
     }
     private func layout(){

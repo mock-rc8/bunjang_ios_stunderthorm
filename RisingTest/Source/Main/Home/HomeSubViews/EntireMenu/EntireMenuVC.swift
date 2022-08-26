@@ -17,7 +17,7 @@ class EntireMenuVC:UIViewController{
             item.tintColor = .black
             return item
         }()
-
+        self.view.backgroundColor = .white
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         self.tabBarController?.tabBar.isHidden = true
     }

@@ -18,9 +18,10 @@ class HomeVC: UIViewController{
     @IBOutlet weak var scrollView: UIScrollView!
     var headerFrameHeight : CGFloat?
     override func viewDidLoad() {
-        homeBannerView.setPushVC(self)
         super.viewDidLoad()
+        homeBannerView.setPushVC(self)
         self.scrollView.delegate = self
+        self.scrollView.showsVerticalScrollIndicator = false
         NotificationCenter.default.addObserver(self, selector: #selector(ScrollToTop(notification:)), name: Notification.Name.ScrollToTop, object: nil)
         print("headerStack")
         self.headerFrameHeight = self.headerStack.frame.height

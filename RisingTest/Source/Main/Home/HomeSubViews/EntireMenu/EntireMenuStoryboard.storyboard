@@ -63,31 +63,61 @@
             </objects>
             <point key="canvasLocation" x="133" y="80"/>
         </scene>
-        <!--BrandVC-->
+        <!--BrandEntireVC-->
         <scene sceneID="fIu-PD-kFT">
             <objects>
-                <viewController storyboardIdentifier="BrandVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QVO-T6-Hty" customClass="BrandVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BrandEntireVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QVO-T6-Hty" userLabel="BrandEntireVC" customClass="BrandEntireVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IGR-aD-ajf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-ii-Nyz">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="UnV-VN-RFX"/>
                         <color key="backgroundColor" systemColor="systemGrayColor"/>
+                        <constraints>
+                            <constraint firstItem="UnV-VN-RFX" firstAttribute="trailing" secondItem="hWA-ii-Nyz" secondAttribute="trailing" id="bxz-Q7-qse"/>
+                            <constraint firstItem="hWA-ii-Nyz" firstAttribute="leading" secondItem="UnV-VN-RFX" secondAttribute="leading" id="dLa-CP-EQP"/>
+                            <constraint firstItem="hWA-ii-Nyz" firstAttribute="top" secondItem="UnV-VN-RFX" secondAttribute="top" id="n3q-FV-1p6"/>
+                            <constraint firstItem="UnV-VN-RFX" firstAttribute="bottom" secondItem="hWA-ii-Nyz" secondAttribute="bottom" id="pon-gV-X72"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="hWA-ii-Nyz" id="Z7p-he-1vo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pMD-Dj-zCd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1970" y="80"/>
         </scene>
-        <!--ServiceVC-->
+        <!--Service EntireVC-->
         <scene sceneID="kfH-SN-cIs">
             <objects>
-                <viewController storyboardIdentifier="ServiceVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Du2-5F-HlS" customClass="ServiceVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ServiceEntireVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Du2-5F-HlS" customClass="ServiceEntireVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XAy-oI-QTf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ceA-hH-xe7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gsy-ee-sLP"/>
                         <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                        <constraints>
+                            <constraint firstItem="ceA-hH-xe7" firstAttribute="top" secondItem="gsy-ee-sLP" secondAttribute="top" id="3qG-5R-55T"/>
+                            <constraint firstItem="gsy-ee-sLP" firstAttribute="bottom" secondItem="ceA-hH-xe7" secondAttribute="bottom" id="ovW-HC-TyR"/>
+                            <constraint firstItem="ceA-hH-xe7" firstAttribute="leading" secondItem="gsy-ee-sLP" secondAttribute="leading" id="qRs-q9-Ntw"/>
+                            <constraint firstItem="gsy-ee-sLP" firstAttribute="trailing" secondItem="ceA-hH-xe7" secondAttribute="trailing" id="wM5-p3-aRX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="ceA-hH-xe7" id="UIe-AY-o3T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6En-kK-Ehc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

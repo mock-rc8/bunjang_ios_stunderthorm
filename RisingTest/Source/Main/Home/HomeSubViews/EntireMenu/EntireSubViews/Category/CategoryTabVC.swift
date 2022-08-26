@@ -21,6 +21,7 @@ class CategoryTabVC: UIViewController{
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.collectionView.showsVerticalScrollIndicator = false
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: HomeCategoryCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: HomeCategoryCollectionViewCell.identifier)

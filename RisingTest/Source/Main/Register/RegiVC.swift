@@ -21,12 +21,14 @@ class RegiVC: UIViewController{
     @IBOutlet weak var safePayWrapper: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var textField: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
     lazy var collectionManager = RegisterImageScrollManager(data:["안녕하세요","잘 가세요","","","","","",""])
     lazy var tempTitle = RegisterRequest(postImg_url: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl-FrXpdUtIR5iCeVZCp4dGIh3uiENuo9OHg&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKtQope-BdIw_CFcgjw_MWsYKJC4BchgE7ow&usqp=CAU"], tradeRegion: "시흥시 신천동", postTitle: "test", postContent: "testContent", categoryIdx: 1, hashTagName: ["삼성전자", "삼성"], price: 100, deliveryFee: "N", quantity: 1, prodStatus: "중고상품", exchange: "불가", payStatus: "N")
     lazy var data = RegisterData()
     lazy var dataManager: RegisterDataManager = RegisterDataManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.scrollView.showsVerticalScrollIndicator = false
         self.dismissKeyboardWhenTappedAround()
         self.categoryField.isUserInteractionEnabled = false
         self.tagField.isUserInteractionEnabled = false

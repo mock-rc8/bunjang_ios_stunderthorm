@@ -7,8 +7,9 @@
 
 import UIKit
 
-// MARK: UIButton 내에 Indicator 표시
+
 extension UIButton {
+    // MARK: -- UIButton 내에 Indicator 표시
     func showIndicator() {
         let indicator = UIActivityIndicatorView()
         let buttonHeight = self.bounds.size.height
@@ -25,5 +26,16 @@ extension UIButton {
                 indicator.removeFromSuperview()
             }
         }
+    }
+    
+    //MARK: -- UIButton underline 표시
+    func setUnderline() {
+        guard let title = title(for: .normal) else { return }
+        let attributedString = NSMutableAttributedString(string: title)
+        attributedString.addAttribute(.underlineStyle,
+                                      value: NSUnderlineStyle.single.rawValue,
+                                      range: NSRange(location: 0, length: title.count)
+        )
+        setAttributedTitle(attributedString, for: .normal)
     }
 }

@@ -1,0 +1,52 @@
+//
+//  ItemShopManager.swift
+//  RisingTest
+//
+//  Created by 김태윤 on 2022/08/26.
+//
+
+import UIKit
+import Foundation
+class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
+    var data:[String]
+    var isCellInit = true
+    var heightMethod : ((_ height: CGFloat)->Void)?
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return data.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemShopCollectionViewCell.identifier, for: indexPath) as! ItemShopCollectionViewCell
+        if isCellInit {
+            self.heightMethod!(cell.frame.height)
+            isCellInit.toggle()
+        }
+        return cell
+    }
+    init(data:[String]){
+        self.data = data
+    }
+    static public func createCompositionalLayout() -> UICollectionViewLayout{
+        let layout = UICollectionViewCompositionalLayout{
+            (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            // 아이템에 대한 사이즈 - absolute는 고정값, estimated는 추측, fraction 퍼센트
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalWidth(2/3))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            // 아이템 간의 간격 설정
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+            // 그룹 사이즈
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: itemSize.heightDimension)
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item,item,item])
+            // 그룹으로 섹션 만들기
+            let section = NSCollectionLayoutSection(group: group)
+            // 섹션에 대한 간격 설정
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            //섹션 헤더와 관련된 설정
+            return section
+        }
+        return layout
+    }
+    func setData(data:[String]){
+        self.data = data
+    }
+    
+}
