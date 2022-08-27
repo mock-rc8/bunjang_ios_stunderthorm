@@ -22,6 +22,17 @@ class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
         }
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        print("headerView Init!!")
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CategoryCollectionReusableView.identifier, for: indexPath) as? CategoryCollectionReusableView else {
+            return UICollectionReusableView()
+        }
+        //헤더뷰의 높이 설정
+       //self.headerAutoHeight = Int(headerView.Wrapper.frame.height)
+        headerView.headerLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        headerView.headerLabel.text = "이 상점의 상품"
+        return headerView
+    }
     init(data:[String]){
         self.data = data
     }
@@ -41,6 +52,11 @@ class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
             // 섹션에 대한 간격 설정
             section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
             //섹션 헤더와 관련된 설정
+            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30))
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: headerFooterSize,
+                elementKind: "myHeader",alignment: .top)
+            section.boundarySupplementaryItems = [sectionHeader]
             return section
         }
         return layout
@@ -49,4 +65,31 @@ class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
         self.data = data
     }
     
+}
+class ItemShopHeader: UITableViewHeaderFooterView {
+    static let identifier = "ItemShopHeader"
+    var text :String = "" {
+        willSet{
+            self.label.text = newValue
+        }
+    }
+    private let label: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 21, weight: .bold)
+        label.textAlignment = .left
+        return label
+    }()
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        
+        contentView.addSubview(label)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("is init error")
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        label.sizeToFit()
+        label.frame = CGRect(x: 20, y: 0, width: contentView.frame.width, height: contentView.frame.height)
+    }
 }

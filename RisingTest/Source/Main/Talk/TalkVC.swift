@@ -8,53 +8,42 @@
 import Foundation
 import UIKit
 class TalkVC: MainUIViewController{
-    @IBOutlet weak var innerTableView: UIView!
-    @IBOutlet weak var wrapperStack: UIStackView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    var innerTableVC: TempTableVC?
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.delegate = self
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "embedContainer" {
-            self.innerTableVC = (segue.destination as! TempTableVC)
-            //tempTableVC.toggleScroll()
-        }
+        self.navigationSettings()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.register(UINib(nibName: TalkTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: TalkTableViewCell.identifier)
     }
 }
-extension TalkVC:UIScrollViewDelegate{
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y = scrollView.contentOffset.y
-        let isEnableScroll = y > (self.wrapperStack.frame.height - 20)
-        
-        //print("\(y) HeaderHeight: \(self.wrapperStack.frame.height)"
-//        self.innerTableVC?.setScrollEnable = isEnableScroll
-        if isEnableScroll == true{
-            if let tableVC = self.innerTableVC {
-                DispatchQueue.main.async {
-                    tableVC.tableView.isScrollEnabled = true
-                    print("scroll \(tableVC.tableView.isScrollEnabled)")
-                }
-            }else{
-                print("불가능")
-            }
-        }else{
-            if let tableVC = self.innerTableVC {
-                DispatchQueue.main.async {
-                    tableVC.tableView.isScrollEnabled = false
-                    print("scroll \(tableVC.tableView.isScrollEnabled)")
-                }
-        }
-        print(isEnableScroll)
-        }
-        UIView.animate(withDuration: 0.3) {
-//            self.HeaderWrapper.alpha = swipingDown ? 1.0 : 0.0
-        }
-
-//        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: [], animations: {
-//            self.headerViewTopConstraint?.constant = shouldSnap ? -headerWrapperHeight : 0
-//            self.view.layoutIfNeeded()
-//        })
+extension TalkVC: UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TalkTableViewCell.identifier, for: indexPath)
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
+}
+//MARK: -- navigation setting
+extension TalkVC{
+    func navigationSettings(){
+        self.navigationItem.leftBarButtonItem = {
+            let item = LabelBarButtonItem(text: "번개톡", fontName: "System", fontSize: 21, color: .black)
+            return item
+        }()
+        self.view.backgroundColor = .white
+        self.navigationItem.rightBarButtonItem = {
+            let item = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            item.image = UIImage(systemName: "ellipsis")
+            item.tintColor = .gray
+            return item
+        }()
     }
 }

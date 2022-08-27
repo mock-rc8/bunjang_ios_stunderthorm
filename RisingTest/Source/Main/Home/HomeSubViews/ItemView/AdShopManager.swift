@@ -62,6 +62,7 @@ class AdShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate
             return UICollectionReusableView()
         }
         headerView.headerLabel.text = data[indexPath.section].title
+        headerView.headerLabel.font = .systemFont(ofSize: 18, weight: .bold)
         return headerView
     }
 }

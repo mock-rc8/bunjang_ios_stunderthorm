@@ -8,10 +8,12 @@
 import UIKit
 
 class TalkTableViewCell: UITableViewCell {
-static let identifier = "TalkTableViewCell"
+    @IBOutlet weak var moreBtn: UIButton!
+    static let identifier = "TalkTableViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

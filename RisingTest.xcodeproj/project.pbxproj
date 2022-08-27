@@ -44,7 +44,6 @@
 		631AA59E28B63E64008A2BC5 /* TalkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AA59D28B63E64008A2BC5 /* TalkVC.swift */; };
 		631AA5A128B63EFB008A2BC5 /* TalkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AA59F28B63EFB008A2BC5 /* TalkTableViewCell.swift */; };
 		631AA5A228B63EFB008A2BC5 /* TalkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 631AA5A028B63EFB008A2BC5 /* TalkTableViewCell.xib */; };
-		631AA5A428B64444008A2BC5 /* TempTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631AA5A328B64444008A2BC5 /* TempTableVC.swift */; };
 		632983E128B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632983DF28B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift */; };
 		632983E228B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632983E028B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib */; };
 		632983E528B251C6002C4EC9 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 632983E428B251C6002C4EC9 /* PanModal */; };
@@ -171,7 +170,6 @@
 		631AA59D28B63E64008A2BC5 /* TalkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkVC.swift; sourceTree = "<group>"; };
 		631AA59F28B63EFB008A2BC5 /* TalkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkTableViewCell.swift; sourceTree = "<group>"; };
 		631AA5A028B63EFB008A2BC5 /* TalkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkTableViewCell.xib; sourceTree = "<group>"; };
-		631AA5A328B64444008A2BC5 /* TempTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTableVC.swift; sourceTree = "<group>"; };
 		632983DF28B23DB2002C4EC9 /* OnBoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		632983E028B23DB2002C4EC9 /* OnBoardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardCollectionViewCell.xib; sourceTree = "<group>"; };
 		632983E628B26383002C4EC9 /* LogInModalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModalVC.swift; sourceTree = "<group>"; };
@@ -410,7 +408,6 @@
 				631AA59D28B63E64008A2BC5 /* TalkVC.swift */,
 				631AA59F28B63EFB008A2BC5 /* TalkTableViewCell.swift */,
 				631AA5A028B63EFB008A2BC5 /* TalkTableViewCell.xib */,
-				631AA5A328B64444008A2BC5 /* TempTableVC.swift */,
 			);
 			path = Talk;
 			sourceTree = "<group>";
@@ -865,7 +862,6 @@
 				632983E728B26383002C4EC9 /* LogInModalVC.swift in Sources */,
 				631AA5A128B63EFB008A2BC5 /* TalkTableViewCell.swift in Sources */,
 				6341BA0728B232B7007A8BDB /* HorizontalScrollViewCell.swift in Sources */,
-				631AA5A428B64444008A2BC5 /* TempTableVC.swift in Sources */,
 				634CDAC428B3A16100C137A1 /* CarriorModalVC.swift in Sources */,
 				631AA59028B61FCD008A2BC5 /* HomeTabVC.swift in Sources */,
 				6370049128B213A3003EE383 /* Device.swift in Sources */,

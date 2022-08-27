@@ -11,7 +11,7 @@ class HomeImgSlider: UIView,SliderDelegate{
     var data: [String] = ["banner1","banner2"]
     var homeImgSliderManager : HomeImgSliderManager?
     var sliderCollection: UICollectionView!
-    var sliderPageControl: UIView!
+    var sliderPageControl: UILabel!
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         homeImgSliderManager = HomeImgSliderManager(data: self.data, updater: self)
@@ -23,10 +23,17 @@ class HomeImgSlider: UIView,SliderDelegate{
         self.sliderCollection.isScrollEnabled = false
         self.sliderCollection.collectionViewLayout = HomeImgSliderManager.createSliderCompositionalLayout(self.frame.height)
         //Page Controller
+        if data.count < 2 {
+            self.sliderPageControl.isHidden = true
+        }
         self.sliderPageControl = {
-            let view = UIView()
-            view.backgroundColor = .blue
-            return view
+            let label = UILabel()
+            label.backgroundColor = #colorLiteral(red: 0.3816757606, green: 0.3816757606, blue: 0.3816757606, alpha: 0.4293334592)
+            label.text = "1 / \(data.count)"
+            label.textAlignment = .center
+            label.font = .systemFont(ofSize: 14, weight: .semibold)
+            label.textColor = .white
+            return label
         }()
 //        self.sliderPageControl.pageIndicatorTintColor = .systemGray5
 //        self.sliderPageControl.currentPageIndicatorTintColor = UIColor.orange
@@ -46,8 +53,8 @@ class HomeImgSlider: UIView,SliderDelegate{
             self.sliderCollection.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             self.sliderPageControl.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -20),
             self.sliderPageControl.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -20),
-            self.sliderPageControl.widthAnchor.constraint(equalToConstant: 50),
-            self.sliderPageControl.heightAnchor.constraint(equalToConstant: 50)
+            self.sliderPageControl.heightAnchor.constraint(equalToConstant: 35),
+            self.sliderPageControl.widthAnchor.constraint(equalTo: self.sliderPageControl.heightAnchor, multiplier: 1.4 )
         ])
     }
     func setData(data:[String]){
@@ -59,6 +66,7 @@ class HomeImgSlider: UIView,SliderDelegate{
     }
     func currentPage(index: Int){
 //        self.sliderPageControl.currentPage = index
+        self.sliderPageControl.text = "\(index+1) / \(data.count)"
     }
     func setPushVC(_ vc:UIViewController){
         self.homeImgSliderManager?.setPushVC(vc)
