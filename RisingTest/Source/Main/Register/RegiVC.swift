@@ -7,6 +7,9 @@
 
 import UIKit
 import TweeTextField
+extension Notification.Name{
+    static let Category = Notification.Name("Category")
+}
 class RegiVC: UIViewController{
     static let identifer = "RegiVC"
     @IBOutlet weak var optionTextView: UITextView!
@@ -35,33 +38,18 @@ class RegiVC: UIViewController{
         self.categoryField.isUserInteractionEnabled = false
         self.tagField.isUserInteractionEnabled = false
         self.priceTextField.delegate = self
-        self.navigationSettings()
         collectionViewSettings()
         textFieldSettings()
+        categorySettings()
         self.style()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationSettings()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.view.endEditing(true)
-    }
-    func navigationSettings(){
-        self.navigationItem.leftBarButtonItem = {
-            let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.closeView))
-            item.image = UIImage(systemName: "chevron.left")
-            item.tintColor = .black
-            return item
-        }()
-        self.view.backgroundColor = .white
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-    }
-    @objc func closeView() {
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.reveal
-        transition.subtype = CATransitionSubtype.fromBottom
-        navigationController?.view.layer.add(transition, forKey: nil)
-        _ = navigationController?.popViewController(animated: false)
     }
     func style(){
         self.safePayWrapper.layer.borderWidth = 1
@@ -72,6 +60,7 @@ class RegiVC: UIViewController{
         self.collectionView.delegate = collectionManager
         self.collectionView.dataSource = collectionManager
         self.collectionView.register(UINib(nibName: RegisterImageScrollCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: RegisterImageScrollCollectionViewCell.identifier)
+        self.collectionView.register(UINib(nibName: RegiCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: RegiCollectionViewCell.identifier)
         self.collectionView.collectionViewLayout = RegisterImageScrollManager.createSliderCompositionalLayout(self.collectionView.frame.height)
     }
     func textFieldSettings(){
@@ -79,21 +68,122 @@ class RegiVC: UIViewController{
         setEmptyText(textField)
     }
 }
-//MARK: -- 버튼 액션 모음
+//MARK: -- 카테고리 세팅
 extension RegiVC{
+    func categorySettings(){
+        NotificationCenter.default.addObserver(self, selector: #selector(getCategory(notification:)), name: Notification.Name.Category, object: nil)
+    }
+    @objc func getCategory(notification: Notification?){
+        var viewData = notification?.userInfo?["ViewData"] as! [String]
+        let serverData = notification?.userInfo?["ServerData"] as! Int
+        viewData.removeFirst()
+        categoryField.text = viewData.joined(separator: " - ")
+        self.data.categoryIdx = serverData
+    }
     @IBAction func categoryBtnAction(_ sender: UIButton) {
         let vc = UIStoryboard(name: "RegisterStoryboard", bundle: nil).instantiateViewController(withIdentifier: RegisterCategoryVC.identifier) as! RegisterCategoryVC
+        vc.setCategoryData()
+        vc.myRootVC = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
+}
+//MARK: -- 네비게이션 세팅
+extension RegiVC{
+    func navigationSettings(){
+        self.navigationItem.leftBarButtonItem = {
+            let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.closeView))
+            item.image = UIImage(systemName: "chevron.left")
+            item.tintColor = .black
+            return item
+        }()
+        self.view.backgroundColor = .white
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = {
+            let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(closeView))
+            item.tintColor = .black
+            item.customView = {
+                let button = UIButton()
+                button.setTitle(Variable.USER_LOCATION, for: .normal)
+                button.titleLabel?.font = UIFont(name: "System", size: 14)
+                button.titleLabel!.font = UIFont.boldSystemFont(ofSize: 14)
+                button.setTitleColor(.gray, for: .normal)
+                button.setUnderline()
+                button.tintColor = .black
+                button.addTarget(self, action: #selector(segueLocationView), for: .touchDown)
+                return button
+            }()
+            return item
+        }()
+    }
+    @objc func closeView() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.reveal
+        transition.subtype = CATransitionSubtype.fromBottom
+        navigationController?.view.layer.add(transition, forKey: nil)
+        _ = navigationController?.popViewController(animated: false)
+    }
+    @objc func segueLocationView(){
+        let vc = UIStoryboard(name: "SettingStoryboard", bundle: nil).instantiateViewController(withIdentifier: LocationSetVC.identifier) as! LocationSetVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+//MARK: -- 옵션 모달 설정
+extension RegiVC{
+    @IBAction func choiceBtnAction(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "RegisterStoryboard", bundle: nil).instantiateViewController(withIdentifier: RegisterOptionModalVC.identifier) as! RegisterOptionModalVC
+        vc.completeAction = {
+            (status: ProdStatus, exchangable: Bool,itemCount: Int) in
+            self.data.prodStatus = status
+            self.data.exchange = exchangable
+            self.data.quantity = itemCount
+            self.countLabel.text = "\(itemCount) 개"
+            self.statusLabel.text = status.rawValue
+            self.exchangeLabel.text = exchangable == true ? "가능" : "불가"
+        }
+        presentPanModal(vc)
+    }
+}
+//MARK: -- 등록 버튼 액션 모음
+extension RegiVC{
+    @IBAction func registerBtnAction(_ sender: UIButton) {
+        self.data.tradeRegion = Variable.USER_LOCATION
+        self.data.postTitle = self.itemTitleField.text!
+        self.data.postContent = self.textField.text!
+        let rawPrice = self.priceTextField.text!.replacingOccurrences(of: "₩ ", with: "")
+        self.data.price = Int(rawPrice) ?? -1
+        if checkData(){
+            let requestData = self.data.changeRequestData()
+            dataManager.postSignIn(requestData, delegate: self)
+        }
+    }
+    func checkData()->Bool{
+        if self.data.postTitle == "" {
+            self.presentAlert(title: "상품 제목을 입력하세요!!")
+            return false
+        }
+        if self.data.categoryIdx == -1 {
+            self.presentAlert(title: "카테고리를 선택하세요!!")
+            return false
+        }
+        if self.data.price == -1 {
+            self.presentAlert(title: "가격을 입력하세요!!")
+        }
+        if self.data.quantity <= 0 {
+            self.presentAlert(title: "수량 오류입니다!!")
+        }
+        return true
+    }
+}
+//MARK: -- 버튼 액션 모음
+extension RegiVC{
     @IBAction func tabBtnAction(_ sender: UIButton) {
         let vc = UIStoryboard(name: "RegisterStoryboard", bundle: nil).instantiateViewController(withIdentifier: RegisterTagVC.identifier) as! RegisterTagVC
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    @IBAction func choiceBtnAction(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "RegisterStoryboard", bundle: nil).instantiateViewController(withIdentifier: RegisterOptionModalVC.identifier) as! RegisterOptionModalVC
-        presentPanModal(vc)
-    }
-    @IBAction func deliveryBtnAction(_ sender: UIButton) {
+    
+    @IBAction func deliveryBtnAction(_ sender: UIButton) {//배달 가능여부 데이터 설정
         if data.deliveryFee == false{
             self.deliveryFeeBtn.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
             self.deliveryFeeBtn.tintColor = .red
@@ -103,7 +193,7 @@ extension RegiVC{
         }
         data.deliveryFee.toggle()
     }
-    @IBAction func safePayBtnAction(_ sender: UIButton) {
+    @IBAction func safePayBtnAction(_ sender: UIButton) {//안전페이 가능여부 데이터 설정
         if data.payStatus == .unsafe{
             self.safePayCheckMark.tintColor = .red
             self.safePayWrapper.layer.borderColor = UIColor.red.cgColor
@@ -117,14 +207,12 @@ extension RegiVC{
     @objc func priceTextFieldTap(_ sender: Any){
         print("hello world!!")
     }
-    @IBAction func registerBtnAction(_ sender: UIButton) {
-        dataManager.postSignIn(self.tempTitle, delegate: self)
-    }
-    func didSuccessSignIn(_ result: RegisterResult) {
+    func didSuccessRegister(_ result: RegisterResult) {
 //       self.presentAlert(title: "로그인에 성공하였습니다", message: String(result.postIdx))
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.LogIn, object: nil)
     }
     
-    func failedToRequest(message: String) {
+    func failedToRegister(message: String) {
         self.presentAlert(title: message)
     }
 }

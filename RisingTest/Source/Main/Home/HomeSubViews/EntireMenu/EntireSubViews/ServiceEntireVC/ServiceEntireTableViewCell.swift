@@ -9,6 +9,9 @@ import UIKit
 
 class ServiceEntireTableViewCell: UITableViewCell {
 static let identifier = "ServiceEntireTableViewCell"
+    @IBOutlet weak var eventLabel: UIButton!
+    @IBOutlet weak var myimageView: UIImageView!
+    @IBOutlet weak var label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

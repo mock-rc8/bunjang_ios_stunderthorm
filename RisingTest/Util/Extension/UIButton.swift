@@ -27,7 +27,6 @@ extension UIButton {
             }
         }
     }
-    
     //MARK: -- UIButton underline 표시
     func setUnderline() {
         guard let title = title(for: .normal) else { return }
@@ -37,5 +36,13 @@ extension UIButton {
                                       range: NSRange(location: 0, length: title.count)
         )
         setAttributedTitle(attributedString, for: .normal)
+    }
+}
+
+class CapsuleButton: UIButton{
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        self.layer.cornerRadius = self.layer.frame.height / 2
     }
 }

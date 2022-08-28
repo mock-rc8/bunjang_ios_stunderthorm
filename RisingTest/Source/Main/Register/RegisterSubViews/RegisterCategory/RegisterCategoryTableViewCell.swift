@@ -9,6 +9,8 @@ import UIKit
 
 class RegisterCategoryTableViewCell: UITableViewCell {
 static let identifier = "RegisterCategoryTableViewCell"
+    @IBOutlet weak var titleLabel: UILabel!
+    var isHaveNext :Bool = false
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +21,12 @@ static let identifier = "RegisterCategoryTableViewCell"
 
         // Configure the view for the selected state
     }
-    
+    func setAccessData(_ flag: Bool){
+        if flag == true{
+            self.accessoryType = .disclosureIndicator
+        }else{
+            self.accessoryType = .none
+        }
+        
+    }
 }

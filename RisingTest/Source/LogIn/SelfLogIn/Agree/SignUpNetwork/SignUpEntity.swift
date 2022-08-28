@@ -5,8 +5,8 @@
 //  Created by 김태윤 on 2022/08/23.
 //
 struct SignInRequest: Encodable {
-    var name: String
-    var telephone: Int
+    var userName: String
+    var phoneNumber: Int
     var birth: Int
 }
 struct SignInResponse: Decodable {
@@ -17,8 +17,7 @@ struct SignInResponse: Decodable {
 }
 
 struct SignInResult: Decodable {
-    var token: String
-    var userInfoIdx: Int
+    var userIdx: Int
 }
 
 

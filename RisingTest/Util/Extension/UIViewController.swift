@@ -19,7 +19,6 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         self.view.endEditing(false)
     }
-    
     // MARK: 취소와 확인이 뜨는 UIAlertController
     func presentAlert(title: String, message: String? = nil,
                       isCancelActionIncluded: Bool = false,
@@ -76,12 +75,12 @@ extension UIViewController {
         alertSuperview.translatesAutoresizingMaskIntoConstraints = false
     
         let alertLabel = UILabel()
-        alertLabel.font = .NotoSans(.regular, size: 15)
+        alertLabel.font = .systemFont(ofSize: 15, weight: .semibold)
         alertLabel.textColor = .white
         alertLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(alertSuperview)
-        alertSuperview.bottomAnchor.constraint(equalTo: target ?? view.safeAreaLayoutGuide.bottomAnchor, constant: -12).isActive = true
+        alertSuperview.bottomAnchor.constraint(equalTo: target ?? view.safeAreaLayoutGuide.bottomAnchor, constant: offset ?? -12).isActive = true
         alertSuperview.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         alertSuperview.addSubview(alertLabel)
         alertLabel.topAnchor.constraint(equalTo: alertSuperview.topAnchor, constant: 6).isActive = true
@@ -102,7 +101,6 @@ extension UIViewController {
             }
         )
     }
-    
     // MARK: 인디케이터 표시
     func showIndicator() {
         IndicatorView.shared.show()
@@ -113,4 +111,5 @@ extension UIViewController {
     @objc func dismissIndicator() {
         IndicatorView.shared.dismiss()
     }
+    
 }

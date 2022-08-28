@@ -146,33 +146,6 @@
                                     <constraint firstAttribute="width" secondItem="WBc-2P-Z69" secondAttribute="height" multiplier="5:2" id="Jg9-cr-6ut"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V3X-Nv-Fai" userLabel="ConfirmBtnWrapper">
-                                <rect key="frame" x="20" y="712.5" width="374" height="149.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzK-lD-BcX">
-                                        <rect key="frame" x="0.0" y="56" width="374" height="53.5"/>
-                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="JzK-lD-BcX" secondAttribute="height" multiplier="7:1" id="1Tm-f2-PNz"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="확인" cornerStyle="capsule" titleAlignment="center">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="conFirmBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="S2s-4y-kfi"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="JzK-lD-BcX" secondAttribute="bottom" constant="40" id="1br-Ja-rWH"/>
-                                    <constraint firstItem="JzK-lD-BcX" firstAttribute="leading" secondItem="V3X-Nv-Fai" secondAttribute="leading" id="7up-my-RGh"/>
-                                    <constraint firstAttribute="trailing" secondItem="JzK-lD-BcX" secondAttribute="trailing" id="8tc-lK-PVg"/>
-                                    <constraint firstAttribute="width" secondItem="V3X-Nv-Fai" secondAttribute="height" multiplier="5:2" id="bC6-af-Y2g"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="00H-mr-m2r">
                                 <rect key="frame" x="20" y="237.5" width="374" height="475"/>
                                 <subviews>
@@ -438,7 +411,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="39l-vt-8fb"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartQuotesType="no"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="activeLineColor">
                                                                 <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -474,6 +447,33 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="BVh-LF-QLa"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="58X-gK-MsX"/>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V3X-Nv-Fai" userLabel="ConfirmBtnWrapper">
+                                <rect key="frame" x="20" y="712.5" width="374" height="149.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JzK-lD-BcX">
+                                        <rect key="frame" x="0.0" y="56" width="374" height="53.5"/>
+                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="JzK-lD-BcX" secondAttribute="height" multiplier="7:1" id="1Tm-f2-PNz"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="확인" cornerStyle="capsule" titleAlignment="center">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="conFirmBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="S2s-4y-kfi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="JzK-lD-BcX" secondAttribute="bottom" constant="40" id="1br-Ja-rWH"/>
+                                    <constraint firstItem="JzK-lD-BcX" firstAttribute="leading" secondItem="V3X-Nv-Fai" secondAttribute="leading" id="7up-my-RGh"/>
+                                    <constraint firstAttribute="trailing" secondItem="JzK-lD-BcX" secondAttribute="trailing" id="8tc-lK-PVg"/>
+                                    <constraint firstAttribute="width" secondItem="V3X-Nv-Fai" secondAttribute="height" multiplier="5:2" id="bC6-af-Y2g"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -754,6 +754,9 @@
         <image name="circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

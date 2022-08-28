@@ -19,10 +19,13 @@ class SelfLogInVC:UIViewController,UITextFieldDelegate{
     @IBOutlet weak var stackView: UIStackView!
     var sliderIdx = 0
     var suvViewIdx = 0
+    var isKeyboardUp = false
     var selectedCarriorViewIdx: Int? = nil
     var allTextField: [UITextField]?
+    public private(set) var originBtnY = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addKeyboardNotifications()
         self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.setHidesBackButton(true, animated: true)
         let barBtn = UIBarButtonItem(image:UIImage(systemName: "chevron.left")!, style: .plain, target: self, action: #selector(backBtn))
@@ -44,6 +47,14 @@ class SelfLogInVC:UIViewController,UITextFieldDelegate{
         self.stackView.subviews[suvViewIdx].isHidden = false
         self.dismissKeyboardWhenTappedAround()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.originBtnY = Int((self.confirmBtn.superview?.frame.origin.y)!)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.removeKeyboardNotifications()
+    }
     @objc func backBtn(){
         self.navigationController?.popViewController(animated: true)
     }
@@ -54,7 +65,7 @@ class SelfLogInVC:UIViewController,UITextFieldDelegate{
     }
     @IBAction func conFirmBtn(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: AgreeModalVC.identifier) as! AgreeModalVC
-        let requestData = SignInRequest(name: nameTextField.text!, telephone: Int(phoneNumberTextField.text!)!, birth: Int(birthTextField.text!)!)
+        let requestData = SignInRequest(userName: nameTextField.text ?? "", phoneNumber: Int(phoneNumberTextField.text ?? "0")!, birth: Int(birthTextField.text ?? "0")!)
         vc.requestData = requestData
         presentPanModal(vc)
     }
@@ -80,7 +91,12 @@ class SelfLogInVC:UIViewController,UITextFieldDelegate{
                 }
             }
         case self.sexTextField:
-            nextFieldShow()
+            if let textCount = sender.text?.trim?.count{
+                if textCount >= 1 {
+                    nextFieldShow()
+                    sender.resignFirstResponder()
+                }
+            }
         default: break
         }
         self.confirmBtnShow()
@@ -105,6 +121,7 @@ class SelfLogInVC:UIViewController,UITextFieldDelegate{
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(#function)
+        textField.resignFirstResponder()
         nextFieldShow()
         return true
     }
@@ -122,8 +139,27 @@ class SelfLogInVC:UIViewController,UITextFieldDelegate{
     }
 }
 
-
-//MARK: -- 인포 슬라이더
+//MARK: -- 키보드 뷰 조절
+extension SelfLogInVC{
+    func addKeyboardNotifications(){
+        // 키보드가 나타날 때 앱에게 알리는 메서드 추가
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillShowNotification , object: nil)
+        // 키보드가 사라질 때 앱에게 알리는 메서드 추가
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    // 노티피케이션을 제거하는 메서드
+    func removeKeyboardNotifications(){
+        // 키보드가 나타날 때 앱에게 알리는 메서드 제거
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
+        // 키보드가 사라질 때 앱에게 알리는 메서드 제거
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @objc func keyboardWillShow(_ noti: NSNotification){}
+    @objc func keyboardWillHide(_ noti: NSNotification){}
+    
+    //MARK: -- 인포 슬라이더
+    
+}
 class SelfLogInSlider: UIView,SliderDelegate{
     var data: [String] = ["이름을\n입력해주세요","생년월일을\n입력해주세요","통신사를\n선택해주세요","휴대폰번호를\n입력해주세요","입력된 정보를 \n확인해주세요"]
     var selfLogInSliderManager: SelfLogInSliderManager?
@@ -166,4 +202,3 @@ class SelfLogInSlider: UIView,SliderDelegate{
         self.sliderCollection.scrollToItem(at: NSIndexPath(item: self.sliderIdx, section: 0) as IndexPath, at: .top, animated: true)
     }
 }
-

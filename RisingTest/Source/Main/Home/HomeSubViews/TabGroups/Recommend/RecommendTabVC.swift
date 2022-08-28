@@ -15,8 +15,12 @@ class RecommendTabVC: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     static let identifier = "RecommendTabVC"
     var lastScroll:CGFloat = 0
+    var dataModel: HomeRecommendModel?
+    var isViewAppeared: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dataModel = HomeRecommendModel(reload: self)
+        self.dataModel!.addMyData()
         // Do any additional setup after loading the view.
         self.collectionView.register(UINib(nibName: RecommendCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier:RecommendCollectionViewCell.identifier)
         self.collectionView.dataSource = self
@@ -25,35 +29,71 @@ class RecommendTabVC: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(isScrollable(notification:)), name: Notification.Name.ScrollEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(isScrolldisable(notification:)), name: Notification.Name.ScrollDisabld, object: nil)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.isViewAppeared = true
+        if dataModel!.nowListCount == 0 {
+            self.dataModel?.addMyData()
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.isViewAppeared = false
+    }
     @objc func isScrollable(notification: Notification?){
         DispatchQueue.main.async {
             self.collectionView.isScrollEnabled = true
             self.collectionView.contentOffset.y = 1
         }
-        print("notificationcenter scrollable")
     }
     @objc func isScrolldisable(notification: Notification?){
         DispatchQueue.main.async {
             self.collectionView.isScrollEnabled = false
         }
-        print("notificationcenter")
     }
     deinit{
         NotificationCenter.default.removeObserver(self, name: Notification.Name.ScrollDisabld, object: nil)
         NotificationCenter.default.removeObserver(self, name: Notification.Name.ScrollEnabled, object: nil)
     }
 }
+//MARK: -- Recommend 무한 스크롤 데이터 얻기
+extension RecommendTabVC:ReloadProtocol{
+    func reload() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            self.collectionView.performBatchUpdates(nil, completion: {_ in
+                self.collectionView.reloadData()
+            })
+        }
+    }
+    func didSuccessGetResult(){
+        print("새로 얻어오기 성공")
+    }
+    func didFailedGetResult(message: String){
+        //self.presentBottomAlert(message: message)
+        self.presentBottomAlert(message: message, target: nil, offset: -200)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            print(self.isViewLoaded)
+            if self.isViewAppeared {
+            self.dataModel?.addMyData()
+            }
+        }
+    }
+}
 extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 40
+        print(dataModel!.nowListCount)
+        return dataModel!.nowListCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
+        let idx = indexPath.item
         if 2 == indexPath.item {
             cell.safePayView.isHidden = true
         }else if 3 == indexPath.item{
         }
+        if(idx + 6 == self.dataModel?.nowListCount){self.dataModel?.addMyData()}
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -83,7 +123,6 @@ extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
 }
 extension RecommendTabVC:UIScrollViewDelegate{
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y

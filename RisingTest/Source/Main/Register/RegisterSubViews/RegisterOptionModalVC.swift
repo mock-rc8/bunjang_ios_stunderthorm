@@ -18,6 +18,9 @@ class RegisterOptionModalVC: UIViewController{
     static let identifier = "RegisterOptionModalVC"
     var prodStatus: ProdStatus = .used
     var isexchangable = false
+    var lastText = ""
+    var itemCount : Int = 0
+    var completeAction : ((_ prodStatus:ProdStatus,_ isExchangable:Bool,_ itemCount:Int)->())?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dismissKeyboardWhenTappedAround()
@@ -27,6 +30,7 @@ class RegisterOptionModalVC: UIViewController{
         }
         self.setBtnStyle(on: self.oldBtn, off: self.newBtn)
         self.setBtnStyle(on: self.exchangeDisableBtn, off: self.exchangeAbleBtn)
+        self.countTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     @IBAction func selectBtnAction(_ sender: UIButton) {
         switch sender{
@@ -45,6 +49,11 @@ class RegisterOptionModalVC: UIViewController{
         default:
             break
         }
+    }
+    @IBAction func completeSelectBtnAction(_ sender: UIButton) {
+        self.itemCount = Int(self.lastText) ?? 0
+        self.completeAction!(self.prodStatus,self.isexchangable,self.itemCount)
+        self.dismiss(animated: true)
     }
     func setBtnStyle(on: UIButton,off:UIButton){
         DispatchQueue.main.async {
@@ -87,5 +96,15 @@ extension RegisterOptionModalVC : PanModalPresentable {
     }
 }
 extension RegisterOptionModalVC: UITextFieldDelegate{
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    @objc func textFieldDidChange(_ sender: UITextField){
+        if 3 < sender.text!.count {
+            sender.text = lastText
+        }else{
+            lastText = sender.text!
+        }
+    }
 }

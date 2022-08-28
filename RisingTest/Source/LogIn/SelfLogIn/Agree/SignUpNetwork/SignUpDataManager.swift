@@ -10,7 +10,8 @@ import Alamofire
 import AuthenticationServices
 class SignInDataManager {
     func postSignIn(_ parameters: SignInRequest, delegate: AgreeModalVC) {
-        AF.request("\(Constant.BASE_URL)/signin", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
+        print("post sign in called")
+        AF.request("\(Constant.BASE_URL)\(Constant.SIGN_UP)", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
             .validate()
             .responseDecodable(of: SignInResponse.self) { response in
                 switch response.result {
@@ -24,7 +25,8 @@ class SignInDataManager {
                         switch response.code {
                         case 2000: delegate.failedToRequest(message: "상황에 맞는")
                         case 3000: delegate.failedToRequest(message: "에러 메시지로")
-                        case 4000: delegate.failedToRequest(message: "사용자에게 적절한")
+                        case 4000: delegate.failedToRequest(message: "데이터베이스 연결에 실패하였습니다.")
+                        case 4011: delegate.failedToRequest(message: "비밀번호 암호화에 실패하였습니다.")
                         default: delegate.failedToRequest(message: "피드백을 주세요")
                         }
                     }

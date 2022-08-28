@@ -54,13 +54,20 @@ extension AgreeModalVC{
         dataManager.postSignIn(requestData!, delegate: self)
     }
     func didSuccessSignIn(_ result: SignInResult) {
-        self.presentAlert(title: "로그인에 성공하였습니다", message: result.token)
+        self.dismissIndicator()
+        self.presentAlert(title: "로그인에 성공하였습니다", message: String(result.userIdx)) { action in
+            Variable.USER_ID = result.userIdx
+            NotificationCenter.default.post(name: Notification.Name.LogIn,object: nil,userInfo:nil)
+            self.dismiss(animated: false)
+        }
     }
     
     func failedToRequest(message: String) {
-        self.presentAlert(title: message)
-        NotificationCenter.default.post(name: Notification.Name.LogIn,object: nil,userInfo:nil)
-        self.dismiss(animated: false)
+        self.dismissIndicator()
+        self.presentAlert(title: message) { action in
+            NotificationCenter.default.post(name: Notification.Name.LogIn,object: nil,userInfo:nil)
+            self.dismiss(animated: false)
+        }
     }
 }
 //MARK: -- AgreeModal Style Method's

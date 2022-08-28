@@ -33,10 +33,10 @@ class BarButtonItem: UIBarButtonItem{
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    convenience init(text:String,imageName:String,action:UIAction){
+    convenience init(text:String,imageName:String,action: UIAction?){
         self.init(text: text,fontName: "System",fontSize: 21,color: .black,imageName:imageName,action: action)
     }
-    init(text:String,fontName:String, fontSize:Int, color: UIColor,imageName:String,action:UIAction){
+    init(text:String,fontName:String, fontSize:Int, color: UIColor,imageName:String,action: UIAction?){
         super.init()
         let fSize:CGFloat = CGFloat(fontSize)
         self.customView = {
@@ -53,7 +53,9 @@ class BarButtonItem: UIBarButtonItem{
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
             button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
             if #available(iOS 14.0, *) {
-                button.addAction(action, for: .touchDown)
+                if let ac = action{
+                    button.addAction(ac, for: .touchDown)
+                }
             } else {
                 // Fallback on earlier versions
             }

@@ -7,15 +7,26 @@
 
 import Foundation
 import UIKit
+import Photos
 class RegisterImageScrollManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
     var data:[String]
+    var tempData: [Int] = [20,20]
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return tempData[section]
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RegisterImageScrollCollectionViewCell.identifier, for: indexPath) as! RegisterImageScrollCollectionViewCell
-        //let idx = indexPath.item
-        return cell
+        switch indexPath.item{
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RegiCollectionViewCell.identifier, for: indexPath) as! RegiCollectionViewCell
+            cell.contentView.isUserInteractionEnabled = true
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RegisterImageScrollCollectionViewCell.identifier, for: indexPath) as! RegisterImageScrollCollectionViewCell
+            return cell
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("is selected")
     }
     init(data:[String]){
         self.data = data
@@ -38,15 +49,8 @@ class RegisterImageScrollManager:NSObject,UICollectionViewDataSource,UICollectio
             // 수평 스크롤 섹션 만들기
             section.orthogonalScrollingBehavior = .continuous
             section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
-            //섹션 헤더와 관련된 설정
-            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(1), heightDimension: .fractionalHeight(1))
-            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-                layoutSize: headerFooterSize,
-                elementKind: "header",alignment: .leading)
-            section.boundarySupplementaryItems = [sectionHeader]
             return section
         }
-        layout.configuration.scrollDirection = .horizontal
         return layout
     }
     func setData(data:[String]){

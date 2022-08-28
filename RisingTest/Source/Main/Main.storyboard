@@ -187,7 +187,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="B6C-k0-ESs">
                                         <rect key="frame" x="0.0" y="0.0" width="370" height="572.66666666666663"/>
                                         <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmq-z1-U5B">
+                                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qmq-z1-U5B">
                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="74"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -195,15 +195,11 @@
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Hv-2O-Aoh">
                                                     <size key="itemSize" width="128" height="128"/>
-                                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells/>
-                                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nT7-nt-Lrg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="74"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </collectionReusableView>
                                             </collectionView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="상품명" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="o64-kK-ov9" userLabel="ItemTitleField" customClass="TweeAttributedTextField" customModule="TweeTextField">
                                                 <rect key="frame" x="0.0" y="84" width="370" height="37"/>
@@ -435,13 +431,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dX-hp-mXq" userLabel="OptionWrapper">
                                                 <rect key="frame" x="0.0" y="299.66666666666669" width="370" height="46.333333333333314"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aq8-iC-0V4">
-                                                        <rect key="frame" x="10" y="8.6666666666666288" width="58" height="29"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aq8-iC-0V4" customClass="CapsuleButton" customModule="RisingTest" customModuleProvider="target">
+                                                        <rect key="frame" x="10" y="6" width="69" height="34.333333333333336"/>
                                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Aq8-iC-0V4" secondAttribute="height" multiplier="2:1" id="cpS-fR-aRc"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="옵션선택">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -451,35 +448,35 @@
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="lwx-Jd-WpR" userLabel="OptionStack">
-                                                        <rect key="frame" x="78" y="14.666666666666629" width="120" height="17"/>
+                                                        <rect key="frame" x="88.999999999999986" y="14.666666666666629" width="136.66666666666663" height="17"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1개" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8P-uH-lH5" userLabel="countLabel">
-                                                                <rect key="frame" x="0.0" y="0.0" width="16" height="17"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="18.666666666666668" height="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQu-CH-LJ7" userLabel="MiddleLabel">
-                                                                <rect key="frame" x="19" y="0.0" width="4.3333333333333321" height="17"/>
+                                                                <rect key="frame" x="21.666666666666671" y="0.0" width="4.3333333333333321" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="중고상품" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdD-VC-lkS" userLabel="statusLabel">
-                                                                <rect key="frame" x="26.333333333333325" y="0.0" width="41.666666666666657" height="17"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <rect key="frame" x="28.999999999999996" y="0.0" width="48.666666666666657" height="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Coh-c2-fY4" userLabel="MiddleLabel">
-                                                                <rect key="frame" x="71" y="0.0" width="4.3333333333333286" height="17"/>
+                                                                <rect key="frame" x="80.666666666666657" y="0.0" width="4.3333333333333286" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교환불가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdi-a6-jbI" userLabel="exchangeLabel">
-                                                                <rect key="frame" x="78.333333333333343" y="0.0" width="41.666666666666657" height="17"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <rect key="frame" x="88" y="0.0" width="48.666666666666657" height="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -524,7 +521,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wv3-hY-Yb8" userLabel="BottomWrapper">
                                 <rect key="frame" x="10" y="717.66666666666663" width="370" height="92.333333333333371"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvt-Q9-X4a" userLabel="RegisterBtn">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvt-Q9-X4a" userLabel="RegisterBtn" customClass="CapsuleButton" customModule="RisingTest" customModuleProvider="target">
                                         <rect key="frame" x="287" y="14.000000000000004" width="83" height="41.333333333333343"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.17485795020552697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>

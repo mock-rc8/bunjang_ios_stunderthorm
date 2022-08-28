@@ -58,7 +58,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b5i-yp-6YQ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="270.5" height="37"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OnJ-EZ-bA6">
                                                                 <rect key="frame" x="248" y="10" width="12.5" height="17"/>
@@ -194,6 +194,9 @@
                                                 <state key="normal" title="선택 완료">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="completeSelectBtnAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qXc-pt-GLH"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -247,43 +250,57 @@
             <point key="canvasLocation" x="993" y="36"/>
         </scene>
         <!--Register TagVC-->
-        <scene sceneID="7dI-jR-O9Z">
+        <scene sceneID="UgF-Zy-ED8">
             <objects>
-                <viewController storyboardIdentifier="RegisterTagVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QAX-fx-xlg" customClass="RegisterTagVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3Vx-DF-SBB">
+                <viewController storyboardIdentifier="RegisterTagVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NjN-Mj-ttS" customClass="RegisterTagVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FQU-pf-meT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TEu-AO-ugi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <sections/>
-                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AES-Ie-Lbb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="52"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#태그를 입력해주세요. (최대 5개)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDI-75-EUM">
+                                        <rect key="frame" x="0.0" y="0.0" width="346" height="52"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKj-d0-0ZU">
+                                        <rect key="frame" x="346" y="0.0" width="68" height="52"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="추가">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AES-Ie-Lbb" secondAttribute="height" multiplier="8:1" id="QWk-4v-W3Z"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Ikf-Fb-8XD"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                        <viewLayoutGuide key="safeArea" id="Ytu-aN-7l3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ikf-Fb-8XD" firstAttribute="bottom" secondItem="TEu-AO-ugi" secondAttribute="bottom" id="L8L-5Y-Yw9"/>
-                            <constraint firstItem="TEu-AO-ugi" firstAttribute="leading" secondItem="Ikf-Fb-8XD" secondAttribute="leading" id="nfo-80-z6D"/>
-                            <constraint firstItem="Ikf-Fb-8XD" firstAttribute="trailing" secondItem="TEu-AO-ugi" secondAttribute="trailing" id="oL3-Kw-4TG"/>
-                            <constraint firstItem="TEu-AO-ugi" firstAttribute="top" secondItem="Ikf-Fb-8XD" secondAttribute="top" id="q4c-LE-2WP"/>
+                            <constraint firstItem="AES-Ie-Lbb" firstAttribute="top" secondItem="Ytu-aN-7l3" secondAttribute="top" id="7Oe-cw-gNB"/>
+                            <constraint firstItem="Ytu-aN-7l3" firstAttribute="trailing" secondItem="AES-Ie-Lbb" secondAttribute="trailing" id="RN1-X8-Tdr"/>
+                            <constraint firstItem="AES-Ie-Lbb" firstAttribute="leading" secondItem="Ytu-aN-7l3" secondAttribute="leading" id="bj4-KW-UVc"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="TEu-AO-ugi" id="WNX-3X-kiP"/>
+                        <outlet property="appendBtn" destination="nKj-d0-0ZU" id="zeX-lU-qdq"/>
+                        <outlet property="tagTextField" destination="qDI-75-EUM" id="7ND-m8-k8b"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z97-og-mFl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jQm-H6-E4p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1815" y="35"/>
+            <point key="canvasLocation" x="132" y="755"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -55,7 +55,10 @@ class LogInVC: UIViewController{
         self.kakaoLogin()
     }
     @IBAction func tampMainBtn(_ sender: Any) {
-        NotificationCenter.default.post(name: Notification.Name.LogIn,object: nil,userInfo:nil)
+        self.presentAlert(title: "대충 넘기기") { action in
+            NotificationCenter.default.post(name: Notification.Name.LogIn,object: nil,userInfo:nil)
+            self.dismiss(animated: false)
+        }
     }
 }
 //MARK: -- Kakao Login
