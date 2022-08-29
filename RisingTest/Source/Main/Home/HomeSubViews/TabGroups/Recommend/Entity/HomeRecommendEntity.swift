@@ -13,6 +13,7 @@ struct RecommendResult: Decodable{
     var price: Int
     var postTitle: String
     var tradeRegion: String?
+    var postingTime: String
     var payStatus: Bool
     var likeNum: Int
     var sellingStatus: String

@@ -4,7 +4,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,12 +22,32 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZFm-Lq-rqa">
                         <rect key="frame" x="0.0" y="44" width="270" height="540"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner1" translatesAutoresizingMaskIntoConstraints="NO" id="vNB-RY-3ec">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ug6-pe-0UI" userLabel="ImgWrapper">
                                 <rect key="frame" x="0.0" y="0.0" width="270" height="360"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboard1" translatesAutoresizingMaskIntoConstraints="NO" id="vNB-RY-3ec">
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="360"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xi-50-1HE" userLabel="LikeBtn">
+                                        <rect key="frame" x="239" y="10" width="21" height="22"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="heart" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="semibold"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="vNB-RY-3ec" secondAttribute="height" multiplier="3:4" id="4TQ-la-St2"/>
+                                    <constraint firstAttribute="trailing" secondItem="0xi-50-1HE" secondAttribute="trailing" constant="10" id="2jp-m9-SQf"/>
+                                    <constraint firstAttribute="trailing" secondItem="vNB-RY-3ec" secondAttribute="trailing" id="AIK-IR-Wh5"/>
+                                    <constraint firstItem="vNB-RY-3ec" firstAttribute="leading" secondItem="Ug6-pe-0UI" secondAttribute="leading" id="Fbw-In-bPM"/>
+                                    <constraint firstItem="vNB-RY-3ec" firstAttribute="top" secondItem="Ug6-pe-0UI" secondAttribute="top" id="ZhR-iL-h7f"/>
+                                    <constraint firstAttribute="bottom" secondItem="vNB-RY-3ec" secondAttribute="bottom" id="sNO-LR-eDm"/>
+                                    <constraint firstAttribute="width" secondItem="Ug6-pe-0UI" secondAttribute="height" multiplier="3:4" id="t5Q-tm-af9"/>
+                                    <constraint firstItem="0xi-50-1HE" firstAttribute="top" secondItem="Ug6-pe-0UI" secondAttribute="top" constant="10" id="uYJ-pl-KgQ"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YaC-b1-0X1">
                                 <rect key="frame" x="0.0" y="370" width="270" height="110"/>
                                 <subviews>
@@ -47,7 +69,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HIJ-fO-4QN">
-                                        <rect key="frame" x="0.0" y="47.5" width="105" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="47" width="105" height="14.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="덕양구 행선1동" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moH-9j-1uw">
                                                 <rect key="frame" x="0.0" y="0.0" width="71.5" height="14.5"/>
@@ -64,21 +86,25 @@
                                         </subviews>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SafePay" translatesAutoresizingMaskIntoConstraints="NO" id="9ls-NQ-n5E">
-                                        <rect key="frame" x="0.0" y="68.5" width="40" height="20"/>
+                                        <rect key="frame" x="0.0" y="68" width="40" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="9ls-NQ-n5E" secondAttribute="height" multiplier="2:1" id="UAm-Uy-XwJ"/>
                                             <constraint firstAttribute="height" constant="20" id="rBJ-Hh-4Ne"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5i-Zc-PpR">
-                                        <rect key="frame" x="0.0" y="95.5" width="7" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="94.5" width="23.5" height="15.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEZ-sC-Cwu">
-                                                <rect key="frame" x="0.0" y="0.0" width="7" height="14.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" red="0.59889453650000002" green="0.59889453650000002" blue="0.59889453650000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBh-qB-eU4" userLabel="Likes">
+                                                <rect key="frame" x="0.0" y="0.0" width="23.5" height="15.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <color key="tintColor" systemColor="systemGrayColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="4">
+                                                    <color key="titleColor" systemColor="systemGrayColor"/>
+                                                    <imageReference key="image" image="heart.fill" catalog="system" symbolScale="small"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,13 +130,28 @@
             </constraints>
             <size key="customSize" width="270" height="584"/>
             <connections>
+                <outlet property="headImgView" destination="vNB-RY-3ec" id="D7d-RM-sJj"/>
+                <outlet property="heartBtn" destination="0xi-50-1HE" id="fsk-eu-a3V"/>
+                <outlet property="likesBtn" destination="NBh-qB-eU4" id="PIJ-ko-aaH"/>
+                <outlet property="locationLabel" destination="moH-9j-1uw" id="Gst-ig-g0w"/>
+                <outlet property="priceLabel" destination="U3Z-hH-zu5" id="K7o-er-41S"/>
                 <outlet property="safePayView" destination="9ls-NQ-n5E" id="hta-0f-0BT"/>
+                <outlet property="titleLabel" destination="nYS-OV-Byb" id="r0m-oO-uvT"/>
+                <outlet property="uploadDateLabel" destination="bes-3V-W4n" id="sd8-FW-c3M"/>
             </connections>
             <point key="canvasLocation" x="291.304347826087" y="255.13392857142856"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="SafePay" width="70" height="30"/>
-        <image name="banner1" width="746" height="887"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="onboard1" width="300" height="400"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

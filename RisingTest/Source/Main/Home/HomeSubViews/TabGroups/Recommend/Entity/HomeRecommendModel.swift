@@ -37,7 +37,7 @@ class HomeRecommendModel{
 }
 extension HomeRecommendModel{
     fileprivate func getNewData(onCompleted: @escaping ([RecommendResult])->Void){
-        let urlString = "\(Constant.BASE_URL)\(Constant.POST_VIEW)\(Variable.USER_ID)\(self.nowPageCount)"
+        let urlString = "\(Constant.BASE_URL)/\(Constant.POST_VIEW)\(Variable.USER_ID)/posts/\(self.nowPageCount)"
         AF.request(urlString, method: .get).validate().responseDecodable(of:RecommendResponse.self){ response in
             switch response.result {
             case .success(let response):

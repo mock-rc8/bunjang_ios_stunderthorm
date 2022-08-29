@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyNoticeCollectionReusableView" id="U6b-Vx-4bR" customClass="MyNoticeCollectionReusableView" customModule="RisingTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="690"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kPZ-4M-vGy">
+                    <rect key="frame" x="0.0" y="44" width="320" height="646"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4m1-X1-zos">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopAdBanner" translatesAutoresizingMaskIntoConstraints="NO" id="IAr-wa-Zlh">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="4m1-X1-zos" secondAttribute="height" multiplier="5:1" id="7Yw-CN-Y7o"/>
+                                <constraint firstAttribute="bottom" secondItem="IAr-wa-Zlh" secondAttribute="bottom" id="VXd-AS-1MF"/>
+                                <constraint firstItem="IAr-wa-Zlh" firstAttribute="top" secondItem="4m1-X1-zos" secondAttribute="top" id="YUy-F6-Xtg"/>
+                                <constraint firstAttribute="trailing" secondItem="IAr-wa-Zlh" secondAttribute="trailing" id="af7-pW-QVI"/>
+                                <constraint firstItem="IAr-wa-Zlh" firstAttribute="leading" secondItem="4m1-X1-zos" secondAttribute="leading" id="iO1-I0-MTb"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4QK-mn-XCc">
+                            <rect key="frame" x="0.0" y="74" width="320" height="142.5"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsX-k9-ZSJ" userLabel="NoticeBtnWrapper">
+                                    <rect key="frame" x="10" y="0.0" width="300" height="30"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="번개장터㈜ 사업자정보, 이용약관 및 기타 법적고지" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkS-oP-bjX">
+                                            <rect key="frame" x="0.0" y="6.5" width="277" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yT8-ZR-NU9">
+                                            <rect key="frame" x="282" y="8" width="10.5" height="14"/>
+                                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTB-N9-KgK">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="LsX-k9-ZSJ" secondAttribute="height" multiplier="10:1" id="1r4-Je-aTa"/>
+                                        <constraint firstItem="lTB-N9-KgK" firstAttribute="top" secondItem="LsX-k9-ZSJ" secondAttribute="top" id="40f-YP-Etc"/>
+                                        <constraint firstAttribute="bottom" secondItem="lTB-N9-KgK" secondAttribute="bottom" id="4qo-bt-Csw"/>
+                                        <constraint firstItem="DkS-oP-bjX" firstAttribute="centerY" secondItem="LsX-k9-ZSJ" secondAttribute="centerY" id="DmZ-DZ-WAW"/>
+                                        <constraint firstAttribute="trailing" secondItem="lTB-N9-KgK" secondAttribute="trailing" id="c9n-WH-y7B"/>
+                                        <constraint firstItem="DkS-oP-bjX" firstAttribute="leading" secondItem="LsX-k9-ZSJ" secondAttribute="leading" id="ccY-27-SPq"/>
+                                        <constraint firstItem="yT8-ZR-NU9" firstAttribute="leading" secondItem="DkS-oP-bjX" secondAttribute="trailing" constant="5" id="lfs-db-7L5"/>
+                                        <constraint firstItem="lTB-N9-KgK" firstAttribute="leading" secondItem="LsX-k9-ZSJ" secondAttribute="leading" id="tEu-Ud-KL7"/>
+                                        <constraint firstItem="yT8-ZR-NU9" firstAttribute="centerY" secondItem="DkS-oP-bjX" secondAttribute="centerY" id="u5e-Ue-uBc"/>
+                                    </constraints>
+                                    <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="10" bottom="0.0" trailing="10"/>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdg-u1-tTC">
+                                    <rect key="frame" x="10" y="30" width="300" height="100.5"/>
+                                    <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="10" bottom="0.0" trailing="10"/>
+                                    <string key="text">“BGZT Digital”, ”BGZT LAB”, ”BGZT LAB 1”, ”BGZT LAB2”, “BGZT 컬렉션” 상점의 판매상품을 제외한 모든 상품들에 대하여 번개장터㈜는 통신판매중개자로서 중고거래마켓 번개장터의 거래당사자가 아니며, 입점판매자가 등록한 상품정보 및 거래에 대해 책임을 지지  않습니다.</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ⓒ 번둥천개. Inc All rights reserved." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dq-hP-u8R">
+                                    <rect key="frame" x="10" y="130.5" width="300" height="12"/>
+                                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                    <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="10" bottom="0.0" trailing="10"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" systemColor="systemGray2Color"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="10" bottom="0.0" trailing="10"/>
+                        </stackView>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="247" verticalCompressionResistancePriority="702" translatesAutoresizingMaskIntoConstraints="NO" id="wt1-na-4wS">
+                            <rect key="frame" x="0.0" y="226.5" width="320" height="419.5"/>
+                            <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray5Color"/>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <color key="backgroundColor" systemColor="systemGray5Color"/>
+            <constraints>
+                <constraint firstItem="kPZ-4M-vGy" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="NLJ-3w-e0f"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="kPZ-4M-vGy" secondAttribute="bottom" id="SOw-0Z-0ek"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="top" secondItem="kPZ-4M-vGy" secondAttribute="top" id="ecu-IB-80k"/>
+                <constraint firstItem="kPZ-4M-vGy" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="zuw-hS-YDx"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="366.96428571428572"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="ShopAdBanner" width="670" height="174"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

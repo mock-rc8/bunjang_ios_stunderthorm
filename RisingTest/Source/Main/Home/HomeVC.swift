@@ -39,7 +39,7 @@ class HomeVC: MainUIViewController{
     @objc func ScrollToTop(notification: Notification){
         print(self.headerStack.frame.height - self.headerLabel.frame.height)
         print(self.headerLabel.frame.height)
-        print(self.headerStack.frame.height)
+        print(self.headerStack.frame.height) 
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.3, delay: 0, options: [], animations: {
             self.scrollView.contentOffset.y = (self.headerStack.frame.height - self.headerLabel.frame.height)
             self.view.layoutIfNeeded()
