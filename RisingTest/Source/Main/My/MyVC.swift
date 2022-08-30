@@ -93,13 +93,13 @@ extension MyVC:UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = scrollView.contentOffset.y
         if let wrapperHeight = self.wrapperHeight{
-        let isOverWrapperHeight = Int(y) > Int(wrapperHeight)
+            let isOverWrapperHeight = Float(y) > (30)
         print(wrapperHeight)
-            DispatchQueue.main.async {
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0, options: [], animations: {
                 self.collectionViewTop.constant = isOverWrapperHeight ?  -wrapperHeight : -y
                 print(self.collectionViewTop.constant)
                 self.collectionView.layoutIfNeeded()
-            }
+            })
         }
     }
 

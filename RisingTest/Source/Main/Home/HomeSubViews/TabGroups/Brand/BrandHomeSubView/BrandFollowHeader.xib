@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BrandFollowHeader" id="U6b-Vx-4bR" customClass="BrandFollowHeader" customModule="RisingTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="519" height="283"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FaceBook" translatesAutoresizingMaskIntoConstraints="NO" id="OmF-Xd-EwL">
+                    <rect key="frame" x="10" y="54" width="185" height="185"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="OmF-Xd-EwL" secondAttribute="height" multiplier="1:1" id="FRS-BJ-hqy"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Tki-Ti-Vov">
+                    <rect key="frame" x="205" y="129.5" width="106.5" height="34"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="페이스북" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5k3-va-ocr">
+                            <rect key="frame" x="0.0" y="0.0" width="55.5" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9L1-Ea-a6i">
+                            <rect key="frame" x="0.0" y="19.5" width="106.5" height="14.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-2Y-7Ih">
+                                    <rect key="frame" x="0.0" y="0.0" width="55" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15000개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8V-F6-4cS">
+                                    <rect key="frame" x="60" y="0.0" width="46.5" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNo-lO-dDB">
+                    <rect key="frame" x="452" y="128" width="57" height="37"/>
+                    <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="팔로우">
+                        <color key="titleColor" red="1" green="0.0" blue="0.1748579502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="followBtnAction:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="aCe-hB-oPg"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstItem="Tki-Ti-Vov" firstAttribute="centerY" secondItem="OmF-Xd-EwL" secondAttribute="centerY" id="6Rq-0W-VhJ"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="dNo-lO-dDB" secondAttribute="trailing" constant="10" id="ND2-XG-feD"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="leading" secondItem="OmF-Xd-EwL" secondAttribute="leading" constant="-10" id="Pts-hz-vSw"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="OmF-Xd-EwL" secondAttribute="bottom" constant="10" id="VT6-ZQ-cGr"/>
+                <constraint firstItem="Tki-Ti-Vov" firstAttribute="leading" secondItem="OmF-Xd-EwL" secondAttribute="trailing" constant="10" id="WHc-gD-R2K"/>
+                <constraint firstItem="OmF-Xd-EwL" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" constant="10" id="fMf-g8-06Y"/>
+                <constraint firstItem="dNo-lO-dDB" firstAttribute="centerY" secondItem="OmF-Xd-EwL" secondAttribute="centerY" id="tXK-Ul-otr"/>
+            </constraints>
+            <connections>
+                <outlet property="brandImgView" destination="OmF-Xd-EwL" id="5ue-1U-wsp"/>
+                <outlet property="brandSubTitleLabel" destination="cq9-2Y-7Ih" id="359-rR-zyR"/>
+                <outlet property="brandTitleLabel" destination="5k3-va-ocr" id="x4g-Gs-nQC"/>
+                <outlet property="followBtn" destination="dNo-lO-dDB" id="pBU-2X-nq4"/>
+                <outlet property="likesCountLabel" destination="F8V-F6-4cS" id="4Ll-1V-swR"/>
+            </connections>
+            <point key="canvasLocation" x="276.08695652173913" y="169.75446428571428"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="FaceBook" width="56" height="57"/>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

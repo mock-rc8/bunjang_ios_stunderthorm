@@ -28,7 +28,9 @@ class ItemVC: UIViewController{
     }
     override func viewDidAppear(_ animated: Bool) {
         let height = self.adCollectionView.collectionViewLayout.collectionViewContentSize.height
+        let shopHeight = self.shopCollectionView.collectionViewLayout.collectionViewContentSize.height
         self.adCollectionHeight.constant = height
+        self.shopCollectionHeight.constant = shopHeight
     }
     
     //MARK: -- NavigationItem Settings
@@ -66,6 +68,11 @@ class ItemVC: UIViewController{
     }
     @IBAction func safePayBtnAction(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: SafePayModalVC.identifier) as! SafePayModalVC
+        vc.complation = { isDelivery in
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: PayVC.identifier) as! PayVC
+            vc.isDelivery = isDelivery
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         presentPanModal(vc)
     }
     //MARK: -- 이 상점의 상품 콜렉션

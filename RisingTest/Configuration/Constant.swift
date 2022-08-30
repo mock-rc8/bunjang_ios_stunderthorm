@@ -12,7 +12,7 @@ struct Constant {
     //static let KOBIS_BASE_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest"
     static let REGISTER = "/new"
     static let SIGN_UP = "/app/users/sign-up"
-    static let POST_VIEW = "app/posts/"
+    static let POST = "/app/posts"
     //
 }
 struct Variable{

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SubScribeSuggestCell" customModule="RisingTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="503" height="211"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="503" height="211"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" horizontalHuggingPriority="231" verticalHuggingPriority="244" horizontalCompressionResistancePriority="742" verticalCompressionResistancePriority="738" translatesAutoresizingMaskIntoConstraints="NO" id="zqy-Hr-rcC" userLabel="ImgWrapper">
+                        <rect key="frame" x="10" y="54" width="85" height="113"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner2" translatesAutoresizingMaskIntoConstraints="NO" id="oXi-yc-sgP">
+                                <rect key="frame" x="0.0" y="0.0" width="85" height="113"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2Z-WT-kTL">
+                                <rect key="frame" x="54" y="10" width="21" height="22"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="heart" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                </state>
+                                <connections>
+                                    <action selector="heartBtnAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="T2Z-op-wUV"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SafePay" translatesAutoresizingMaskIntoConstraints="NO" id="kJZ-nV-u1W">
+                                <rect key="frame" x="5" y="93" width="30" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kJZ-nV-u1W" secondAttribute="height" multiplier="2:1" id="4qf-Vt-gqM"/>
+                                    <constraint firstAttribute="height" constant="15" id="ayb-a6-egN"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="m2Z-WT-kTL" secondAttribute="trailing" constant="10" id="HkX-HY-rgk"/>
+                            <constraint firstAttribute="bottom" secondItem="kJZ-nV-u1W" secondAttribute="bottom" constant="5" id="NLc-Fm-hjC"/>
+                            <constraint firstItem="oXi-yc-sgP" firstAttribute="leading" secondItem="zqy-Hr-rcC" secondAttribute="leading" id="Vdf-LS-qO6"/>
+                            <constraint firstItem="oXi-yc-sgP" firstAttribute="top" secondItem="zqy-Hr-rcC" secondAttribute="top" id="VuF-lM-Nzz"/>
+                            <constraint firstAttribute="trailing" secondItem="oXi-yc-sgP" secondAttribute="trailing" id="Ycy-6P-1NU"/>
+                            <constraint firstItem="m2Z-WT-kTL" firstAttribute="top" secondItem="zqy-Hr-rcC" secondAttribute="top" constant="10" id="daF-Cl-CtK"/>
+                            <constraint firstAttribute="bottom" secondItem="oXi-yc-sgP" secondAttribute="bottom" id="pEV-Oq-khw"/>
+                            <constraint firstAttribute="width" secondItem="zqy-Hr-rcC" secondAttribute="height" multiplier="3:4" id="t6q-OY-Bq7"/>
+                            <constraint firstAttribute="leading" secondItem="kJZ-nV-u1W" secondAttribute="leading" constant="-5" id="wYy-aQ-UIv"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="CYc-Qy-U9h">
+                        <rect key="frame" x="105" y="54" width="398" height="113"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RMc-Id-v15">
+                                <rect key="frame" x="0.0" y="0.0" width="259.5" height="52.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="270,000원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I65-YF-QjM">
+                                        <rect key="frame" x="0.0" y="0.0" width="259.5" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="센터판 s급 갤럭시Z플립2 5G 256G 블랙(86)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubQ-hc-XjP">
+                                        <rect key="frame" x="0.0" y="35.5" width="259.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nMh-r1-yka">
+                                <rect key="frame" x="0.0" y="98.5" width="105" height="14.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="부천시 송내1동" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pT0-JB-GLD">
+                                        <rect key="frame" x="0.0" y="0.0" width="71.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" systemColor="systemGray2Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2분전" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzg-yx-j0O">
+                                        <rect key="frame" x="76.5" y="0.0" width="28.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" systemColor="systemGray2Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="zqy-Hr-rcC" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" constant="-10" id="3dI-7Q-fgZ"/>
+                <constraint firstItem="CYc-Qy-U9h" firstAttribute="centerY" secondItem="zqy-Hr-rcC" secondAttribute="centerY" id="9jq-oe-aRM"/>
+                <constraint firstItem="zqy-Hr-rcC" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="10" id="9wx-Mi-u9J"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="CYc-Qy-U9h" secondAttribute="trailing" id="CUj-jt-f6F"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="zqy-Hr-rcC" secondAttribute="top" constant="-10" id="TnI-IH-BSf"/>
+                <constraint firstItem="CYc-Qy-U9h" firstAttribute="leading" secondItem="zqy-Hr-rcC" secondAttribute="trailing" constant="10" id="ZHz-zN-G3n"/>
+                <constraint firstItem="CYc-Qy-U9h" firstAttribute="height" secondItem="zqy-Hr-rcC" secondAttribute="height" id="fSe-Ua-XkD"/>
+            </constraints>
+            <size key="customSize" width="503" height="211"/>
+            <connections>
+                <outlet property="heartBtn" destination="m2Z-WT-kTL" id="5QC-Xy-KVT"/>
+                <outlet property="loactionLabel" destination="pT0-JB-GLD" id="mDc-9I-hFz"/>
+                <outlet property="priceLabel" destination="I65-YF-QjM" id="HvJ-10-jVh"/>
+                <outlet property="safePayImg" destination="kJZ-nV-u1W" id="Vid-XF-H3b"/>
+                <outlet property="titleImg" destination="oXi-yc-sgP" id="29a-y9-f0c"/>
+                <outlet property="titleLabel" destination="ubQ-hc-XjP" id="nDr-xx-mtq"/>
+                <outlet property="uploadDateLabel" destination="dzg-yx-j0O" id="O08-hX-Ume"/>
+            </connections>
+            <point key="canvasLocation" x="460.14492753623193" y="127.56696428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="SafePay" width="70" height="30"/>
+        <image name="banner2" width="746" height="898"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

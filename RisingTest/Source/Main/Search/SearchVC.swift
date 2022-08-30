@@ -21,6 +21,7 @@ class SearchVC:UIViewController{
         self.collectionView.register(UINib(nibName: CategoryCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryCollectionReusableView.identifier)
         //Footer
         self.collectionView.register(UINib(nibName: SearchFooterCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: SearchFooterCollectionReusableView.identifier)
+        // Cell
         self.collectionView.register(UINib(nibName: RecentSearchCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: RecentSearchCollectionViewCell.identifier)
         self.collectionView.register(UINib(nibName: ItemShopCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ItemShopCollectionViewCell.identifier)
         self.collectionView.register(UINib(nibName: SearcBrandCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: SearcBrandCollectionViewCell.identifier)
@@ -46,7 +47,6 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource{
             return cell
         case .category:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as! HomeCategoryCollectionViewCell
-            
             return cell
         case .recent:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentSearchCollectionViewCell.identifier, for: indexPath) as!
@@ -68,9 +68,6 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource{
         default:
             return 12
         }
-    }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y = scrollView.contentOffset.y
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind{

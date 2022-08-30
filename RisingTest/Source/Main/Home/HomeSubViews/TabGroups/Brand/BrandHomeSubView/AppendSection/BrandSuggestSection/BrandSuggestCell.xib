@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BrandSuggestCell" customModule="RisingTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="231" height="479"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="231" height="479"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Cr-6A-x0n">
+                        <rect key="frame" x="0.0" y="44" width="231" height="435"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gi8-Tb-qIW" userLabel="ImgWrapper">
+                                <rect key="frame" x="0.0" y="0.0" width="231" height="308"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner2" translatesAutoresizingMaskIntoConstraints="NO" id="hID-38-xds" userLabel="Img">
+                                        <rect key="frame" x="0.0" y="0.0" width="231" height="308"/>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wjD-23-KG0">
+                                        <rect key="frame" x="10" y="278" width="70" height="20"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SafePay" translatesAutoresizingMaskIntoConstraints="NO" id="xHq-DE-6I4">
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="xHq-DE-6I4" secondAttribute="height" multiplier="2:1" id="8hF-qa-TbM"/>
+                                                    <constraint firstAttribute="height" constant="20" id="CSp-kZ-QPg"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grD-jJ-nzk">
+                                                <rect key="frame" x="50" y="0.0" width="20" height="20"/>
+                                                <color key="backgroundColor" red="0.908254794973545" green="0.908254794973545" blue="0.908254794973545" alpha="0.89674990558912382" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HD7-Tu-QHI" userLabel="heart">
+                                        <rect key="frame" x="199.5" y="10" width="21.5" height="22"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="heart" catalog="system" symbolScale="medium"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="heartBtnAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="bNk-Zd-Szw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hID-38-xds" secondAttribute="trailing" id="5pw-Gq-YG5"/>
+                                    <constraint firstAttribute="width" secondItem="Gi8-Tb-qIW" secondAttribute="height" multiplier="3:4" id="7co-Iz-XFl"/>
+                                    <constraint firstItem="HD7-Tu-QHI" firstAttribute="top" secondItem="Gi8-Tb-qIW" secondAttribute="top" constant="10" id="J3X-Nv-lz2"/>
+                                    <constraint firstItem="wjD-23-KG0" firstAttribute="leading" secondItem="Gi8-Tb-qIW" secondAttribute="leading" constant="10" id="K79-1e-ZjW"/>
+                                    <constraint firstItem="hID-38-xds" firstAttribute="leading" secondItem="Gi8-Tb-qIW" secondAttribute="leading" id="Yee-xc-IUk"/>
+                                    <constraint firstAttribute="bottom" secondItem="hID-38-xds" secondAttribute="bottom" id="d24-5L-i4x"/>
+                                    <constraint firstAttribute="bottom" secondItem="wjD-23-KG0" secondAttribute="bottom" constant="10" id="dy2-PB-UPj"/>
+                                    <constraint firstItem="hID-38-xds" firstAttribute="top" secondItem="Gi8-Tb-qIW" secondAttribute="top" id="fKq-S3-hbN"/>
+                                    <constraint firstAttribute="trailing" secondItem="HD7-Tu-QHI" secondAttribute="trailing" constant="10" id="nU5-NR-r7z"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2sU-rB-NeK">
+                                <rect key="frame" x="0.0" y="318" width="231" height="40.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="17,000원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KjU-2l-2mu">
+                                        <rect key="frame" x="0.0" y="0.0" width="231" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="르꼬그 골프 여성 반팔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlp-ad-p7g">
+                                        <rect key="frame" x="0.0" y="23.5" width="231" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="700" translatesAutoresizingMaskIntoConstraints="NO" id="Ppu-P8-CpA" userLabel="PaddingView">
+                                <rect key="frame" x="0.0" y="368.5" width="231" height="66.5"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </stackView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="2Cr-6A-x0n" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" id="99f-69-aiW"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="2Cr-6A-x0n" secondAttribute="leading" id="Qm0-tT-9lJ"/>
+                <constraint firstItem="2Cr-6A-x0n" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="mhe-Yc-xCN"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="2Cr-6A-x0n" secondAttribute="top" id="ycs-Ji-eSC"/>
+            </constraints>
+            <size key="customSize" width="231" height="479"/>
+            <connections>
+                <outlet property="AD_View" destination="grD-jJ-nzk" id="UkM-UH-ShG"/>
+                <outlet property="heartBtn" destination="HD7-Tu-QHI" id="giC-Ds-h5u"/>
+                <outlet property="priceLabel" destination="KjU-2l-2mu" id="hYQ-MX-ij5"/>
+                <outlet property="safePayView" destination="xHq-DE-6I4" id="V8b-Gu-n7P"/>
+                <outlet property="titleImgView" destination="hID-38-xds" id="h8h-Vg-qbB"/>
+                <outlet property="titleLabel" destination="Dlp-ad-p7g" id="nPr-1M-vge"/>
+            </connections>
+            <point key="canvasLocation" x="445.6521739130435" y="373.32589285714283"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="SafePay" width="70" height="30"/>
+        <image name="banner2" width="746" height="898"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

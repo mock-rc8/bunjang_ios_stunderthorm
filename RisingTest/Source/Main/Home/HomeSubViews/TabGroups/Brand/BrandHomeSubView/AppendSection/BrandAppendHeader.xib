@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BrandAppendHeader" id="U6b-Vx-4bR" customClass="BrandAppendHeader" customModule="RisingTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="571"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ReQ-px-bl2">
+                    <rect key="frame" x="0.0" y="44" width="410" height="527"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="브랜드를 팔로우하고 매일 새소식을 받아보세요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fq2-g1-Y5I">
+                            <rect key="frame" x="85.5" y="0.0" width="239" height="57.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="팔로우한 브랜드 소식을 피드에서 확인해보세요." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjb-pH-mCd">
+                            <rect key="frame" x="74.5" y="67.5" width="261.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" systemColor="systemGrayColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adR-ik-ydU" userLabel="ImgWrapper">
+                            <rect key="frame" x="0.0" y="94.5" width="410" height="277.5"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BrandLogo" translatesAutoresizingMaskIntoConstraints="NO" id="dWr-XO-clJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="410" height="277.5"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="dWr-XO-clJ" secondAttribute="trailing" id="L35-oz-vxv"/>
+                                <constraint firstItem="dWr-XO-clJ" firstAttribute="top" secondItem="adR-ik-ydU" secondAttribute="top" id="cXP-qx-y6m"/>
+                                <constraint firstItem="dWr-XO-clJ" firstAttribute="leading" secondItem="adR-ik-ydU" secondAttribute="leading" id="kug-bX-IR2"/>
+                                <constraint firstAttribute="bottom" secondItem="dWr-XO-clJ" secondAttribute="bottom" id="qyw-2j-0aT"/>
+                                <constraint firstAttribute="width" secondItem="adR-ik-ydU" secondAttribute="height" multiplier="161:109" id="xdq-vU-O7k"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1id-1Y-50a">
+                            <rect key="frame" x="136.5" y="382" width="137.5" height="35.5"/>
+                            <color key="backgroundColor" red="1" green="0.0" blue="0.1748579502" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="브랜드 보러가기">
+                                <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="brandAppendBtnAction:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="Sz8-YX-eG6"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="234" verticalCompressionResistancePriority="725" translatesAutoresizingMaskIntoConstraints="NO" id="KRC-ef-hpx">
+                            <rect key="frame" x="45" y="427.5" width="320" height="20"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="9IV-pN-9iA"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" verticalHuggingPriority="234" verticalCompressionResistancePriority="725" translatesAutoresizingMaskIntoConstraints="NO" id="Iaz-cJ-JIA">
+                            <rect key="frame" x="45" y="457.5" width="320" height="69.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="adR-ik-ydU" firstAttribute="width" secondItem="ReQ-px-bl2" secondAttribute="width" id="n8R-jL-i1x"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="top" secondItem="ReQ-px-bl2" secondAttribute="top" id="2me-L6-ZRX"/>
+                <constraint firstItem="ReQ-px-bl2" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="J9R-x3-VAq"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="ReQ-px-bl2" secondAttribute="trailing" id="YiC-RM-ZHa"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="ReQ-px-bl2" secondAttribute="bottom" id="vyI-cJ-itF"/>
+            </constraints>
+            <point key="canvasLocation" x="155.07246376811597" y="265.51339285714283"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="BrandLogo" width="749" height="289"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

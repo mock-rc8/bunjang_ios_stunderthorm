@@ -8,18 +8,40 @@
 import Foundation
 import UIKit
 class BrandEntireVC: UIViewController{
+    @IBOutlet weak var mainCalledLabel: UILabel!
     @IBOutlet weak var deliveryFeeBtn: UIButton!
     @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     static let identifier = "BrandEntireVC"
     var deliveryFee = false
+    var isHomeCalled = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.filterBtn.semanticContentAttribute = .forceRightToLeft
+        self.pushStyle()
         self.tableView.register(UINib(nibName: BrandTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BrandTableViewCell.identifier)
         self.deliveryBtnStyle()
+    }
+    func pushStyle(){
+        if self.isHomeCalled{
+            mainCalledLabel.isHidden = false
+            self.navigationController?.isToolbarHidden = false
+            self.navigationItem.leftBarButtonItem = {
+                let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.closeView))
+                item.image = UIImage(systemName: "chevron.left")
+                item.tintColor = .black
+                return item
+            }()
+        }else{
+            mainCalledLabel.isHidden = true
+            self.navigationController?.isToolbarHidden = true
+        }
+    }
+    @objc func closeView(){
+        self.navigationController?.isToolbarHidden = true
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func deliverBtnAction(_ sender: UIButton) {
         self.deliveryFee.toggle()

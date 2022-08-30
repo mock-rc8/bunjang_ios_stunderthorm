@@ -73,9 +73,18 @@
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nM-73-Jsj" userLabel="BannerAd">
                                     <rect key="frame" x="0.0" y="204.5" width="817" height="163"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShopAdBanner" translatesAutoresizingMaskIntoConstraints="NO" id="5FJ-Za-Ucm">
+                                            <rect key="frame" x="0.0" y="0.0" width="817" height="163"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" systemColor="systemBrownColor"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="5FJ-Za-Ucm" secondAttribute="trailing" id="Fxo-lz-Xvc"/>
                                         <constraint firstAttribute="width" secondItem="1nM-73-Jsj" secondAttribute="height" multiplier="5:1" id="b7H-g0-kTF"/>
+                                        <constraint firstItem="5FJ-Za-Ucm" firstAttribute="top" secondItem="1nM-73-Jsj" secondAttribute="top" id="fny-2K-WZJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="5FJ-Za-Ucm" secondAttribute="bottom" id="p4d-qG-MIa"/>
+                                        <constraint firstItem="5FJ-Za-Ucm" firstAttribute="leading" secondItem="1nM-73-Jsj" secondAttribute="leading" id="yag-sR-Sdz"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTQ-z6-4zd" userLabel="FilterView">
@@ -166,6 +175,7 @@
     </objects>
     <resources>
         <image name="SafePay" width="70" height="30"/>
+        <image name="ShopAdBanner" width="670" height="174"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="도서:티켓:문구" width="70" height="70"/>

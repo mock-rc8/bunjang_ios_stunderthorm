@@ -83,14 +83,14 @@ extension RecommendTabVC:ReloadProtocol{
 extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(dataModel!.nowListCount)
-        return dataModel!.nowListCount
-        //return 60
+        //return dataModel!.nowListCount
+        return 60
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
         let idx = indexPath.item
-        if let data: RecommendResult = self.dataModel?.data[idx]{
+        if idx < self.dataModel?.data.count ?? 0, let data: RecommendResult = self.dataModel?.data[idx] {
             cell.setData(data)
         }
         if(idx + 6 == self.dataModel?.nowListCount){self.dataModel?.addMyData()}

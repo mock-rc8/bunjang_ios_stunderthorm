@@ -95,16 +95,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="브랜드 검색" translatesAutoresizingMaskIntoConstraints="NO" id="jxr-sv-uzM">
-                                <rect key="frame" x="0.0" y="44" width="414" height="83"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="jxr-sv-uzM" secondAttribute="height" multiplier="5:1" id="pvI-bV-jkN"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qCi-XN-Sal">
+                                <rect key="frame" x="0.0" y="44" width="414" height="142"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="관심있는 브랜드를 팔로우해주세요" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q40-sM-g0A">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="67"/>
+                                        <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="브랜드 검색" translatesAutoresizingMaskIntoConstraints="NO" id="jxr-sv-uzM">
+                                        <rect key="frame" x="20" y="67" width="374" height="75"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="jxr-sv-uzM" secondAttribute="height" multiplier="5:1" id="pvI-bV-jkN"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
+                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hWA-ii-Nyz">
-                                <rect key="frame" x="0.0" y="127" width="414" height="735"/>
+                                <rect key="frame" x="0.0" y="186" width="414" height="676"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Jss-bT-Shc">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -153,18 +166,19 @@
                         <viewLayoutGuide key="safeArea" id="UnV-VN-RFX"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="qCi-XN-Sal" firstAttribute="leading" secondItem="UnV-VN-RFX" secondAttribute="leading" id="33k-te-CTb"/>
+                            <constraint firstItem="qCi-XN-Sal" firstAttribute="top" secondItem="UnV-VN-RFX" secondAttribute="top" id="6OD-Q6-tMw"/>
+                            <constraint firstItem="hWA-ii-Nyz" firstAttribute="top" secondItem="qCi-XN-Sal" secondAttribute="bottom" id="L0C-hz-tge"/>
+                            <constraint firstItem="qCi-XN-Sal" firstAttribute="trailing" secondItem="UnV-VN-RFX" secondAttribute="trailing" id="SBg-mp-Tbv"/>
                             <constraint firstItem="UnV-VN-RFX" firstAttribute="trailing" secondItem="hWA-ii-Nyz" secondAttribute="trailing" id="bxz-Q7-qse"/>
-                            <constraint firstItem="jxr-sv-uzM" firstAttribute="leading" secondItem="UnV-VN-RFX" secondAttribute="leading" id="cH1-AS-NFk"/>
                             <constraint firstItem="hWA-ii-Nyz" firstAttribute="leading" secondItem="UnV-VN-RFX" secondAttribute="leading" id="dLa-CP-EQP"/>
-                            <constraint firstItem="UnV-VN-RFX" firstAttribute="trailing" secondItem="jxr-sv-uzM" secondAttribute="trailing" id="m5X-gt-djP"/>
-                            <constraint firstItem="hWA-ii-Nyz" firstAttribute="top" secondItem="jxr-sv-uzM" secondAttribute="bottom" id="n3q-FV-1p6"/>
                             <constraint firstItem="UnV-VN-RFX" firstAttribute="bottom" secondItem="hWA-ii-Nyz" secondAttribute="bottom" id="pon-gV-X72"/>
-                            <constraint firstItem="jxr-sv-uzM" firstAttribute="top" secondItem="UnV-VN-RFX" secondAttribute="top" id="qLc-BB-18W"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="deliveryFeeBtn" destination="5wL-SA-gu1" id="pIZ-a9-xCY"/>
                         <outlet property="filterBtn" destination="tmq-Hu-Lem" id="tsA-8O-ldD"/>
+                        <outlet property="mainCalledLabel" destination="Q40-sM-g0A" id="aq5-IY-n22"/>
                         <outlet property="tableView" destination="hWA-ii-Nyz" id="Z7p-he-1vo"/>
                     </connections>
                 </viewController>

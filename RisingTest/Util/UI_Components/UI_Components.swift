@@ -6,6 +6,29 @@
 //
 
 import UIKit
+//MARK: -- 패딩 라벨
+class BasePaddingLabel: UILabel {
+    private var padding = UIEdgeInsets(top: 5.0, left: 10.0, bottom: 5.0, right: 10.0)
+
+    convenience init(padding: UIEdgeInsets) {
+        self.init()
+        self.padding = padding
+        self.layer.cornerRadius = self.layer.frame.height / 2
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 2
+    }
+
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: padding))
+    }
+
+    override var intrinsicContentSize: CGSize {
+        var contentSize = super.intrinsicContentSize
+        contentSize.height += padding.top + padding.bottom
+        contentSize.width += padding.left + padding.right
+        return contentSize
+    }
+}
 // 네비게이션 바 라벨 아이템
 class LabelBarButtonItem:UIBarButtonItem{
     required init?(coder: NSCoder) {

@@ -23,6 +23,9 @@
                     <state key="normal" title="브랜드 모두보기">
                         <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="btnAction:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="fgA-L4-q5S"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
@@ -32,6 +35,9 @@
                 <constraint firstItem="ynP-Zi-tLQ" firstAttribute="bottom" secondItem="VXr-Tz-HHm" secondAttribute="bottom" id="IRG-hR-Lmo"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="top" secondItem="ynP-Zi-tLQ" secondAttribute="top" id="PcS-XW-VVn"/>
             </constraints>
+            <connections>
+                <outlet property="btnView" destination="ynP-Zi-tLQ" id="1y0-uW-Qpa"/>
+            </connections>
             <point key="canvasLocation" x="214.49275362318843" y="89.732142857142847"/>
         </collectionReusableView>
     </objects>

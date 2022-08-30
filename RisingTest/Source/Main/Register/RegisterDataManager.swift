@@ -10,8 +10,10 @@ import Alamofire
 
 class RegisterDataManager {
     func postSignIn(_ parameters: RegisterRequest, delegate: RegiVC) {
-        print("\(Constant.BASE_URL)\(Constant.REGISTER)")
-        AF.request("https://mingyudev.shop/app/posts/1/new", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
+        let str = "\(Constant.BASE_URL)\(Constant.POST)/\(Variable.USER_ID)\(Constant.REGISTER)"
+        print(str)
+        //"https://mingyudev.shop/app/posts/1/new"
+        AF.request(str, method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
             .validate()
             .responseDecodable(of: RegisterResponse.self) { response in
                 switch response.result {

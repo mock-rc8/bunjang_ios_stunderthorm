@@ -20,6 +20,7 @@ class SafePayModalVC: UIViewController{
     @IBOutlet weak var deliveryImg: UIImageView!
     @IBOutlet weak var directImg: UIImageView!
     var isDelivery = true
+    var complation : ((_ isDelivery : Bool)->())?
     override func viewDidLoad() {
         super.viewDidLoad()
         helpBtn.setUnderline()
@@ -29,6 +30,11 @@ class SafePayModalVC: UIViewController{
             view.layer.cornerRadius = 5
         }
         self.toggleStyle(on: (deliveryWrapper,deliveryImg), off: (directWrapper,directImg))
+    }
+    @IBAction func seguePayVCAction(_ sender: UIButton) {
+        self.dismiss(animated: true,completion: {
+            self.complation!(self.isDelivery)
+        })
     }
     @IBAction func toggleBtnAction(_ sender: UIButton) {
         switch sender{
