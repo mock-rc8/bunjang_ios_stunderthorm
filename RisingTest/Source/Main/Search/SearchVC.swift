@@ -12,6 +12,8 @@ class SearchVC:UIViewController{
     static let identifer = "SearchVC"
     let searchSection: [SearchSectionName] = SearchSectionName.allCases
     let trendList = ["트리밍버드","디지몬씰","헤리티지플로스","데상트","버터플라이빈티지","전기스쿠터","이마트","서든sp","세인트제임스","부산"]
+    let popularCategories = ["골프","시계","스타굿즈","자전거","여성가방","피규어/인형",
+                             "닌텐도/NDS/Wii","헬스/요가/필라테스","인테리어","자전거","CD","카메라/DSLR"]
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationSettings()
@@ -47,6 +49,8 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource{
             return cell
         case .category:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as! HomeCategoryCollectionViewCell
+            cell.imageView.image = UIImage(named: popularCategories[indexPath.item].replacingOccurrences(of: "/", with: ":"))
+            cell.categoryLabel.text = popularCategories[indexPath.item]
             return cell
         case .recent:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentSearchCollectionViewCell.identifier, for: indexPath) as!

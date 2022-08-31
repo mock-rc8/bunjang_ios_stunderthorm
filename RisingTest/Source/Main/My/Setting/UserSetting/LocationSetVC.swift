@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 class LocationSetVC:UIViewController{
     static let identifier = "LocationSetVC"
+    @IBOutlet weak var myLocationField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationSettings()
@@ -27,8 +28,13 @@ extension LocationSetVC{
         }()
         self.view.backgroundColor = .white
         self.navigationItem.title = "지역 선택하기"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .plain, target: self,action: #selector(self.safeAndClose))
         self.navigationItem.rightBarButtonItem?.tintColor = .red
+    }
+    @objc func safeAndClose(){
+        Variable.USER_LOCATION = ((myLocationField.text ?? Variable.USER_LOCATION) == "" ?
+                                  Variable.USER_LOCATION : myLocationField.text)!
+        self.closeView()
     }
     @objc func closeView() {
         let transition = CATransition()

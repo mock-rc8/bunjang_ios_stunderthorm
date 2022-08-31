@@ -17,6 +17,7 @@ class MyVC: MainUIViewController{
     lazy var myInfoManager = MyInfoManager()
     var wrapperHeight : CGFloat?
     var header: MyHeaderCollectionReusableView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -29,6 +30,18 @@ class MyVC: MainUIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.wrapperHeight = self.wrapperHeight ?? ((header?.headerWrapper.frame.height)! + self.topbarHeight)
+    }
+    @IBAction func alertBtnAction(_ sender: UIBarButtonItem) {
+        let vc = UIStoryboard(name: "AlertStoryboard", bundle: nil).instantiateViewController(withIdentifier: AlertVC.identifier) as! AlertVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func SettingBtnAction(_ sender: UIBarButtonItem) {
+        let vc = UIStoryboard(name: "SettingStoryboard", bundle: nil).instantiateViewController(withIdentifier: SettingModalVC.identifier) as! SettingModalVC
+        vc.completion = {
+            let vc = UIStoryboard(name: "SettingStoryboard", bundle: nil).instantiateViewController(withIdentifier: SettingEntireVC.identifier) as! SettingEntireVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        presentPanModal(vc)
     }
 }
 extension MyVC: UICollectionViewDataSource,UICollectionViewDelegate{

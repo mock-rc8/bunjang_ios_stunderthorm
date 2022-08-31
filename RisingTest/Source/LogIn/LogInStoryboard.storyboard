@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Log In NavVC-->
         <scene sceneID="Q68-e7-tW4">
             <objects>
-                <navigationController id="mkB-CH-gSc" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LogInNavVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mkB-CH-gSc" customClass="LogInNavVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rEn-2z-iKQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

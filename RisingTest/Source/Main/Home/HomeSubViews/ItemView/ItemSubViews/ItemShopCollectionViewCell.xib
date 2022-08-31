@@ -116,6 +116,15 @@
                 <constraint firstItem="7DL-fX-Fnn" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="xjv-sm-1kx"/>
             </constraints>
             <size key="customSize" width="311" height="735"/>
+            <connections>
+                <outlet property="dataLabel" destination="Y8f-UV-Sbh" id="VKn-x9-p2b"/>
+                <outlet property="heartBtn" destination="aCY-nE-A4O" id="PeY-4q-Lgg"/>
+                <outlet property="locationLabel" destination="k5x-fU-mSY" id="o5R-v1-uY6"/>
+                <outlet property="mainImg" destination="9kp-KC-Jry" id="kwh-Iv-csN"/>
+                <outlet property="priceLabel" destination="gcc-jn-UyN" id="n7j-dG-55M"/>
+                <outlet property="safePayView" destination="Fzx-PU-G9n" id="63Y-CR-Pl9"/>
+                <outlet property="titleLabel" destination="g2K-hC-79a" id="Fs5-dS-yp6"/>
+            </connections>
             <point key="canvasLocation" x="319.56521739130437" y="314.39732142857139"/>
         </collectionViewCell>
     </objects>

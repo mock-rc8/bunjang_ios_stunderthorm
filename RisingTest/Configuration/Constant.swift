@@ -13,6 +13,7 @@ struct Constant {
     static let REGISTER = "/new"
     static let SIGN_UP = "/app/users/sign-up"
     static let POST = "/app/posts"
+    static let BRAND_ALL = "/app/brands/order/kor"
     //
 }
 struct Variable{

@@ -7,32 +7,40 @@
 
 import Foundation
 import Alamofire
-//class ItemDataManager {
-//    func postSignIn(_ parameters: SignInRequest, delegate: ItemVC) {
-//        print("post sign in called")
-//        AF.request("\(Constant.BASE_URL)\(Constant.SIGN_UP)", method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil)
-//            .validate()
-//            .responseDecodable(of: SignInResponse.self) { response in
-//                switch response.result {
-//                case .success(let response):
-//                    // 성공했을 때
-//                    if response.isSuccess, let result = response.result {
-//                        delegate.didSuccessSignIn(result)
-//                    }
-//                    // 실패했을 때
-//                    else {
-//                        switch response.code {
-//                        case 2000: delegate.failedToRequest(message: "상황에 맞는")
-//                        case 3000: delegate.failedToRequest(message: "에러 메시지로")
-//                        case 4000: delegate.failedToRequest(message: "데이터베이스 연결에 실패하였습니다.")
-//                        case 4011: delegate.failedToRequest(message: "비밀번호 암호화에 실패하였습니다.")
-//                        default: delegate.failedToRequest(message: "피드백을 주세요")
-//                        }
-//                    }
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                    delegate.failedToRequest(message: "서버와의 연결이 원활하지 않습니다")
-//                }
-//            }
-//    }
-//}
+class ItemDataManager {
+    func getItem(postIdx: Int,delegate: ItemVC) {
+        let urlString = "\(Constant.BASE_URL)\(Constant.POST)/\(Variable.USER_ID)/\(postIdx)"
+        print(urlString)
+        if postIdx == -1{
+            delegate.failedGetItem(message: "상품 아이디 오류")
+            return
+        }
+        AF.request(urlString, method: .get).validate().responseDecodable(of:ItemResponse.self){ response in
+            switch response.result {
+            case .success(let response):
+                // 성공했을 때
+                print(response.isSuccess)
+                print(response.result!)
+                print(response.code)
+                print(response.message)
+                if response.isSuccess, let result = response.result {
+                    print("ItemDataManager Success!")
+                    print(result)
+                    delegate.didSuccessGetItem(result)
+                }
+                // 실패했을 때
+                else {
+                    switch response.code {
+                    case 4000: delegate.failedGetItem(message: "데이터 연결에 실패했습니다.")
+                    default: delegate.failedGetItem(message: "피드백을 주세요")
+                    }
+                }
+            case .failure(let error):
+                print("isFailure")
+                print(error.localizedDescription)
+                debugPrint(error)
+                delegate.failedGetItem(message: "서버와의 연결이 원활하지 않습니다")
+            }
+        }
+    }
+}

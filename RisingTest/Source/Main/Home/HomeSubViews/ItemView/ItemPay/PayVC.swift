@@ -119,11 +119,12 @@ extension PayVC{
         switch sender{
         case self.safeTypeBtn:
             self.isSafeTyoe = true
+            self.payType = .safe
         case self.otherTypeBtn:
             self.isSafeTyoe = false
+            self.payType = .none
         default: break
         }
-        payTypeStyle()
     }
     func payTypeStyle(){
         if isSafeTyoe{

@@ -130,6 +130,9 @@
                         <rightBarButtonItems>
                             <barButtonItem title="AlarmItem" image="bell" catalog="system" id="51y-le-aDV" userLabel="AlarmItem">
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="alertBtnAction:" destination="vth-Uw-XES" id="qK0-lP-lHn"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem title="SearchItem" image="magnifyingglass" catalog="system" id="j5H-CQ-lPq" userLabel="SearchItem">
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -761,14 +764,20 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ZSG-DT-fdl">
                         <rightBarButtonItems>
+                            <barButtonItem title="Alert" image="ellipsis" catalog="system" id="yzf-Wz-70K" userLabel="Setting">
+                                <color key="tintColor" red="0.02525628307" green="0.02525628307" blue="0.02525628307" alpha="0.97465067979999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="SettingBtnAction:" destination="CYY-rb-UDp" id="3MH-92-4xl"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Alert" image="square.and.arrow.up" catalog="system" id="307-Uf-Gro" userLabel="Setting">
+                                <color key="tintColor" red="0.02525628307" green="0.02525628307" blue="0.02525628307" alpha="0.97465067979999997" colorSpace="custom" customColorSpace="sRGB"/>
+                            </barButtonItem>
                             <barButtonItem title="Alert" image="bell" catalog="system" id="4KK-pF-VGv">
                                 <color key="tintColor" red="0.02525628307" green="0.02525628307" blue="0.02525628307" alpha="0.97465067979999997" colorSpace="custom" customColorSpace="sRGB"/>
-                            </barButtonItem>
-                            <barButtonItem title="Alert" image="p.circle" catalog="system" id="307-Uf-Gro" userLabel="Setting">
-                                <color key="tintColor" red="0.02525628307" green="0.02525628307" blue="0.02525628307" alpha="0.97465067979999997" colorSpace="custom" customColorSpace="sRGB"/>
-                            </barButtonItem>
-                            <barButtonItem title="Alert" image="gearshape" catalog="system" id="yzf-Wz-70K" userLabel="Setting">
-                                <color key="tintColor" red="0.02525628307" green="0.02525628307" blue="0.02525628307" alpha="0.97465067979999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="alertBtnAction:" destination="CYY-rb-UDp" id="rpe-h7-ASQ"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -886,13 +895,13 @@
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="message" catalog="system" width="128" height="113"/>
-        <image name="p.circle" catalog="system" width="128" height="121"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="text.justify" catalog="system" width="128" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

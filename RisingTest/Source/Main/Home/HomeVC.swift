@@ -31,11 +31,6 @@ class HomeVC: MainUIViewController{
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        let tabbarvc = self.tabBarController as! MainTabbarController
-//        tabbarvc.tabBarDidLoad(vc: self)
-//    }
     @objc func ScrollToTop(notification: Notification){
         print(self.headerStack.frame.height - self.headerLabel.frame.height)
         print(self.headerLabel.frame.height)
@@ -57,6 +52,10 @@ class HomeVC: MainUIViewController{
         transition.subtype = CATransitionSubtype.fromTop
         navigationController?.view.layer.add(transition, forKey: nil)
         navigationController?.pushViewController(vc, animated: false)
+    }
+    @IBAction func alertBtnAction(_ sender: UIBarButtonItem) {
+        let vc = UIStoryboard(name: "AlertStoryboard", bundle: nil).instantiateViewController(withIdentifier: AlertVC.identifier) as! AlertVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     deinit{
         NotificationCenter.default.removeObserver(self, name: Notification.Name.ScrollToTop, object: nil)

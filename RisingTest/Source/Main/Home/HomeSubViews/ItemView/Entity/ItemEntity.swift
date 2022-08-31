@@ -10,24 +10,35 @@ struct ItemResponse:Decodable{
     var isSuccess: Bool
     var code : Int
     var message: String
-    var result: ItemResult
+    var result: ItemResult?
 }
 
 struct ItemResult: Decodable{
-    var postIdx : Int
-    var price : Int
-    var payStatus : Bool
-    var postTitle: String
-    var tradeRegion: String
-    var postingTime: String
-    var viewNum: Int
-    var likeNum:Int
-    var chatNum:Int
-    var prodStatus:String
-    var quantity:Int
-    var deliveryFee:String
-    var exchange:String
-    var postContent:String
-    var sellingStatus:String
-    var zzimStatus:Bool
+    var postIdx : Int // ?
+    var price : Int // O o
+    var payStatus : Bool // O o
+    var postTitle: String // O o
+    var tradeRegion: String? // O o
+    var postingTime: String // O o
+    var viewNum: Int // O o
+    var likeNum:Int // O o
+    var chatNum:Int // O o
+    var prodStatus:String // O o
+    var quantity:Int // O o
+    var deliveryFee:String // O ??
+    var exchange:String // O o
+    var postContent:String // O o
+    var sellingStatus:String // ?
+    var zzimStatus:Bool // 아직 구현 못 함
+}
+struct ItemImgResponse:Decodable{
+    var isSuccess: Bool
+    var code : Int
+    var message: String
+    var result: [ItemImgResult]?
+
+}
+struct ItemImgResult:Decodable{
+    var postIdx :Int
+    var postImg_url : String
 }

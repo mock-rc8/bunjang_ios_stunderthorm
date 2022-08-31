@@ -67,30 +67,31 @@ extension RecommendTabVC:ReloadProtocol{
         }
     }
     func didSuccessGetResult(){
-        print("새로 얻어오기 성공")
+        
     }
     func didFailedGetResult(message: String){
         //self.presentBottomAlert(message: message)
         self.presentBottomAlert(message: message, target: nil, offset: -200)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            print(self.isViewLoaded)
-            if self.isViewAppeared {
-            self.dataModel?.addMyData()
-            }
-        }
+        //MARK: -- 서버 API
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+//            print(self.isViewLoaded)
+//            if self.isViewAppeared {
+//            self.dataModel?.addMyData()
+//            }
+//        }
     }
 }
 extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(dataModel!.nowListCount)
-        //return dataModel!.nowListCount
-        return 60
+        return dataModel!.nowListCount
+        //return 60
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCollectionViewCell.identifier, for: indexPath) as! RecommendCollectionViewCell
         let idx = indexPath.item
-        if idx < self.dataModel?.data.count ?? 0, let data: RecommendResult = self.dataModel?.data[idx] {
+        if idx < self.dataModel?.data.count ?? 0, let data: RecommendResult = self.dataModel?.data[idx], let imgView:UIImageView = self.dataModel?.dataImg[idx] {
+            cell.headImgView.image = imgView.image
             cell.setData(data)
         }
         if(idx + 6 == self.dataModel?.nowListCount){self.dataModel?.addMyData()}
@@ -98,6 +99,9 @@ extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nextVC =  self.storyboard?.instantiateViewController(withIdentifier: ItemVC.identifer) as! ItemVC
+        //MARK: -- 서버 열리면 수정!!
+        nextVC.myPostIdx = self.dataModel?.data[indexPath.item].postIdx ?? -1
+        //nextVC.myPostIdx = 1
         navigationController?.pushViewController(nextVC, animated: true)
     }
     fileprivate func createCompositionalLayout() -> UICollectionViewLayout{
@@ -121,6 +125,7 @@ extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
         return layout
     }
 }
+//MARK: --  스티키 헤더 구현
 extension RecommendTabVC:UIScrollViewDelegate{
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
     }

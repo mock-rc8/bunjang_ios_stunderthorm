@@ -13,6 +13,8 @@ class CateMainCollectionReusableView: UICollectionReusableView {
     public private(set) var myHeaderHeight: CGFloat = 0.0
     @IBOutlet weak var headerWrapper: UIStackView!
     @IBOutlet weak var scrollCollectionView: UICollectionView!
+    @IBOutlet weak var categoryImg: UIImageView!
+    @IBOutlet weak var categoryTitle: UILabel!
     static let identifier = "CateMainCollectionReusableView"
     override func awakeFromNib() {
         super.awakeFromNib()

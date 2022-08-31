@@ -40,7 +40,7 @@ class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
         let layout = UICollectionViewCompositionalLayout{
             (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             // 아이템에 대한 사이즈 - absolute는 고정값, estimated는 추측, fraction 퍼센트
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .estimated(200))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .estimated(250))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             // 아이템 간의 간격 설정
             item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)

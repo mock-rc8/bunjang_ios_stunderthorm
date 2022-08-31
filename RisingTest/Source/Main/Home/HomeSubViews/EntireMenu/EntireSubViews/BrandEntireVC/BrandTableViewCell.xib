@@ -76,6 +76,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="brandEngLabel" destination="75b-D7-Y7Y" id="8jC-Xd-qj5"/>
+                <outlet property="brandImgView" destination="U5s-vD-BHE" id="Md2-Hu-g5j"/>
+                <outlet property="brandKorLabel" destination="Hpe-Hy-d78" id="eVz-iL-5TK"/>
+                <outlet property="followBtn" destination="UT7-WU-93I" id="hGy-fN-V0d"/>
+                <outlet property="likesCountLabel" destination="2Rs-AX-q9l" id="juQ-hb-Q8D"/>
+            </connections>
             <point key="canvasLocation" x="210.86956521739131" y="54.241071428571423"/>
         </tableViewCell>
     </objects>

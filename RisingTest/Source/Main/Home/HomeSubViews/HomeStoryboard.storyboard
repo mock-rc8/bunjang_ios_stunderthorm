@@ -187,7 +187,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9cH-53-v3t" userLabel="ItemInfoStack">
                                                 <rect key="frame" x="20" y="0.0" width="374" height="998.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUn-vO-dIo" userLabel="ItemImgSlider" customClass="HomeImgSlider" customModule="RisingTest" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUn-vO-dIo" userLabel="ItemImgSlider" customClass="ItemImgSlider" customModule="RisingTest" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
@@ -674,13 +674,27 @@
                     <connections>
                         <outlet property="adCollectionHeight" destination="nf2-iL-sPS" id="ucj-h4-Cbl"/>
                         <outlet property="adCollectionView" destination="Qmc-1n-kVS" id="2Uc-oX-DHL"/>
+                        <outlet property="chatNumBtn" destination="Lty-fF-KXg" id="1zc-Vx-dEJ"/>
+                        <outlet property="deliveryFeeLabel" destination="b6H-Zd-K7o" id="p10-Jb-Eaj"/>
+                        <outlet property="exchangeLabel" destination="UDY-Xb-6AA" id="7wl-iF-xpF"/>
+                        <outlet property="itemImgSliderView" destination="hUn-vO-dIo" id="Ml6-Js-iWn"/>
+                        <outlet property="likeNumBtn" destination="Lty-fF-KXg" id="zgK-vp-9Dw"/>
+                        <outlet property="locationInfoLabel" destination="VrQ-Bd-754" id="0So-WQ-Utq"/>
+                        <outlet property="postContent" destination="muw-Sq-uk9" id="uje-Kh-pJO"/>
+                        <outlet property="priceLabel" destination="os8-zy-sx8" id="EMK-LX-lWc"/>
+                        <outlet property="productStatusLabel" destination="vVU-S9-9vi" id="JKE-rw-elg"/>
+                        <outlet property="quantityLabel" destination="Nwe-7Y-MNC" id="lI6-uz-gts"/>
+                        <outlet property="safePayView" destination="GUI-mC-oEV" id="ZZK-bf-iPi"/>
                         <outlet property="shopCollectionHeight" destination="scO-YB-Rlo" id="smQ-XC-33W"/>
                         <outlet property="shopCollectionView" destination="ZXh-O6-H20" id="MnM-Te-nXN"/>
+                        <outlet property="titleLabel" destination="O25-40-4Mb" id="pIb-kz-AaL"/>
+                        <outlet property="uploadDateLabel" destination="E2f-4K-7p8" id="h0b-s6-Vao"/>
+                        <outlet property="viewNumBtn" destination="Qf1-NB-VwN" id="A34-7b-BsW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cge-lf-DvF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="1523"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="1522.7678571428571"/>
         </scene>
         <!--SafePayModalVC-->
         <scene sceneID="DvQ-4w-dwF">

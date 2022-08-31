@@ -166,6 +166,8 @@
                 <constraint firstItem="ScE-ZT-YH4" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="rbO-8A-HV7"/>
             </constraints>
             <connections>
+                <outlet property="categoryImg" destination="0dj-xc-X8i" id="3mu-nX-z8f"/>
+                <outlet property="categoryTitle" destination="FXq-wZ-Viu" id="JZw-Bb-g0i"/>
                 <outlet property="headerViewTop" destination="n25-jg-OWn" id="qev-Ik-WQX"/>
                 <outlet property="headerWrapper" destination="zz4-dE-Xvi" id="m68-sa-EMY"/>
                 <outlet property="scrollCollectionView" destination="go2-hm-L9W" id="01e-z2-CNU"/>

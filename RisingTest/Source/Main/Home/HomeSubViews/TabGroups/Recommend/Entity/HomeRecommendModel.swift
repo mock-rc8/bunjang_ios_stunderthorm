@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import UIKit
+import Kingfisher
 protocol ReloadProtocol{
     func reload()
     func didSuccessGetResult()
@@ -15,6 +16,7 @@ protocol ReloadProtocol{
 }
 class HomeRecommendModel{
     public private(set) var data: [RecommendResult] = []
+    public private(set) var dataImg: [UIImageView] = []
     public private(set) var nowListCount: Int = 0
     private var nowPageCount: Int = 1
     private var totalPage: Int = 100
@@ -24,9 +26,15 @@ class HomeRecommendModel{
         self.reloadProtocol = reload
     }
     public func addMyData() {
-        self.getNewData { (data) in
+        self.getNewData { (data: [RecommendResult]) in
             if(self.nowPageCount <= self.totalPage){
                 self.data.append(contentsOf: data)
+                let imgData = data.map{ (a :RecommendResult) -> UIImageView in
+                    let imageView = UIImageView()
+                    imageView.kf.setImage(with: URL(string: a.postImg_url ?? "onboard4"))
+                    return imageView
+                }
+                self.dataImg.append(contentsOf: imgData)
                 self.nowListCount += data.count
                 self.nowPageCount += 1
                 self.reloadProtocol.didSuccessGetResult()

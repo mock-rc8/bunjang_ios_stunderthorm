@@ -205,3 +205,4 @@ class OnBoardingSlider: UIView,SliderDelegate{
     }
 }
 
+class LogInNavVC:UINavigationController{}

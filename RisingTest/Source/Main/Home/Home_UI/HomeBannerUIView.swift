@@ -23,9 +23,6 @@ class HomeImgSlider: UIView,SliderDelegate{
         self.sliderCollection.isScrollEnabled = false
         self.sliderCollection.collectionViewLayout = HomeImgSliderManager.createSliderCompositionalLayout(self.frame.height)
         //Page Controller
-        if data.count < 2 {
-            self.sliderPageControl.isHidden = true
-        }
         self.sliderPageControl = {
             let label = UILabel()
             label.backgroundColor = #colorLiteral(red: 0.3816757606, green: 0.3816757606, blue: 0.3816757606, alpha: 0.4293334592)
@@ -35,10 +32,10 @@ class HomeImgSlider: UIView,SliderDelegate{
             label.textColor = .white
             return label
         }()
-//        self.sliderPageControl.pageIndicatorTintColor = .systemGray5
-//        self.sliderPageControl.currentPageIndicatorTintColor = UIColor.orange
-//        self.sliderPageControl.numberOfPages = (self.homeImgSliderManager?.data.count)!
-//        self.sliderPageControl.currentPage = self.homeImgSliderManager!.nowIdx
+        if data.count < 2 {
+            self.sliderPageControl?.isHidden = true
+        }
+
         self.layout()
     }
     private func layout(){

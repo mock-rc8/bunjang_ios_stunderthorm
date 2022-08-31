@@ -9,18 +9,31 @@ import Foundation
 import UIKit
 class CategoryMainVC: UIViewController{
     static let identifier = "CategoryMainVC"
+    //통신 API
+    var dataModel : CategoryModel?
+    let dummyData : CategoryResult = CategoryResult(postIdx: 3, postImg_url: "", zzimStatus: true, price: 32000, postTitle: "팝니다", payStatus: true)
+    // 스티키 헤더
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewTop: NSLayoutConstraint!
     var header: CateMainCollectionReusableView?
     var wrapperHeight : CGFloat?
+    
     override func viewDidLoad() {
+        self.dataModel = CategoryModel(reload: self)
+        self.dataModel!.addMyData()
         super.viewDidLoad()
-        self.collectionView.register(UINib(nibName: ItemShopCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ItemShopCollectionViewCell.identifier)
+        self.collectionView.register(UINib(nibName: BrandSuggestCell.identifier, bundle: nil), forCellWithReuseIdentifier: BrandSuggestCell.identifier)
         self.collectionView.register(UINib(nibName: CateMainCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CateMainCollectionReusableView.identifier)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.collectionViewLayout = createCompositionalLayout()
         navigationSettings()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if dataModel!.nowListCount == 0 {
+            self.dataModel?.addMyData()
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -28,27 +41,29 @@ class CategoryMainVC: UIViewController{
         print("navi Height",self.topbarHeight)
     }
 }
-
+// MARK: -- 컬렉션 뷰 설정
 extension CategoryMainVC: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemShopCollectionViewCell.identifier, for: indexPath) as! ItemShopCollectionViewCell
+        let idx = indexPath.item
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandSuggestCell.identifier, for: indexPath) as! BrandSuggestCell
+        //MARK: -- 서버 연결 필요
+//        cell.setData((self.dataModel?.data[indexPath.item])!)
+//        cell.titleImgView.image = self.dataModel?.dataImgView[indexPath.item].image ?? UIImage(named: "onboard1")
+        cell.setData(dummyData)
+        if(idx + 6 == self.dataModel?.nowListCount){self.dataModel?.addMyData()}
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateViewController(withIdentifier: ItemVC.identifer) as! ItemVC
+        //MARK: -- 서버 열리면 수정!!
+        //nextVC.myPostIdx = self.dataModel?.data[indexPath.item].postIdx ?? -1
+        nextVC.myPostIdx = 12
+        navigationController?.pushViewController(nextVC, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 30
     }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y = scrollView.contentOffset.y
-        if let wrapperHeight = self.wrapperHeight{
-        let isOverWrapperHeight = Int(y) > Int(wrapperHeight)
-        print(wrapperHeight)
-            DispatchQueue.main.async {
-                self.collectionViewTop.constant = isOverWrapperHeight ?  -wrapperHeight : -y
-                print(self.collectionViewTop.constant)
-                self.collectionView.layoutIfNeeded()
-            }
-        }
-    }
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CateMainCollectionReusableView.identifier, for: indexPath) as! CateMainCollectionReusableView
         self.header = header
@@ -80,6 +95,21 @@ extension CategoryMainVC: UICollectionViewDelegate,UICollectionViewDataSource{
             return section
         }
         return layout
+    }
+}
+//MARK: -- 스티키 헤더
+extension CategoryMainVC{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        if let wrapperHeight = self.wrapperHeight{
+        let isOverWrapperHeight = Int(y) > Int(wrapperHeight)
+        print(wrapperHeight)
+            DispatchQueue.main.async {
+                self.collectionViewTop.constant = isOverWrapperHeight ?  -wrapperHeight : -y
+                print(self.collectionViewTop.constant)
+                self.collectionView.layoutIfNeeded()
+            }
+        }
     }
 }
 //MARK: -- 네비게이션 관리
@@ -119,5 +149,30 @@ extension CategoryMainVC{
     @objc func searchVC(){
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SearchVC.identifer) as! SearchVC
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+//MARK: -- Categoty 무한 스크롤 데이터 얻기
+extension CategoryMainVC:ReloadProtocol{
+    func reload() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            self.collectionView.performBatchUpdates(nil, completion: {_ in
+                self.collectionView.reloadData()
+            })
+        }
+    }
+    func didSuccessGetResult(){
+        print("새로 얻어오기 성공")
+    }
+    func didFailedGetResult(message: String){
+        //self.presentBottomAlert(message: message)
+        self.presentBottomAlert(message: message, target: nil, offset: -50)
+        //MARK: -- 서버 API
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+//            print(self.isViewLoaded)
+//            if self.isViewAppeared {
+//            self.dataModel?.addMyData()
+//            }
+//        }
     }
 }

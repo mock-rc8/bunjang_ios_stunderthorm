@@ -17,25 +17,27 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var uploadDateLabel: UILabel!
     @IBOutlet weak var likesBtn: UIButton!
     static let identifier = "RecommendCollectionViewCell"
+    var myPostIdx: Int = -1
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     func setData(_ data: RecommendResult){
-            if let imgURL = data.postImg_url{
-                DispatchQueue.main.async {   
-                    self.headImgView.kf.setImage(with: URL(string: imgURL))
-                }
-            }else
-        {
-                self.headImgView.image = UIImage(named: "onboard1")
-            }
+//            if let imgURL = data.postImg_url{
+//                DispatchQueue.main.async {
+//                    self.headImgView.kf.setImage(with: URL(string: imgURL))
+//                }
+//            }else
+//        {
+//                self.headImgView.image = UIImage(named: "onboard1")
+//            }
         self.safePayView.isHidden = data.payStatus
         self.setHeartStyle(data.zzimStatus)
         self.priceLabel.text = "\(data.price)원"
         self.titleLabel.text = data.postTitle
         self.locationLabel.text = data.tradeRegion ?? "지역정보 없음"
         self.uploadDateLabel.text = data.postingTime
+        self.myPostIdx = data.postIdx
         likesBtn.setTitle("\(data.likeNum)", for: .normal)
     }
     func setHeartStyle(_ likes: Bool){
