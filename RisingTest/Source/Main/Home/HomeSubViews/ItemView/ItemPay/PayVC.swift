@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 class PayVC: UIViewController{
     static let identifier = "PayVC"
     @IBOutlet weak var itemImg: UIImageView!
@@ -28,6 +29,9 @@ class PayVC: UIViewController{
     @IBOutlet weak var deliveryRequestTextField: UITextField!
     var isDelivery = true
     var isPayAgree = false
+    var myTitle = ""
+    var imgURL = ""
+    var myPrice = 0
     var payType : PayType = .none{
         willSet{
             switch newValue{
@@ -43,14 +47,24 @@ class PayVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initSettings()
-        self.itemPriceLabel.text = "18,000원"
-        self.productPriceLabel.text = "18,000원"
-        self.totalPayPriceLabel.text = "18,000원"
+        self.setPrice()
+        self.itemImg.kf.setImage(with: URL(string: self.imgURL))
+        self.itemTitleLabel.text =  self.myTitle
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(closeFn))
+        self.navigationItem.leftBarButtonItem?.tintColor = .black
+    }
+    public func setPrice(){
+        self.itemPriceLabel.text = "\(self.myPrice) 원"
+        self.productPriceLabel.text = "\(self.myPrice) 원"
+        self.totalPayPriceLabel.text = "\(self.myPrice) 원"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.myLocationTextField.text = Variable.USER_LOCATION
         payTypeStyle()
+    }
+    @objc func closeFn(){
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func myLocationBtnAction(_ sender: UIButton) {
         let vc = UIStoryboard(name: "SettingStoryboard", bundle: nil).instantiateViewController(withIdentifier: LocationSetVC.identifier) as! LocationSetVC

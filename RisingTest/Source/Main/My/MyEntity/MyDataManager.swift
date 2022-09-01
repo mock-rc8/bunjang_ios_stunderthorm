@@ -1,31 +1,28 @@
 //
-//  ItemDataManager.swift
+//  MyDataManager.swift
 //  RisingTest
 //
-//  Created by 김태윤 on 2022/08/30.
+//  Created by 김태윤 on 2022/09/01.
 //
 
 import Foundation
 import Alamofire
-class ItemDataManager {
-    func getItem(postIdx: Int,delegate: ItemVC) {
-        let urlString = "\(Constant.BASE_URL)\(Constant.POST)/\(Variable.USER_ID)/\(postIdx)"
-        print("ItemDataManager",urlString)
-        if postIdx == -1{
-            delegate.failedGetItem(message: "상품 아이디 오류")
-            return
-        }
-        AF.request(urlString, method: .get).validate().responseDecodable(of:ItemResponse.self){ response in
+// /app/my-page/:userIdx/:sellingStatus
+class MyDataManager {
+    func getItem(delegate: MyVC) {
+        let urlString = "\(Constant.BASE_URL)\(Constant.MY_PAGE)/\(Variable.USER_ID)/판매중"
+        let changeString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        print(urlString)
+        AF.request(changeString, method: .get).validate().responseDecodable(of:MyResponse.self){ response in
             switch response.result {
             case .success(let response):
                 // 성공했을 때
                 print(response.isSuccess)
-                print(response.result)
+                print(response.result!)
                 print(response.code)
                 print(response.message)
                 if response.isSuccess, let result = response.result {
-                    print("ItemDataManager Success!")
-                    print(result)
+                    print("MyDataManager Success!")
                     delegate.didSuccessGetItem(result)
                 }
                 // 실패했을 때

@@ -19,11 +19,19 @@
                 <subviews>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nx6-rh-k76">
                         <rect key="frame" x="0.0" y="44" width="161" height="72"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal">
+                        <state key="normal" title="추가">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <buttonConfiguration key="configuration" style="plain" title="추가" cornerStyle="capsule">
+                            <backgroundConfiguration key="background" strokeWidth="1">
+                                <color key="strokeColor" red="0.2049747851" green="0.2049747851" blue="0.2049747851" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </backgroundConfiguration>
+                            <fontDescription key="titleFontDescription" name="NotoSansMyanmar-Bold" family="Noto Sans Myanmar" pointSize="18"/>
+                            <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </buttonConfiguration>
                     </button>
                 </subviews>
             </view>

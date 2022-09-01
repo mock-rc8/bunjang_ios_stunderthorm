@@ -58,8 +58,8 @@ class BrandEntireVC: UIViewController{
             self.deliveryFeeBtn.tintColor = .gray
             
         }else{
-                self.deliveryFeeBtn.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-                self.deliveryFeeBtn.tintColor = .red
+            self.deliveryFeeBtn.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+            self.deliveryFeeBtn.tintColor = .red
         }
     }
 }
@@ -72,18 +72,18 @@ extension BrandEntireVC: UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: BrandTableViewCell.identifier) as! BrandTableViewCell
         let idx = indexPath.item
         cell.selectionStyle = .none
-        //cell.brandImgView.image = self.entireDataImg?[idx].image ?? UIImage(named: "onboard1")
-        cell.brandImgView.kf.setImage(with: URL(string: self.entireData?[idx].brandImg_url ?? "onboard1"))
+        cell.brandImgView.image = self.entireDataImg?[idx].image ?? UIImage(named: "onboard1")
+        //cell.brandImgView.kf.setImage(with: URL(string: self.entireData?[idx].brandImg_url ?? "onboard1"))
         cell.setData(self.entireData?[idx] ?? self.dummyData)
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 60
     }
     //헤더 뷰 설정!!
 }
 //MARK:-- 통신 함수 설정
-extension BrandEntireVC{
+extension BrandEntireVC:BrandDelegate{
     func didSuccessGetItem(_ result:[BrandEntireResult]){
         print("BrandEntireVC",#function)
         let imgData : [UIImageView] = result.map{(data:BrandEntireResult) -> UIImageView in
@@ -92,9 +92,10 @@ extension BrandEntireVC{
             imageView.kf.setImage(with: URL(string: data.brandImg_url))
             return imageView
         }
+        self.entireDataImg = imgData
+        self.entireData = result
         DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-            self.entireDataImg = imgData
-            self.entireData = result
+
             self.tableView.reloadData()
         }
     }

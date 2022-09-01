@@ -15,32 +15,32 @@
             <rect key="frame" x="0.0" y="0.0" width="519" height="283"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FaceBook" translatesAutoresizingMaskIntoConstraints="NO" id="OmF-Xd-EwL">
-                    <rect key="frame" x="10" y="54" width="185" height="185"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="243" verticalHuggingPriority="243" horizontalCompressionResistancePriority="743" verticalCompressionResistancePriority="736" image="Nike" translatesAutoresizingMaskIntoConstraints="NO" id="OmF-Xd-EwL">
+                    <rect key="frame" x="0.0" y="54" width="185" height="185"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="OmF-Xd-EwL" secondAttribute="height" multiplier="1:1" id="FRS-BJ-hqy"/>
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Tki-Ti-Vov">
-                    <rect key="frame" x="205" y="129.5" width="106.5" height="34"/>
+                    <rect key="frame" x="195" y="129.5" width="74" height="34"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="페이스북" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5k3-va-ocr">
-                            <rect key="frame" x="0.0" y="0.0" width="55.5" height="19.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나이키" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5k3-va-ocr">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="19.5"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9L1-Ea-a6i">
-                            <rect key="frame" x="0.0" y="19.5" width="106.5" height="14.5"/>
+                            <rect key="frame" x="0.0" y="19.5" width="74" height="14.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-2Y-7Ih">
-                                    <rect key="frame" x="0.0" y="0.0" width="55" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-2Y-7Ih">
+                                    <rect key="frame" x="0.0" y="0.0" width="25" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" systemColor="systemGrayColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15000개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8V-F6-4cS">
-                                    <rect key="frame" x="60" y="0.0" width="46.5" height="14.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15123개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F8V-F6-4cS">
+                                    <rect key="frame" x="30" y="0.0" width="44" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" systemColor="systemGrayColor"/>
                                     <nil key="highlightedColor"/>
@@ -50,8 +50,8 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNo-lO-dDB">
-                    <rect key="frame" x="452" y="128" width="57" height="37"/>
-                    <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="462" y="128" width="57" height="37"/>
+                    <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="0.14947462979094076" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                     <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -66,8 +66,8 @@
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
                 <constraint firstItem="Tki-Ti-Vov" firstAttribute="centerY" secondItem="OmF-Xd-EwL" secondAttribute="centerY" id="6Rq-0W-VhJ"/>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="dNo-lO-dDB" secondAttribute="trailing" constant="10" id="ND2-XG-feD"/>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="leading" secondItem="OmF-Xd-EwL" secondAttribute="leading" constant="-10" id="Pts-hz-vSw"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="dNo-lO-dDB" secondAttribute="trailing" id="ND2-XG-feD"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="leading" secondItem="OmF-Xd-EwL" secondAttribute="leading" id="Pts-hz-vSw"/>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="OmF-Xd-EwL" secondAttribute="bottom" constant="10" id="VT6-ZQ-cGr"/>
                 <constraint firstItem="Tki-Ti-Vov" firstAttribute="leading" secondItem="OmF-Xd-EwL" secondAttribute="trailing" constant="10" id="WHc-gD-R2K"/>
                 <constraint firstItem="OmF-Xd-EwL" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" constant="10" id="fMf-g8-06Y"/>
@@ -84,7 +84,7 @@
         </collectionReusableView>
     </objects>
     <resources>
-        <image name="FaceBook" width="56" height="57"/>
+        <image name="Nike" width="512" height="512"/>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

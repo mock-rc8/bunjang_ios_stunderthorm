@@ -8,12 +8,14 @@
 import Foundation
 import UIKit
 class BrandHomeVC: UIViewController{
-    //searchfootercollectionreusableview
+    //브랜드 헤더 불러오기
+    
+    
     @IBOutlet weak var brandCollectionView: UICollectionView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     lazy var hbScrollCollectionManager = HBScrollCollectionManager()
     static let identifier = "BrandHomeVC"
-    var collectionData : [BrandSecionType] = [.brand,.brand,.append]
+    var collectionData : [BrandSecionType] = [.brand,.append]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.scrollCollectionSettings()
@@ -38,6 +40,7 @@ extension BrandHomeVC: UICollectionViewDelegate,UICollectionViewDataSource{
         switch self.collectionData[indexPath.section]{
         case .append:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestMainCell.identifier, for: indexPath) as! SuggestMainCell
+            cell.myVC = self
             cell.setCollectionView(self.view.frame.width)
             return cell
         case .brand:
@@ -98,7 +101,7 @@ extension BrandHomeVC: UICollectionViewDelegate,UICollectionViewDataSource{
                 // 아이템 간의 간격 설정
                 item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
                 // 그룹 사이즈
-                let groupSize = NSCollectionLayoutSize(widthDimension: itemSize.widthDimension, heightDimension: itemSize.heightDimension)
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: itemSize.heightDimension)
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
                 // 그룹으로 섹션 만들기
                 let section = NSCollectionLayoutSection(group: group)
@@ -127,12 +130,13 @@ extension BrandHomeVC: UICollectionViewDelegate,UICollectionViewDataSource{
                 // 섹션에 대한 간격 설정
                 section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
                 //섹션 헤더와 관련된 설정
-                let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50))
+                let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
                 let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
                     layoutSize: headerFooterSize,
                     elementKind: UICollectionView.elementKindSectionHeader,alignment: .top)
+                sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
                 let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(
-                    layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/8)),
+                    layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/5)),
                     elementKind: UICollectionView.elementKindSectionFooter,alignment: .bottom)
                 section.boundarySupplementaryItems = [sectionHeader,sectionFooter]
                 return section

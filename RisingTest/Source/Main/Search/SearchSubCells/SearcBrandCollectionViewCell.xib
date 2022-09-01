@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="476" height="308"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FaceBook" translatesAutoresizingMaskIntoConstraints="NO" id="oiQ-QI-Rvj">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Nike" translatesAutoresizingMaskIntoConstraints="NO" id="oiQ-QI-Rvj">
                         <rect key="frame" x="20" y="49" width="220" height="220"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="oiQ-QI-Rvj" secondAttribute="height" multiplier="1:1" id="AfA-bN-U2M"/>
@@ -26,7 +26,7 @@
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMo-ii-3Jt">
                         <rect key="frame" x="389" y="54" width="77" height="210"/>
-                        <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="0.15407854984894259" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                         <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -35,25 +35,25 @@
                         </state>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="VjT-bM-G7g">
-                        <rect key="frame" x="250" y="142" width="106.5" height="34"/>
+                        <rect key="frame" x="250" y="142" width="74" height="34"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="페이스북" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4u-PB-xPx">
-                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="19.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나이키" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4u-PB-xPx">
+                                <rect key="frame" x="0.0" y="0.0" width="42" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="n2w-7V-iT9">
-                                <rect key="frame" x="0.0" y="19.5" width="106.5" height="14.5"/>
+                                <rect key="frame" x="0.0" y="19.5" width="74" height="14.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3Z-cT-KxF">
-                                        <rect key="frame" x="0.0" y="0.0" width="55" height="14.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3Z-cT-KxF">
+                                        <rect key="frame" x="0.0" y="0.0" width="25" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15000개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3m-NW-Dp6">
-                                        <rect key="frame" x="60" y="0.0" width="46.5" height="14.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15123개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3m-NW-Dp6">
+                                        <rect key="frame" x="30" y="0.0" width="44" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
@@ -78,11 +78,17 @@
                 <constraint firstItem="VjT-bM-G7g" firstAttribute="leading" secondItem="oiQ-QI-Rvj" secondAttribute="trailing" constant="10" id="xLn-dd-N9U"/>
             </constraints>
             <size key="customSize" width="476" height="308"/>
+            <connections>
+                <outlet property="brandEngLabel" destination="p3Z-cT-KxF" id="ffX-v8-TGB"/>
+                <outlet property="brandKorLabel" destination="m4u-PB-xPx" id="Iwr-AB-mOS"/>
+                <outlet property="likesCountLabel" destination="o3m-NW-Dp6" id="COE-zD-fCv"/>
+                <outlet property="mainImgView" destination="oiQ-QI-Rvj" id="Xar-kg-p70"/>
+            </connections>
             <point key="canvasLocation" x="440.57971014492756" y="159.375"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="FaceBook" width="56" height="57"/>
+        <image name="Nike" width="512" height="512"/>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

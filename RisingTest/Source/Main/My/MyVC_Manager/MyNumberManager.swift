@@ -10,16 +10,21 @@ import UIKit
 class MyNumberManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
     var numberData: [MyNumberType] = MyNumberType.allCases
     var dataNumber: [Int] = [1,0,0,0]
-
+    var myCollectionView: UICollectionView?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.numberData.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNumberCollectionViewCell.identifier, for: indexPath) as! MyNumberCollectionViewCell
         let idx = indexPath.item
+        print("indexPath.item",idx)
         cell.numberLabel.text = String(dataNumber[idx])
         cell.numberInfoLabel.text = numberData[idx].rawValue
         return cell
+    }
+    func setData(myDataNumber:[Int]){
+        self.dataNumber = myDataNumber
+        self.myCollectionView!.reloadData()
     }
     func createSliderCompositionalLayout(_ height: CGFloat) -> UICollectionViewLayout{
         //컴포지셔널 레이아웃 생성

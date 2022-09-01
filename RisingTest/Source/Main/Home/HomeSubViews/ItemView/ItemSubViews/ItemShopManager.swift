@@ -24,7 +24,7 @@ class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         print("headerView Init!!")
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CategoryCollectionReusableView.identifier, for: indexPath) as? CategoryCollectionReusableView else {
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ItemHeaderCollectionReusableView.identifier, for: indexPath) as? ItemHeaderCollectionReusableView else {
             return UICollectionReusableView()
         }
         //헤더뷰의 높이 설정
@@ -50,12 +50,13 @@ class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
             // 그룹으로 섹션 만들기
             let section = NSCollectionLayoutSection(group: group)
             // 섹션에 대한 간격 설정
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: -5, bottom: 0, trailing: 0)
             //섹션 헤더와 관련된 설정
             let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30))
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: headerFooterSize,
                 elementKind: "myHeader",alignment: .top)
+            sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 10, trailing: 0)
             section.boundarySupplementaryItems = [sectionHeader]
             return section
         }

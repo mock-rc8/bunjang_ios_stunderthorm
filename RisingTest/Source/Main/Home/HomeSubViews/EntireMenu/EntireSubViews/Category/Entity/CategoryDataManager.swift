@@ -17,12 +17,13 @@ class CategoryModel{
     private var totalPage: Int = 100
     private var keyword:String = "cat"
     private var reloadProtocol:ReloadProtocol
-    init(reload:ReloadProtocol){
+    private var myIdx: Int = -1
+    init(myIdx: Int,reload:ReloadProtocol){
         self.reloadProtocol = reload
-        
+        self.myIdx = myIdx
     }
     public func addMyData() {
-        self.getNewData { (data) in
+        self.getNewData { (data: [CategoryResult]) in
             if(self.nowPageCount <= self.totalPage){
                 self.data.append(contentsOf: data)
                 let imgViewData = data.map{ (a:CategoryResult) -> UIImageView in
@@ -41,14 +42,16 @@ class CategoryModel{
 }
 extension CategoryModel{
     fileprivate func getNewData(onCompleted: @escaping ([CategoryResult])->Void){
-        let urlString = "\(Constant.BASE_URL)\(Constant.POST)/\(Variable.USER_ID)/posts/\(self.nowPageCount)"
+        let urlString: String = "\(Constant.BASE_URL)\(Constant.POST)/\(Variable.USER_ID)/categories/중고거래/\(self.myIdx)/\(self.nowPageCount)"
+        let changeString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        
         print(urlString)
-        AF.request(urlString, method: .get).validate().responseDecodable(of:CategoryResponse.self){ response in
+        AF.request(changeString, method: .get).validate().responseDecodable(of:CategoryResponse.self){ response in
             switch response.result {
             case .success(let response):
                 // 성공했을 때
                 print(response.isSuccess)
-                print(response.result!)
+                print(response.result)
                 print(response.code)
                 print(response.message)
                 if response.isSuccess, let result = response.result {

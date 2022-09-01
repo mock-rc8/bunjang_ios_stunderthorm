@@ -12,7 +12,7 @@ class ItemVC: UIViewController{
     @IBOutlet weak var itemImgSliderView: ItemImgSlider!
     let dummyImgData: [String] = ["https://images.unsplash.com/photo-1661758239207-0410635ad099?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80","https://res.cloudinary.com/roundglass/image/upload/w_1104,h_736,c_fill/q_auto:best,f_auto/v1632484088/rg/collective/media/common-kingfisher-dhritiman-mukherjee-1632484087720.jpg","https://images.unsplash.com/photo-1661758239207-0410635ad099?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
     ]
-    let dummyData: ItemResult = ItemResult(postIdx: 3, price: 20000, payStatus: false, postTitle: "맥북 에어 m2 미개봉", postingTime: "4일 전", viewNum: 11, likeNum: 3, chatNum: 0, prodStatus: "중고상품", quantity: 1, deliveryFee: "N", exchange: "불가", postContent: "어제 배송 받은 맥북 에어 M2 스타라이트(미개봉) 8코어 CPU 8코어 GPU 256GB 팝니다. 용량 더 큰걸로 사고 싶어서 싸게 내놓습니다. 이번주 안에 안팔리면 그냥 사용한 예정 정가 169만원", sellingStatus: "판매중", zzimStatus: true)
+    let dummyData: ItemResult = ItemResult(postIdx: 3, price: 20000, payStatus: false, postTitle: "맥북 에어 m2 미개봉", postingTime: "4일 전", viewNum: 11, likeNum: 3, chatNum: 0, prodStatus: "중고상품", quantity: 1, deliveryFee: "N", exchange: "불가", postContent: "어제 배송 받은 x맥북 에어 M2 스타라이트(미개봉) 8코어 CPU 8코어 GPU 256GB 팝니다. 용량 더 큰걸로 사고 싶어서 싸게 내놓습니다. 이번주 안에 안팔리면 그냥 사용한 예정 정가 169만원", sellingStatus: "판매중", zzimStatus: true)
     static let identifer = "ItemVC"
     @IBOutlet weak var shopCollectionView: UICollectionView!
     @IBOutlet weak var shopCollectionHeight: NSLayoutConstraint!
@@ -51,7 +51,7 @@ class ItemVC: UIViewController{
         self.navigationSettings()
         print("myPostIdx",self.myPostIdx)
         //MARK: -- API 수정
-        //self.showIndicator()
+        self.showIndicator()
         self.itemDataManager.getItem(postIdx: self.myPostIdx,delegate: self)
         self.itemImgDataManager.getItem(postIdx: self.myPostIdx, delegate: self)
 //        self.didSuccessGetItem(dummyData)
@@ -90,6 +90,7 @@ class ItemVC: UIViewController{
         }()]
     }
     @objc func closeView(){
+        self.itemImgSliderView = nil
         _ = self.navigationController?.popViewController(animated: true)
     }
     @objc func searchView(){
@@ -105,6 +106,9 @@ class ItemVC: UIViewController{
         let vc = self.storyboard?.instantiateViewController(withIdentifier: SafePayModalVC.identifier) as! SafePayModalVC
         vc.complation = { isDelivery in
             let vc = self.storyboard?.instantiateViewController(withIdentifier: PayVC.identifier) as! PayVC
+            vc.myPrice = self.myItemData!.price
+            vc.imgURL = self.itemImgSliderView!.data[0]
+            vc.myTitle = self.myItemData!.postTitle
             vc.isDelivery = isDelivery
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -117,9 +121,7 @@ class ItemVC: UIViewController{
         self.shopCollectionView.delegate = itemShopManager
         self.shopCollectionView.dataSource = itemShopManager
         self.shopCollectionView.collectionViewLayout = ItemShopManager.createCompositionalLayout()
-        self.shopCollectionView.register(UINib(nibName: CategoryCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: "myHeader", withReuseIdentifier: CategoryCollectionReusableView.identifier)
-        
-        self.shopCollectionView.backgroundColor = UIColor.cyan
+        self.shopCollectionView.register(UINib(nibName: ItemHeaderCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: "myHeader", withReuseIdentifier: ItemHeaderCollectionReusableView.identifier)
     }
     //MARK: -- 파워쇼핑, 이 상품과 비슷해요 컬렉션
     func adCollectionSettings(){
@@ -139,7 +141,12 @@ extension ItemVC{
         self.priceLabel.text = "\(result.price)원"
         self.safePayView.isHidden = !(result.payStatus)
         self.titleLabel.text = result.postTitle
-        self.locationInfoLabel.text = (result.tradeRegion ?? "지역정보 없음") == "" ?  "지역정보 없음" : result.tradeRegion
+        if let region = result.tradeRegion{
+            self.locationInfoLabel.text = region == "" ?  "지역정보 없음" : region
+        }else{
+            self.locationInfoLabel.text = "지역정보 없음"
+        }
+        
         self.uploadDateLabel.text = result.postingTime
         self.viewNumBtn.setTitle(String(result.viewNum), for: .normal)
         self.viewNumBtn.titleLabel?.text = String(result.viewNum)

@@ -13,13 +13,14 @@ extension BrandHomeVC{
     func scrollCollectionSettings(){
         self.hbScrollCollectionManager.myVC = self
         self.hbScrollCollectionManager.myCollection = self.brandCollectionView
+        self.brandCollectionView.collectionViewLayout = self.hbScrollCollectionManager.createSliderCompositionalLayout(self.view.frame.height)
         self.brandCollectionView.delegate = self.hbScrollCollectionManager
         self.brandCollectionView.dataSource = self.hbScrollCollectionManager
         self.brandCollectionView.register(UINib(nibName: BHScrollCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: BHScrollCollectionViewCell.identifier)
     }
 }
 class HBScrollCollectionManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
-    var scrollData: [ScrollData] = [ScrollData(type: .append, title: "추가"),ScrollData(type: .append, title: "추가"),ScrollData(type: .edit, title: "편집")]
+    var scrollData: [ScrollData] = [ScrollData(type: .append, title: "나이키"),ScrollData(type: .append, title: "추가"),ScrollData(type: .edit, title: "편집")]
     var isClicked: [Bool]
     var myVC: UIViewController?
     var myCollection: UICollectionView?
@@ -69,9 +70,9 @@ class HBScrollCollectionManager:NSObject,UICollectionViewDataSource,UICollection
         let layout = UICollectionViewCompositionalLayout{
             (sectionIndex: Int,layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             //아이템 사이즈 설정
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalHeight(1))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(70), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 10)
             let groupSize = NSCollectionLayoutSize(widthDimension: itemSize.widthDimension, heightDimension: itemSize.heightDimension)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)

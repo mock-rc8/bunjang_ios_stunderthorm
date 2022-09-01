@@ -15,6 +15,10 @@ class BHScrollCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        var fonnt = UIFont(name: "System", size: 18)
+        fonnt = .systemFont(ofSize: 18, weight: .bold)
+        self.scrollBtn.titleLabel?.font = fonnt
+        
     }
     func setFrameStyle(_ isCheck: Bool){
         if isCheck{

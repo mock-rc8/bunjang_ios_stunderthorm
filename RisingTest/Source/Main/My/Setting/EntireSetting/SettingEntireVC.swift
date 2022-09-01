@@ -22,6 +22,10 @@ class SettingEntireVC:UIViewController{
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backVC)),LabelBarButtonItem(text: "설정")                   ]
         self.navigationItem.leftBarButtonItem?.tintColor = .black
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
     @objc func backVC(){
         self.navigationController?.popViewController(animated: true)
     }
@@ -70,6 +74,12 @@ extension SettingEntireVC:UITableViewDelegate,UITableViewDataSource{
                 self.navigationController?.pushViewController(vc, animated: true)
             case .alert:
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: AlertSetVC.identifier) as! AlertSetVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .user:
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: UserSetVC.identifier) as! UserSetVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .accoount:
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: AccountSetVC.identifier) as! AccountSetVC
                 self.navigationController?.pushViewController(vc, animated: true)
             default:
                 break

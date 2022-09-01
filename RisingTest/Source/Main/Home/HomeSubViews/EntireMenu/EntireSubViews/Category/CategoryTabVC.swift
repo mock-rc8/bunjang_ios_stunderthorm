@@ -40,7 +40,7 @@ extension CategoryTabVC: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.sectionDict.elements[section].value.count
     }
-    
+    //MARK: -- 셀 선택시 나오는 값
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCategoryCollectionViewCell.identifier, for: indexPath) as! HomeCategoryCollectionViewCell
         let name : String = self.sectionDict.elements[indexPath.section].value[indexPath.item]
@@ -61,6 +61,9 @@ extension CategoryTabVC: UICollectionViewDelegate,UICollectionViewDataSource{
     // 아이템 선택시 이벤트
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: CategoryMainVC.identifier) as! CategoryMainVC
+        let myCate: String = self.sectionDict.values[indexPath.section][indexPath.item]
+        vc.myTitle = myCate
+        vc.myCategoryImg = UIImage(named: myCate.replacingOccurrences(of: "/", with: ":"))
         self.navigationController?.pushViewController(vc, animated: true)
     }
     public func createSliderCompositionalLayout() -> UICollectionViewLayout{

@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeCategoryUIView: UIView{
-    var data: [String] = ["찜","헬스/요가/필라데스","스니커즈","내폰시세","자전거","스타굿즈","시계","뷰티/미용","디지털/가전"]
+    var data: [String] = ["찜","키덜트","스니커즈","내폰시세","자전거","스타굿즈","시계","뷰티/미용","디지털/가전","커뮤니티"]
     var horizontalScrollViewManager: HomeCategoryManager?
     var sliderCollection: UICollectionView!
     required init?(coder: NSCoder) {

@@ -43,12 +43,13 @@ class AdShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate
             // 그룹으로 섹션 만들기
             let section = NSCollectionLayoutSection(group: group)
             // 섹션에 대한 간격 설정
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 20)
             //섹션 헤더와 관련된 설정
             let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30))
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: headerFooterSize,
                 elementKind: "header",alignment: .top)
+            sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 3, bottom: 5, trailing: 0)
             section.boundarySupplementaryItems = [sectionHeader]
             return section
         }

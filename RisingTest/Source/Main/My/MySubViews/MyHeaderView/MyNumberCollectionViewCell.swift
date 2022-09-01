@@ -11,9 +11,9 @@ class MyNumberCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var numberInfoLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     static let identifier = "MyNumberCollectionViewCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
 }

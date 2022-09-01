@@ -35,24 +35,24 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4QK-mn-XCc">
-                            <rect key="frame" x="0.0" y="74" width="320" height="142.5"/>
+                            <rect key="frame" x="0.0" y="74" width="320" height="157"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsX-k9-ZSJ" userLabel="NoticeBtnWrapper">
-                                    <rect key="frame" x="10" y="0.0" width="300" height="30"/>
+                                    <rect key="frame" x="20" y="0.0" width="280" height="28"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="번개장터㈜ 사업자정보, 이용약관 및 기타 법적고지" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkS-oP-bjX">
-                                            <rect key="frame" x="0.0" y="6.5" width="277" height="17"/>
+                                            <rect key="frame" x="0.0" y="5.5" width="277" height="17"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yT8-ZR-NU9">
-                                            <rect key="frame" x="282" y="8" width="10.5" height="14"/>
+                                            <rect key="frame" x="282" y="7" width="10.5" height="14"/>
                                             <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTB-N9-KgK">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="28"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         </button>
@@ -72,7 +72,7 @@
                                     <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="10" bottom="0.0" trailing="10"/>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdg-u1-tTC">
-                                    <rect key="frame" x="10" y="30" width="300" height="100.5"/>
+                                    <rect key="frame" x="20" y="28" width="280" height="117"/>
                                     <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="10" bottom="0.0" trailing="10"/>
                                     <string key="text">“BGZT Digital”, ”BGZT LAB”, ”BGZT LAB 1”, ”BGZT LAB2”, “BGZT 컬렉션” 상점의 판매상품을 제외한 모든 상품들에 대하여 번개장터㈜는 통신판매중개자로서 중고거래마켓 번개장터의 거래당사자가 아니며, 입점판매자가 등록한 상품정보 및 거래에 대해 책임을 지지  않습니다.</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -80,7 +80,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ⓒ 번둥천개. Inc All rights reserved." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dq-hP-u8R">
-                                    <rect key="frame" x="10" y="130.5" width="300" height="12"/>
+                                    <rect key="frame" x="20" y="145" width="280" height="12"/>
                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                     <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="10" bottom="0.0" trailing="10"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -88,10 +88,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="10" bottom="0.0" trailing="10"/>
+                            <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
                         </stackView>
                         <view contentMode="scaleToFill" verticalHuggingPriority="247" verticalCompressionResistancePriority="702" translatesAutoresizingMaskIntoConstraints="NO" id="wt1-na-4wS">
-                            <rect key="frame" x="0.0" y="226.5" width="320" height="419.5"/>
+                            <rect key="frame" x="0.0" y="241" width="320" height="405"/>
                             <color key="backgroundColor" systemColor="systemGray5Color"/>
                         </view>
                     </subviews>

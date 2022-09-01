@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" horizontalHuggingPriority="231" verticalHuggingPriority="244" horizontalCompressionResistancePriority="742" verticalCompressionResistancePriority="738" translatesAutoresizingMaskIntoConstraints="NO" id="zqy-Hr-rcC" userLabel="ImgWrapper">
-                        <rect key="frame" x="10" y="54" width="85" height="113"/>
+                        <rect key="frame" x="15" y="54" width="85" height="113"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner2" translatesAutoresizingMaskIntoConstraints="NO" id="oXi-yc-sgP">
                                 <rect key="frame" x="0.0" y="0.0" width="85" height="113"/>
@@ -58,7 +58,7 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="CYc-Qy-U9h">
-                        <rect key="frame" x="105" y="54" width="398" height="113"/>
+                        <rect key="frame" x="110" y="54" width="393" height="113"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RMc-Id-v15">
                                 <rect key="frame" x="0.0" y="0.0" width="259.5" height="52.5"/>
@@ -102,7 +102,7 @@
             <constraints>
                 <constraint firstItem="zqy-Hr-rcC" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" constant="-10" id="3dI-7Q-fgZ"/>
                 <constraint firstItem="CYc-Qy-U9h" firstAttribute="centerY" secondItem="zqy-Hr-rcC" secondAttribute="centerY" id="9jq-oe-aRM"/>
-                <constraint firstItem="zqy-Hr-rcC" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="10" id="9wx-Mi-u9J"/>
+                <constraint firstItem="zqy-Hr-rcC" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="15" id="9wx-Mi-u9J"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="CYc-Qy-U9h" secondAttribute="trailing" id="CUj-jt-f6F"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="zqy-Hr-rcC" secondAttribute="top" constant="-10" id="TnI-IH-BSf"/>
                 <constraint firstItem="CYc-Qy-U9h" firstAttribute="leading" secondItem="zqy-Hr-rcC" secondAttribute="trailing" constant="10" id="ZHz-zN-G3n"/>

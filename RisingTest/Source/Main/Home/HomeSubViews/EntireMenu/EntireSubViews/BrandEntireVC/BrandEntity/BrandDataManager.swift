@@ -8,9 +8,12 @@
 import Foundation
 import Alamofire
 import Kingfisher
-
+protocol BrandDelegate{
+    func failedGetItem(message: String)
+    func didSuccessGetItem(_ result:[BrandEntireResult])
+}
 class BrandEntireDataManager {
-    func getItem(delegate: BrandEntireVC) {
+    func getItem(delegate: BrandDelegate) {
         let urlString = "\(Constant.BASE_URL)\(Constant.BRAND_ALL)"
         print("BrandEntireDataManager",urlString)
         AF.request(urlString, method: .get).validate().responseDecodable(of:BrandEntireResponse.self){ response in

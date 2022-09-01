@@ -17,17 +17,21 @@ class CategoryMainVC: UIViewController{
     @IBOutlet weak var collectionViewTop: NSLayoutConstraint!
     var header: CateMainCollectionReusableView?
     var wrapperHeight : CGFloat?
-    
+    var myCategoryImg :UIImage?
+    var myTitle : String?
     override func viewDidLoad() {
-        self.dataModel = CategoryModel(reload: self)
-        self.dataModel!.addMyData()
         super.viewDidLoad()
+        let myNumber = myTitle == "신발" ? 3 : myTitle == "디지털/가전" ? 7 : -1
+        self.dataModel = CategoryModel(myIdx: myNumber, reload: self)
+        self.dataModel!.addMyData()
+        self.showIndicator()
         self.collectionView.register(UINib(nibName: BrandSuggestCell.identifier, bundle: nil), forCellWithReuseIdentifier: BrandSuggestCell.identifier)
         self.collectionView.register(UINib(nibName: CateMainCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CateMainCollectionReusableView.identifier)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.collectionViewLayout = createCompositionalLayout()
         navigationSettings()
+        print(myTitle ?? "없음")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,46 +45,51 @@ class CategoryMainVC: UIViewController{
         print("navi Height",self.topbarHeight)
     }
 }
+
 // MARK: -- 컬렉션 뷰 설정
 extension CategoryMainVC: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let idx = indexPath.item
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandSuggestCell.identifier, for: indexPath) as! BrandSuggestCell
         //MARK: -- 서버 연결 필요
-//        cell.setData((self.dataModel?.data[indexPath.item])!)
-//        cell.titleImgView.image = self.dataModel?.dataImgView[indexPath.item].image ?? UIImage(named: "onboard1")
-        cell.setData(dummyData)
+        cell.setData((self.dataModel?.data[indexPath.item])!)
+        cell.titleImgView.image = self.dataModel?.dataImgView[indexPath.item].image ?? UIImage(named: "onboard1")
+        //cell.setData(dummyData)
         if(idx + 6 == self.dataModel?.nowListCount){self.dataModel?.addMyData()}
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nextVC = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateViewController(withIdentifier: ItemVC.identifer) as! ItemVC
         //MARK: -- 서버 열리면 수정!!
-        //nextVC.myPostIdx = self.dataModel?.data[indexPath.item].postIdx ?? -1
-        nextVC.myPostIdx = 12
+        nextVC.myPostIdx = self.dataModel?.data[indexPath.item].postIdx ?? -1
+        //nextVC.myPostIdx = 12
         navigationController?.pushViewController(nextVC, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        //MARK: -- 서버연결 필요
+        //return 30
+        return self.dataModel?.data.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CateMainCollectionReusableView.identifier, for: indexPath) as! CateMainCollectionReusableView
         self.header = header
-
+        header.categoryImg.image = myCategoryImg ?? UIImage(named: "onboard1")
+        header.categoryTitle.text = myTitle ?? "번개장터 카테고리"
         return header
     }
     func createCompositionalLayout() -> UICollectionViewLayout{
         let layout = UICollectionViewCompositionalLayout{
             (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             // 아이템에 대한 사이즈 - absolute는 고정값, estimated는 추측, fraction 퍼센트
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalWidth(2.2/3))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .estimated(300))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             // 아이템 간의 간격 설정
             item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
             // 그룹 사이즈
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: itemSize.heightDimension)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item,item,item])
+            group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 13, bottom: 10, trailing: 13)
             // 그룹으로 섹션 만들기
             let section = NSCollectionLayoutSection(group: group)
             // 섹션에 대한 간격 설정
@@ -106,7 +115,6 @@ extension CategoryMainVC{
         print(wrapperHeight)
             DispatchQueue.main.async {
                 self.collectionViewTop.constant = isOverWrapperHeight ?  -wrapperHeight : -y
-                print(self.collectionViewTop.constant)
                 self.collectionView.layoutIfNeeded()
             }
         }
@@ -162,11 +170,15 @@ extension CategoryMainVC:ReloadProtocol{
         }
     }
     func didSuccessGetResult(){
-        print("새로 얻어오기 성공")
+        self.dismissIndicator()
+        if self.dataModel?.data.count == 0{
+            didFailedGetResult(message: "알 수 없는 오류")
+        }
     }
     func didFailedGetResult(message: String){
-        //self.presentBottomAlert(message: message)
-        self.presentBottomAlert(message: message, target: nil, offset: -50)
+        self.presentAlert(title: message,message: "나중에 다시 시도하세요.") { action in
+            self.navigationController?.popViewController(animated: true)
+        }
         //MARK: -- 서버 API
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
 //            print(self.isViewLoaded)

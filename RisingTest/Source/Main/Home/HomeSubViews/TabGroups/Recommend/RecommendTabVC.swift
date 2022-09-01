@@ -83,8 +83,9 @@ extension RecommendTabVC:ReloadProtocol{
 }
 extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataModel!.nowListCount
-        //return 60
+        //MARK: -- 서버 열리면 수정
+        //return dataModel!.nowListCount
+        return 60
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -100,8 +101,8 @@ extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nextVC =  self.storyboard?.instantiateViewController(withIdentifier: ItemVC.identifer) as! ItemVC
         //MARK: -- 서버 열리면 수정!!
-        nextVC.myPostIdx = self.dataModel?.data[indexPath.item].postIdx ?? -1
-        //nextVC.myPostIdx = 1
+//        nextVC.myPostIdx = self.dataModel?.data[indexPath.item].postIdx ?? -1
+        nextVC.myPostIdx = 1
         navigationController?.pushViewController(nextVC, animated: true)
     }
     fileprivate func createCompositionalLayout() -> UICollectionViewLayout{

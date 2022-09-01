@@ -194,7 +194,7 @@
                             <rect key="frame" x="0.0" y="1018" width="1507" height="703"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tOM-pZ-FF3">
-                                    <rect key="frame" x="10" y="0.0" width="370" height="680"/>
+                                    <rect key="frame" x="20" y="0.0" width="370" height="680"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OlU-Ma-RRn">
                                             <rect key="frame" x="0.0" y="325.5" width="37" height="29"/>
@@ -230,7 +230,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sbM-AU-7KI">
-                                    <rect key="frame" x="10" y="681" width="1487" height="22"/>
+                                    <rect key="frame" x="20" y="681" width="1467" height="22"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kO-aw-5ES">
                                             <rect key="frame" x="0.0" y="4" width="21.5" height="14.5"/>
@@ -239,7 +239,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oCJ-7Y-W16">
-                                            <rect key="frame" x="1360.5" y="0.0" width="126.5" height="22"/>
+                                            <rect key="frame" x="1340.5" y="0.0" width="126.5" height="22"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIN-0Y-fVA" userLabel="SearchBtn">
                                                     <rect key="frame" x="0.0" y="0.0" width="20.5" height="22"/>
@@ -279,9 +279,9 @@
                                 </stackView>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="sbM-AU-7KI" firstAttribute="width" secondItem="sOp-2p-aX4" secondAttribute="width" constant="-20" id="7Tv-Qd-rMH"/>
+                                <constraint firstItem="sbM-AU-7KI" firstAttribute="width" secondItem="sOp-2p-aX4" secondAttribute="width" constant="-40" id="jHk-eW-5Od"/>
                             </constraints>
-                            <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="10" bottom="0.0" trailing="10"/>
+                            <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
                         </stackView>
                         <view contentMode="scaleToFill" horizontalCompressionResistancePriority="739" verticalCompressionResistancePriority="738" translatesAutoresizingMaskIntoConstraints="NO" id="Lro-Ih-54v">
                             <rect key="frame" x="0.0" y="1731" width="1507" height="50"/>

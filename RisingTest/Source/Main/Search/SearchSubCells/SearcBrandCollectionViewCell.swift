@@ -8,10 +8,18 @@
 import UIKit
 
 class SearcBrandCollectionViewCell: UICollectionViewCell {
-static let identifier = "SearcBrandCollectionViewCell"
+    @IBOutlet weak var mainImgView: UIImageView!
+    @IBOutlet weak var brandKorLabel: UILabel!
+    @IBOutlet weak var brandEngLabel: UILabel!
+    @IBOutlet weak var likesCountLabel: UILabel!
+    static let identifier = "SearcBrandCollectionViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    func setData(_ data: BrandEntireResult){
+        self.brandKorLabel.text = data.brandName
+        self.brandEngLabel.text = data.brandEngName
+        self.likesCountLabel.text = String(data.postNum)
+    }
 }
