@@ -25,6 +25,7 @@ class SearchVC:UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataManager.getItem(delegate: self)
+        self.dismissKeyboardWhenTappedAround()
         navigationSettings()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -202,6 +203,7 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource{
 extension SearchVC{
     func navigationSettings(){
         let searchBar = UISearchBar()
+        searchBar.delegate = self
         searchBar.placeholder = "검색어를 입력해주세요"
         self.navigationItem.titleView = searchBar
         self.navigationItem.leftBarButtonItem = {
@@ -226,6 +228,13 @@ extension SearchVC{
     }
     @objc func shareView(){
         print("공유 구현 해야한다.")
+    }
+}
+extension SearchVC: UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SearchReVC.identifier) as! SearchReVC
+        vc.mySearchText = searchBar.text!
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 //MARK: -- 브랜드 통신 API 설정

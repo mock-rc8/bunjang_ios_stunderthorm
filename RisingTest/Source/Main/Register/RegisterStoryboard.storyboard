@@ -258,15 +258,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AES-Ie-Lbb">
-                                <rect key="frame" x="0.0" y="44" width="414" height="52"/>
+                                <rect key="frame" x="10" y="44" width="394" height="49.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#태그를 입력해주세요. (최대 5개)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDI-75-EUM">
-                                        <rect key="frame" x="0.0" y="0.0" width="346" height="52"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="326" height="49.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKj-d0-0ZU">
-                                        <rect key="frame" x="346" y="0.0" width="68" height="52"/>
+                                        <rect key="frame" x="326" y="0.0" width="68" height="49.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -284,8 +284,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AES-Ie-Lbb" firstAttribute="top" secondItem="Ytu-aN-7l3" secondAttribute="top" id="7Oe-cw-gNB"/>
-                            <constraint firstItem="Ytu-aN-7l3" firstAttribute="trailing" secondItem="AES-Ie-Lbb" secondAttribute="trailing" id="RN1-X8-Tdr"/>
-                            <constraint firstItem="AES-Ie-Lbb" firstAttribute="leading" secondItem="Ytu-aN-7l3" secondAttribute="leading" id="bj4-KW-UVc"/>
+                            <constraint firstItem="Ytu-aN-7l3" firstAttribute="trailing" secondItem="AES-Ie-Lbb" secondAttribute="trailing" constant="10" id="RN1-X8-Tdr"/>
+                            <constraint firstItem="AES-Ie-Lbb" firstAttribute="leading" secondItem="Ytu-aN-7l3" secondAttribute="leading" constant="10" id="bj4-KW-UVc"/>
                         </constraints>
                     </view>
                     <connections>

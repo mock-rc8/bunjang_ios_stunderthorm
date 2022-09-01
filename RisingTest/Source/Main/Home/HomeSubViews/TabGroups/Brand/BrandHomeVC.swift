@@ -13,6 +13,8 @@ class BrandHomeVC: UIViewController{
     
     @IBOutlet weak var brandCollectionView: UICollectionView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
+    var brandManager = BrandCategoryManager()
+    var brandDataList : [CategoryResult] = []
     lazy var hbScrollCollectionManager = HBScrollCollectionManager()
     static let identifier = "BrandHomeVC"
     var collectionData : [BrandSecionType] = [.brand,.append]
@@ -21,6 +23,7 @@ class BrandHomeVC: UIViewController{
         self.scrollCollectionSettings()
         self.mainCollectionView.delegate = self
         self.mainCollectionView.dataSource = self
+        self.brandManager.getNewData(myIdx: 7, delegate: self)
         // Header
         self.mainCollectionView.register(UINib(nibName: BrandAppendHeader.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BrandAppendHeader.identifier)
         self.mainCollectionView.register(UINib(nibName: BrandFollowHeader.identifier, bundle: nil),forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: BrandFollowHeader.identifier)
@@ -45,6 +48,11 @@ extension BrandHomeVC: UICollectionViewDelegate,UICollectionViewDataSource{
             return cell
         case .brand:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubScribeSuggestCell.identifier, for: indexPath) as! SubScribeSuggestCell
+            let myData = brandDataList[indexPath.item]
+            cell.priceLabel.text = "\(myData.price) 원"
+            cell.titleLabel.text = myData.postTitle
+            cell.safePayImg.isHidden = !myData.payStatus
+            cell.titleImg.kf.setImage(with: URL(string: myData.postImg_url))
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestMainCell.identifier, for: indexPath) as! SuggestMainCell
@@ -54,7 +62,7 @@ extension BrandHomeVC: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionData[section]{
         case .brand:
-            return 10
+            return brandDataList.count
         case .append:
             return 1
         default:
@@ -165,5 +173,15 @@ extension BrandHomeVC: UICollectionViewDelegate,UICollectionViewDataSource{
             
         }
         return layout
+    }
+}
+//MARK: -- 메인셀 로드 완료
+extension BrandHomeVC{
+    func didSuccessGetItem(_ result: [CategoryResult]){
+        self.brandDataList = result
+        self.mainCollectionView.reloadData()
+    }
+    func didFailedGetResult(message: String){
+        print("불러오기 오류!!")
     }
 }

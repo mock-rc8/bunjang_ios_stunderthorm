@@ -26,7 +26,7 @@ class RegiVC: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
-    lazy var collectionManager = RegisterImageScrollManager(data:["안녕하세요","잘 가세요","","","","","",""])
+    lazy var collectionManager = RegisterImageScrollManager(data:[])
     lazy var tempTitle = RegisterRequest(postImg_url: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl-FrXpdUtIR5iCeVZCp4dGIh3uiENuo9OHg&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKtQope-BdIw_CFcgjw_MWsYKJC4BchgE7ow&usqp=CAU"], tradeRegion: "시흥시 신천동", postTitle: "test", postContent: "testContent", categoryIdx: 1, hashTagName: ["삼성전자", "삼성"], price: 100, deliveryFee: "N", quantity: 1, prodStatus: "중고상품", exchange: "불가", payStatus: "N")
     lazy var data = RegisterData()
     lazy var dataManager: RegisterDataManager = RegisterDataManager()
@@ -208,8 +208,12 @@ extension RegiVC{
         print("hello world!!")
     }
     func didSuccessRegister(_ result: RegisterResult) {
-//       self.presentAlert(title: "로그인에 성공하였습니다", message: String(result.postIdx))
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.LogIn, object: nil)
+       
+        
+        self.presentAlert(title: "업로드에 성공했습니다!!") { action in
+            NotificationCenter.default.removeObserver(self, name: Notification.Name.LogIn, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     func failedToRegister(message: String) {

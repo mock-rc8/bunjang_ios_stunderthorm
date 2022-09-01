@@ -20,7 +20,7 @@ class RegisterDataManager {
                 case .success(let response):
                     // 성공했을 때
                     print(response.isSuccess)
-                    print(response.result!)
+                    print(response.result)
                     print(response.code)
                     print(response.message)
                     if response.isSuccess, let result = response.result {

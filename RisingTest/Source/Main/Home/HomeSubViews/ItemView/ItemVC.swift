@@ -19,7 +19,7 @@ class ItemVC: UIViewController{
     @IBOutlet weak var adCollectionView: UICollectionView!
     @IBOutlet weak var adCollectionHeight: NSLayoutConstraint!
     lazy var itemDataManager = ItemDataManager()
-    lazy var itemShopManager = ItemShopManager(data:["Hello","","","","",""])
+    lazy var itemShopManager = ItemShopManager()
     lazy var itemImgDataManager = ItemImgDataManager()
     lazy var adShopManager = AdShopManager(data:AdShopData.shared.adData)
     var myItemData : ItemResult?
@@ -44,6 +44,7 @@ class ItemVC: UIViewController{
     @IBOutlet weak var deliveryFeeLabel: UILabel!
     @IBOutlet weak var exchangeLabel: UILabel!
     @IBOutlet weak var postContent: UITextView!
+    var itemShopData : [RecommendResult]?
     override func viewDidLoad() {
         super.viewDidLoad()
         shopCollectionSettings()
@@ -154,7 +155,7 @@ extension ItemVC{
         self.likeNumBtn.titleLabel?.text = String(result.likeNum)
         self.productStatusLabel.text = result.prodStatus
         self.quantityLabel.text = "총 \(result.quantity)개"
-        self.deliveryFeeLabel.text = result.deliveryFee == "N" ? "배송비별도" : result.deliveryFee
+        self.deliveryFeeLabel.text = result.deliveryFee == "N" ? "배송비별도" : "배송비 문의"
         self.exchangeLabel.text = result.exchange
         self.postContent.text = result.postContent
         self.isSuccessCount += 1

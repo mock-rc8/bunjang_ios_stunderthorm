@@ -16,7 +16,7 @@ struct RecommendResult: Decodable{
     var postingTime: String
     var payStatus: Bool
     var likeNum: Int
-    var sellingStatus: String
+    var sellingStatus: String?
 }
 struct RecommendResponse: Decodable {
     var isSuccess: Bool

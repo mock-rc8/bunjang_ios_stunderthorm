@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -182,14 +181,14 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="2818.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="poC-oQ-ZYt" userLabel="OuterStack">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2684"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2688"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9cH-53-v3t" userLabel="ItemInfoStack">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1050.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1054.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUn-vO-dIo" userLabel="ItemImgSlider" customClass="ItemImgSlider" customModule="RisingTest" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="374"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="hUn-vO-dIo" secondAttribute="height" multiplier="1:1" id="Ds8-LM-7jf"/>
                                                         </constraints>
@@ -337,47 +336,103 @@
                                                         <directionalEdgeInsets key="directionalLayoutMargins" top="20" leading="0.0" bottom="20" trailing="0.0"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fc3-4d-fcR" userLabel="CustomInfoStack">
-                                                        <rect key="frame" x="20" y="555" width="374" height="362"/>
+                                                        <rect key="frame" x="20" y="555" width="374" height="366"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NaF-h7-5R7" userLabel="SubInfoOuterStack">
-                                                                <rect key="frame" x="0.0" y="20" width="374" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="20" width="374" height="24.5"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jUD-ft-Yy4" userLabel="SubInfoStack">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="170.5" height="20.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="210.5" height="24.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새상품" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVU-S9-9vi">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="31.5" height="20.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새상품" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVU-S9-9vi" customClass="PaddingLabel" customModule="RisingTest" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="41.5" height="24.5"/>
                                                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                                                 <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 1개" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwe-7Y-MNC">
-                                                                                <rect key="frame" x="36.5" y="0.0" width="30" height="20.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 1개" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwe-7Y-MNC" customClass="PaddingLabel" customModule="RisingTest" customModuleProvider="target">
+                                                                                <rect key="frame" x="46.5" y="0.0" width="40" height="24.5"/>
                                                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                                                 <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배송비별도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6H-Zd-K7o">
-                                                                                <rect key="frame" x="71.5" y="0.0" width="52" height="20.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배송비별도" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6H-Zd-K7o" customClass="PaddingLabel" customModule="RisingTest" customModuleProvider="target">
+                                                                                <rect key="frame" x="91.5" y="0.0" width="62" height="24.5"/>
                                                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                                                 <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교환불가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDY-Xb-6AA">
-                                                                                <rect key="frame" x="128.5" y="0.0" width="42" height="20.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교환불가" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDY-Xb-6AA" customClass="PaddingLabel" customModule="RisingTest" customModuleProvider="target">
+                                                                                <rect key="frame" x="158.5" y="0.0" width="52" height="24.5"/>
                                                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                                                 <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
                                                                             </label>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZa-mJ-g8y">
-                                                                        <rect key="frame" x="170.5" y="0.0" width="203.5" height="20.5"/>
+                                                                        <rect key="frame" x="210.5" y="0.0" width="163.5" height="24.5"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -387,7 +442,7 @@
                                                                 <color key="backgroundColor" red="0.21454000470000001" green="0.3204087317" blue="0.88011103869999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </stackView>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="muw-Sq-uk9" userLabel="UserTextView">
-                                                                <rect key="frame" x="0.0" y="40.5" width="374" height="264.5"/>
+                                                                <rect key="frame" x="0.0" y="44.5" width="374" height="264.5"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.  Excepteur sint occaecat cupidatat non proident,  sunt in culpa qui officia deserunt mollit anim id est laborum.  Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -396,7 +451,7 @@
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZRp-jO-Qft">
-                                                                <rect key="frame" x="0.0" y="305" width="374" height="37"/>
+                                                                <rect key="frame" x="0.0" y="309" width="374" height="37"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="ZRp-jO-Qft" secondAttribute="height" multiplier="10:1" id="EdK-H5-hiV"/>
@@ -459,7 +514,7 @@
                                                         <directionalEdgeInsets key="directionalLayoutMargins" top="20" leading="0.0" bottom="20" trailing="0.0"/>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="51x-DJ-z5T" userLabel="ReportStack">
-                                                        <rect key="frame" x="20" y="917" width="374" height="133.5"/>
+                                                        <rect key="frame" x="20" y="921" width="374" height="133.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdu-5L-j67" userLabel="line">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="1"/>
@@ -537,7 +592,7 @@
                                                 <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6V1-Qw-iFB" userLabel="ShopInfoStack">
-                                                <rect key="frame" x="0.0" y="1050.5" width="414" height="1030"/>
+                                                <rect key="frame" x="0.0" y="1054.5" width="414" height="1030"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDg-4h-MW2" userLabel="Line">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="15"/>
@@ -662,7 +717,7 @@
                                                 <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pj-Gv-6m1">
-                                                <rect key="frame" x="0.0" y="2080.5" width="414" height="103.5"/>
+                                                <rect key="frame" x="0.0" y="2084.5" width="414" height="103.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AdBanner" translatesAutoresizingMaskIntoConstraints="NO" id="XXH-lR-JkI">
                                                         <rect key="frame" x="0.0" y="10" width="414" height="83"/>
@@ -680,7 +735,7 @@
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qmc-1n-kVS" userLabel="AdStack">
-                                                <rect key="frame" x="0.0" y="2184" width="414" height="500"/>
+                                                <rect key="frame" x="0.0" y="2188" width="414" height="500"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="999" constant="500" id="nf2-iL-sPS"/>
@@ -2146,6 +2201,20 @@
             <point key="canvasLocation" x="-126" y="1403"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="Nwe-7Y-MNC">
+            <size key="intrinsicContentSize" width="40" height="24.5"/>
+        </designable>
+        <designable name="UDY-Xb-6AA">
+            <size key="intrinsicContentSize" width="52" height="24.5"/>
+        </designable>
+        <designable name="b6H-Zd-K7o">
+            <size key="intrinsicContentSize" width="62" height="24.5"/>
+        </designable>
+        <designable name="vVU-S9-9vi">
+            <size key="intrinsicContentSize" width="41.5" height="24.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="AdBanner" width="748" height="159"/>
         <image name="SafePay" width="70" height="30"/>

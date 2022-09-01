@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 class AdShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
     var data : [AdShopSection]
+    var dummyItem: [RecommendResult] = Dummy.SHOP_LIST
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return data.count
     }
@@ -20,9 +21,23 @@ class AdShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate
         switch data[indexPath.section] {
         case .similar(let items):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemShopCollectionViewCell.identifier, for: indexPath) as! ItemShopCollectionViewCell
+            print(indexPath.item)
+            let data = self.dummyItem[indexPath.item]
+            cell.safePayView.isHidden = !data.payStatus
+            cell.priceLabel.text = "\(data.price) 원"
+            cell.titleLabel.text = data.postTitle
+            cell.dataLabel.text = data.postingTime
+            cell.locationLabel.text = data.tradeRegion ?? "지역정보 없음"
+            cell.mainImg.kf.setImage(with: URL(string: data.postImg_url ?? "onboard1"))
             return cell
         case .ad(let items):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdShopCollectionViewCell.identifier, for: indexPath) as! AdShopCollectionViewCell
+            let data = self.dummyItem[indexPath.item+10]
+            cell.safePayView.isHidden = !data.payStatus
+            cell.priceLabel.text = "\(data.price) 원"
+            cell.titleLabel.text = data.postTitle
+            cell.locationLabel.text = data.tradeRegion ?? "지역정보 없음"
+            cell.titleImg.kf.setImage(with: URL(string: data.postImg_url ?? "onboard1"))
             return cell
         }
     }
@@ -92,7 +107,7 @@ enum AdShopSection{
 struct AdShopData{
     static let shared = AdShopData()
     private let similar : AdShopSection = {
-        .similar(["hello","hello","hello","hello","hello","hello","hello","hello"])
+        .similar(["hello","hello"])
     }()
     private let ad : AdShopSection = {
         .ad(["hello","hello","hello","hello","hello","hello"])

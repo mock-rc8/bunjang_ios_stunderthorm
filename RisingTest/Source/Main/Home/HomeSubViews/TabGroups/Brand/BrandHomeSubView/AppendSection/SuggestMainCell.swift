@@ -12,14 +12,12 @@ class SuggestMainCell: UICollectionViewCell {
     static let identifier = "SuggestMainCell"
     var myVC : UIViewController?
     lazy var suggestMainCollectionManager = SuggestMainCollectionManager()
-    var scrollDataList: [[CategoryResult]] = []
+    var scrollDataList: [CategoryResult] = []
     var categoryFisrtManager = SuggestCategoryManager()
-    var categortSecondManager = SuggestCategoryManager()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.categoryFisrtManager.getNewData(myIdx: 1, delegate: self)
-        self.categortSecondManager.getNewData(myIdx: 1, delegate: self)
     }
     func setCollectionView(_ width: CGFloat){
         suggestMainCollectionManager.myDelegate = self
@@ -34,7 +32,7 @@ class SuggestMainCell: UICollectionViewCell {
 //MARK: -- 메인셀 로드 완료
 extension SuggestMainCell{
     func didSuccessGetItem(_ result: [CategoryResult]){
-        self.scrollDataList.append(result)
+        self.scrollDataList = result
         self.collectionView.reloadData()
     }
     func didFailedGetResult(message: String){
@@ -47,16 +45,15 @@ class SuggestMainCollectionManager:NSObject,UICollectionViewDataSource,UICollect
     var myCollection: UICollectionView?
     var myVC: UIViewController?
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print(myDelegate?.scrollDataList.count)
-        return myDelegate?.scrollDataList.count ?? 0
+        return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myDelegate?.scrollDataList[section].count ?? 0
+        return myDelegate?.scrollDataList.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandSuggestCell.identifier, for: indexPath) as! BrandSuggestCell
         let idx = indexPath.item
-        if let myData = myDelegate?.scrollDataList[indexPath.section][idx]{
+        if let myData = myDelegate?.scrollDataList[idx]{
             cell.titleLabel.text = myData.postTitle
             cell.priceLabel.text = "\(myData.price)원"
             cell.titleImgView.kf.setImage(with: URL(string: myData.postImg_url))
@@ -66,13 +63,18 @@ class SuggestMainCollectionManager:NSObject,UICollectionViewDataSource,UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("isSelected!!")
         let vc = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateViewController(withIdentifier: ItemVC.identifer) as! ItemVC
-        vc.myPostIdx = (self.myDelegate?.scrollDataList[indexPath.section][indexPath.item].postIdx)!
+        vc.myPostIdx = (self.myDelegate?.scrollDataList[indexPath.item].postIdx)!
         self.myDelegate?.myVC?.navigationController?.pushViewController(vc, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind{
         case UICollectionView.elementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BrandFollowHeader.identifier, for: indexPath) as! BrandFollowHeader
+            header.brandImgView.image = UIImage(named: "appleLogo")
+            header.brandImgView.tintColor = .black
+            header.brandTitleLabel.text = "애플"
+            header.brandSubTitleLabel.text = "Apple"
+            header.likesCountLabel.text = "17777777"
             return header
         default:
             return UICollectionReusableView()

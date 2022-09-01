@@ -10,7 +10,7 @@ import UIKit
 import Photos
 class RegisterImageScrollManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
     var data:[String]
-    var tempData: [Int] = [20,20]
+    var tempData: [Int] = [1,1]
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tempData[section]
     }

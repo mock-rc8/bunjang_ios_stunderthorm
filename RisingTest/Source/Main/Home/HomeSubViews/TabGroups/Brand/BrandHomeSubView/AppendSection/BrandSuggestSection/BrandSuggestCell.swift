@@ -27,4 +27,10 @@ class BrandSuggestCell: UICollectionViewCell {
         self.priceLabel.text = "\(data.price)원"
         self.safePayView.isHidden = !data.payStatus
     }
+    func setData(_ data: SearchReResult){
+        self.titleLabel.text = data.postTitle
+        self.priceLabel.text = "\(data.price) 원"
+        self.safePayView.isHidden = !data.payStatus
+        self.AD_View.isHidden = true
+    }
 }

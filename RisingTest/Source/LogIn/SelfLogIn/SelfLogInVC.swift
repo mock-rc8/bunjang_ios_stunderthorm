@@ -61,10 +61,13 @@ class SelfLogInVC:UIViewController,UITextFieldDelegate{
     @IBAction func carriorBtn(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: CarriorModalVC.identifier) as! CarriorModalVC
         vc.parentView = self
+
         presentPanModal(vc)
     }
     @IBAction func conFirmBtn(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: AgreeModalVC.identifier) as! AgreeModalVC
+        Variable.USER_NAME = self.nameTextField.text!
+        Variable.USER_PHONE = self.phoneNumberTextField.text!
         let requestData = SignInRequest(userName: nameTextField.text ?? "", phoneNumber: Int(phoneNumberTextField.text ?? "0")!, birth: Int(birthTextField.text ?? "0")!)
         vc.requestData = requestData
         presentPanModal(vc)

@@ -20,6 +20,10 @@ class KeyWordSetVC: UIViewController{
         self.innerStack.subviews.forEach { view in
             view.isHidden = true
         }
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(closeFn))
+    }
+    @objc func closeFn(){
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func btnAction(_ sender: UIButton) {
         self.innerStack.subviews.forEach { view in

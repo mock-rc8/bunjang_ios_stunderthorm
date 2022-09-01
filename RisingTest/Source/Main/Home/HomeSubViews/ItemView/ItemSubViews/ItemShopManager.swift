@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
-    var data:[String]
+    var data: [RecommendResult] = Dummy.SHOP_LIST
     var isCellInit = true
     var heightMethod : ((_ height: CGFloat)->Void)?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -20,6 +20,13 @@ class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
             self.heightMethod!(cell.frame.height)
             isCellInit.toggle()
         }
+        let data = self.data[indexPath.item]
+        cell.safePayView.isHidden = !data.payStatus
+        cell.priceLabel.text = "\(data.price) 원"
+        cell.titleLabel.text = data.postTitle
+        cell.dataLabel.text = data.postingTime
+        cell.locationLabel.text = data.tradeRegion ?? "지역정보 없음"
+        cell.mainImg.kf.setImage(with: URL(string: data.postImg_url ?? "onboard1"))
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -32,9 +39,6 @@ class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
         headerView.headerLabel.font = .systemFont(ofSize: 18, weight: .bold)
         headerView.headerLabel.text = "이 상점의 상품"
         return headerView
-    }
-    init(data:[String]){
-        self.data = data
     }
     static public func createCompositionalLayout() -> UICollectionViewLayout{
         let layout = UICollectionViewCompositionalLayout{
@@ -62,7 +66,7 @@ class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
         }
         return layout
     }
-    func setData(data:[String]){
+    func setData(data:[RecommendResult]){
         self.data = data
     }
     

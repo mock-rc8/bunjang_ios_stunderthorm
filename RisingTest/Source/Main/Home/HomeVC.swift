@@ -30,6 +30,7 @@ class HomeVC: MainUIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        self.headerLabel.text = "전국에서 갓 올라온 \n\(Variable.USER_NAME) 님의 취향"
     }
     @objc func ScrollToTop(notification: Notification){
         print(self.headerStack.frame.height - self.headerLabel.frame.height)

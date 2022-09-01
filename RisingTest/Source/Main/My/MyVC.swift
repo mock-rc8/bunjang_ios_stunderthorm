@@ -31,9 +31,15 @@ class MyVC: MainUIViewController{
         collectionView.register(UINib(nibName: MyNoticeCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: MyNoticeCollectionReusableView.identifier)
         collectionView.register(UINib(nibName: MyTabManCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: MyTabManCollectionViewCell.identifier)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.collectionView.reloadData()
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.wrapperHeight = self.wrapperHeight ?? ((header?.headerWrapper.frame.height)! + self.topbarHeight)
+        
+        
     }
     @IBAction func alertBtnAction(_ sender: UIBarButtonItem) {
         let vc = UIStoryboard(name: "AlertStoryboard", bundle: nil).instantiateViewController(withIdentifier: AlertVC.identifier) as! AlertVC
@@ -57,6 +63,7 @@ extension MyVC: UICollectionViewDataSource,UICollectionViewDelegate{
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyTabManCollectionViewCell.identifier, for: indexPath) as! MyTabManCollectionViewCell
+        
             return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -66,6 +73,8 @@ extension MyVC: UICollectionViewDataSource,UICollectionViewDelegate{
             return footer
         case UICollectionView.elementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyHeaderCollectionReusableView.identifier, for: indexPath) as! MyHeaderCollectionReusableView
+            header.myVC = self
+            header.headerTitle.text = Variable.USER_NAME
         self.infoSettings(header.shopInfoCollection)
         self.numberInfoSettings(header.numberCollection)
         

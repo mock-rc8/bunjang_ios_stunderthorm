@@ -33,6 +33,7 @@ class ItemImgSlider: UIView,SliderDelegate{
         self.sliderCollection.collectionViewLayout = itemImgSliderManager.createSliderCompositionalLayout(self.frame.height)
         self.pageControlStyle()
         self.layout()
+        self.backgroundColor = .white
     }
     private func layout(){
         self.sliderPageControl.translatesAutoresizingMaskIntoConstraints = false

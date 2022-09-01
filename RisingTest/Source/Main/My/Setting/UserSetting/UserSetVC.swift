@@ -16,7 +16,7 @@ class UserSetVC: UIViewController{
         let phoneNum = "\(Variable.USER_PHONE)"
         print(phoneNum)
         let phone = Variable.getUser_Phone(Variable.USER_PHONE)
-        self.phoneLabel.text = "\(phone.first)-****-\(phone.second)"
+        self.phoneLabel.text = "\(phone.first)-****-\(phone.third)"
         
         self.navigationItem.leftBarButtonItems = [
             UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(closeFn)),
@@ -26,7 +26,24 @@ class UserSetVC: UIViewController{
             view.tintColor = .black
         })
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        let phoneNum = "\(Variable.USER_PHONE)"
+//        print(phoneNum)
+//        let phone = Variable.getUser_Phone(Variable.USER_PHONE)
+//        print(phone)
+        
+//    }
     @objc func closeFn(){
         self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func phoneNumberChange(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: UserPhoneVC.identifier) as! UserPhoneVC
+        vc.completion = {
+            print(Variable.USER_PHONE)
+            let phone = Variable.getUser_Phone(Variable.USER_PHONE)
+            self.phoneLabel.text = "\(phone.first)-****-\(phone.third)"
+        }
+        presentPanModal(vc)
     }
 }

@@ -21,7 +21,9 @@ struct Variable{
     static var USER_ID = 13
     static var USER_LOCATION = "뉴욕시 맨해튼구"
     static var USER_PHONE = "01012345678"
+    static var USER_NAME = "구음"
     static func getUser_Phone(_ myNumber:String)->(first:String,second:String,third:String){
+        print(myNumber)
         let last = myNumber.index(myNumber.startIndex, offsetBy: 3)
         let first:String = String(myNumber[myNumber.startIndex..<last])
         let temp = myNumber.index(last,offsetBy: 4)
@@ -31,4 +33,7 @@ struct Variable{
         return (first,second,third)
     }
     static var MY_ACCOUNT : [String] = []
+}
+struct Dummy{
+    static var SHOP_LIST : [RecommendResult] = []
 }

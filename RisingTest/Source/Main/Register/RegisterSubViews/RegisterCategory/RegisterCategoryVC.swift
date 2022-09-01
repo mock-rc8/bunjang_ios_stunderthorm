@@ -78,7 +78,7 @@ extension RegisterCategoryVC: UITableViewDelegate,UITableViewDataSource{
         }
         self.headerList?.append(selectedData)
         let idx: Int = RegisterCategoryData.shared.pageData[0].values[0].firstIndex(of: self.headerList![1])!
-        NotificationCenter.default.post(name: Notification.Name.Category,object: nil,userInfo: ["ViewData":self.headerList! ,"ServerData": idx])
+        NotificationCenter.default.post(name: Notification.Name.Category,object: nil,userInfo: ["ViewData":self.headerList! ,"ServerData": 1])
         self.navigationController?.popToViewController(self.myRootVC!, animated: true)
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

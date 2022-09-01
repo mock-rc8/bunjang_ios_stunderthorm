@@ -1,48 +1,39 @@
 //
-//  HomeRecommend.swift
+//  SearchDataManager.swift
 //  RisingTest
 //
-//  Created by 김태윤 on 2022/08/28.
+//  Created by 김태윤 on 2022/09/02.
 //
 
 import Foundation
+
+import Foundation
 import Alamofire
-import UIKit
 import Kingfisher
-protocol ReloadProtocol{
-    func reload()
-    func didSuccessGetResult()
-    func didFailedGetResult(message: String)
-}
-class HomeRecommendModel{
-    public private(set) var data: [RecommendResult] = []
-    public private(set) var dataImg: [UIImageView] = []
+import UIKit
+class SearchReDataManager{
+    public private(set) var data: [SearchReResult] = []
+    public private(set) var dataImgView: [UIImageView] = []
     public private(set) var nowListCount: Int = 0
     private var nowPageCount: Int = 1
     private var totalPage: Int = 100
     private var keyword:String = "cat"
     private var reloadProtocol:ReloadProtocol
-    init(reload:ReloadProtocol){
+    private var myQuery:String
+    init(query: String,reload:ReloadProtocol){
         self.reloadProtocol = reload
+        self.myQuery = query
     }
     public func addMyData() {
-        self.getNewData { (data: [RecommendResult]) in
+        self.getNewData { (data: [SearchReResult]) in
             if(self.nowPageCount <= self.totalPage){
-                let data = data.filter { result in
-                    !(result.sellingStatus == "0" || result.sellingStatus == nil)
-                }
                 self.data.append(contentsOf: data)
-                let imgData = data.map{ (a :RecommendResult) -> UIImageView in
+                let imgViewData = data.map{ (a:SearchReResult) -> UIImageView in
                     let imageView = UIImageView()
-                    imageView.kf.setImage(with: URL(string: a.postImg_url ?? "onboard4"))
+                    imageView.kf.setImage(with: URL(string: a.postImg_url))
                     return imageView
                 }
-                if Dummy.SHOP_LIST.count == 0 {
-                    
-                    Dummy.SHOP_LIST = data
-                    print("Make Dummy!",Dummy.SHOP_LIST.count)
-                }
-                self.dataImg.append(contentsOf: imgData)
+                self.dataImgView.append(contentsOf: imgViewData)
                 self.nowListCount += data.count
                 self.nowPageCount += 1
                 self.reloadProtocol.didSuccessGetResult()
@@ -51,11 +42,12 @@ class HomeRecommendModel{
         }
     }
 }
-extension HomeRecommendModel{
-    fileprivate func getNewData(onCompleted: @escaping ([RecommendResult])->Void){
-        let urlString = "\(Constant.BASE_URL)\(Constant.POST)/\(Variable.USER_ID)/posts/\(self.nowPageCount)"
+extension SearchReDataManager{
+    fileprivate func getNewData(onCompleted: @escaping ([SearchReResult])->Void){
+        let urlString: String = "\(Constant.BASE_URL)\(Constant.POST)/\(Variable.USER_ID)/search-prod/\(self.nowPageCount)?query=\"\(self.myQuery)\""
+        let changeString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         print(urlString)
-        AF.request(urlString, method: .get).validate().responseDecodable(of:RecommendResponse.self){ response in
+        AF.request(changeString, method: .get).validate().responseDecodable(of:SearchReResponse.self){ response in
             switch response.result {
             case .success(let response):
                 // 성공했을 때
@@ -72,6 +64,7 @@ extension HomeRecommendModel{
                     case 2021: self.reloadProtocol.didFailedGetResult(message: "상품 사진을 등록해주세요.")
                     case 2018: self.reloadProtocol.didFailedGetResult(message: "상품명을 2글자 이상 입력해주세요.")
                     case 2019: self.reloadProtocol.didFailedGetResult(message: "카테고리를 선택해주세요.")
+                    case 4000: self.reloadProtocol.didFailedGetResult(message: "검색 결과가 없습니다.")
                     default: self.reloadProtocol.didFailedGetResult(message: "피드백을 주세요")
                     }
                 }
