@@ -26,6 +26,7 @@ class RegiVC: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var optionBtn: UIButton!
     lazy var collectionManager = RegisterImageScrollManager(data:[])
     lazy var tempTitle = RegisterRequest(postImg_url: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl-FrXpdUtIR5iCeVZCp4dGIh3uiENuo9OHg&usqp=CAU", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKtQope-BdIw_CFcgjw_MWsYKJC4BchgE7ow&usqp=CAU"], tradeRegion: "시흥시 신천동", postTitle: "test", postContent: "testContent", categoryIdx: 1, hashTagName: ["삼성전자", "삼성"], price: 100, deliveryFee: "N", quantity: 1, prodStatus: "중고상품", exchange: "불가", payStatus: "N")
     lazy var data = RegisterData()
@@ -55,6 +56,9 @@ class RegiVC: UIViewController{
         self.safePayWrapper.layer.borderWidth = 1
         self.safePayWrapper.layer.borderColor = UIColor.darkGray.cgColor
         self.safePayWrapper.layer.cornerRadius = 5
+        self.optionBtn.layer.borderWidth = 1
+        self.optionBtn.layer.borderColor = UIColor.lightGray.cgColor
+        self.optionBtn.layer.cornerRadius = 5
     }
     func collectionViewSettings(){
         self.collectionView.delegate = collectionManager
@@ -180,13 +184,22 @@ extension RegiVC{
 extension RegiVC{
     @IBAction func tabBtnAction(_ sender: UIButton) {
         let vc = UIStoryboard(name: "RegisterStoryboard", bundle: nil).instantiateViewController(withIdentifier: RegisterTagVC.identifier) as! RegisterTagVC
+        vc.delegate = { myTags in
+            var string = ""
+            myTags.forEach { tag in
+               let tagString = "#\(tag)"
+                string = "\(string) \(tagString)"
+            }
+            self.tagField.text = string
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func deliveryBtnAction(_ sender: UIButton) {//배달 가능여부 데이터 설정
+        let red = #colorLiteral(red: 0.846611917, green: 0.04588327557, blue: 0.09413331002, alpha: 1)
         if data.deliveryFee == false{
             self.deliveryFeeBtn.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-            self.deliveryFeeBtn.tintColor = .red
+            self.deliveryFeeBtn.tintColor = red
         }else{
             self.deliveryFeeBtn.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
             self.deliveryFeeBtn.tintColor = .gray
@@ -195,8 +208,9 @@ extension RegiVC{
     }
     @IBAction func safePayBtnAction(_ sender: UIButton) {//안전페이 가능여부 데이터 설정
         if data.payStatus == .unsafe{
-            self.safePayCheckMark.tintColor = .red
-            self.safePayWrapper.layer.borderColor = UIColor.red.cgColor
+            let red = #colorLiteral(red: 0.846611917, green: 0.04588327557, blue: 0.09413331002, alpha: 1)
+            self.safePayCheckMark.tintColor = red
+            self.safePayWrapper.layer.borderColor = red.cgColor
             self.data.payStatus = .safe
         }else{
             self.safePayCheckMark.tintColor = .darkGray
@@ -233,7 +247,7 @@ extension RegiVC: UITextViewDelegate{
         }
     }
     func setEmptyText(_ textview: UITextView){
-        textview.text = "텍스트 입력"
+        textview.text = "여러 자의 상품 사진과 구입 연도, 브랜드, 사용감, 하자유부 등 구매자에게 필요한 정보를 꼭 포함해 주세요.\n문의를 줄이고 더 쉽게 판매할 수 있어요. (10자 이상)"
         textview.textColor = .placeholderText
     }
 }

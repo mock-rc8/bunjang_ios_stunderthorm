@@ -31,6 +31,7 @@ class AlertSetVC:UIViewController{
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backVC)),LabelBarButtonItem(text: "알림/부가서비스")
         ]
         self.navigationItem.leftBarButtonItem?.tintColor = .black
+        self.tableView.backgroundColor = #colorLiteral(red: 0.9607843757, green: 0.9607843757, blue: 0.9607843757, alpha: 1)
     }
 @objc func backVC(){
     self.navigationController?.popViewController(animated: true)
@@ -52,6 +53,7 @@ extension AlertSetVC:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: AlertSettingCell.identifier, for: indexPath) as! AlertSettingCell
             cell.titleLabel.text = self.alertData.values[indexPath.section][idx].0
             cell.switcher.isOn = self.alertData.values[indexPath.section][idx].2 ?? false
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             cell.selectionStyle = .none
             let sectionIdx = indexPath.section
             let itemIdx = indexPath.item
@@ -64,6 +66,7 @@ extension AlertSetVC:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: EntireSetCell.identifier, for: indexPath) as! EntireSetCell
             cell.selectionStyle = .none
             cell.titlaLabel.text = self.alertData.values[indexPath.section][idx].0
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             return cell
         }
     }
@@ -76,6 +79,15 @@ extension AlertSetVC:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.alertData.keys[section]
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.red
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.black
+        header.textLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
 }
 enum AlertCellType{

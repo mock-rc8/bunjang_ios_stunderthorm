@@ -32,8 +32,10 @@ class RegisterCategoryHeader: UITableViewHeaderFooterView {
                 let label = UILabel()
                 label.text = datas[0]
                 let font = UIFont(name: "System", size: 12)
+                
                 label.textColor = .gray
                 label.font = font
+                label.font = .systemFont(ofSize: 14, weight: .bold)
                 return label
             }())
         }else{
@@ -42,6 +44,7 @@ class RegisterCategoryHeader: UITableViewHeaderFooterView {
                 label.text = data
                 let font = UIFont(name: "System", size: 12)
                 label.font = font
+                label.font = .systemFont(ofSize: 14, weight: .bold)
                 return label
             }
             labels.last?.textColor = .red

@@ -49,9 +49,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VIN-yh-Jhx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VIN-yh-Jhx">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemGray6Color"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yzt-fe-dtj"/>
@@ -79,13 +80,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HBa-hQ-0nv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HBa-hQ-0nv">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemGray6Color"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6ub-Vh-MtA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.96078431610000004" green="0.96078431610000004" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="HBa-hQ-0nv" firstAttribute="top" secondItem="6ub-Vh-MtA" secondAttribute="top" id="C2q-Tv-Vbl"/>
                             <constraint firstItem="6ub-Vh-MtA" firstAttribute="trailing" secondItem="HBa-hQ-0nv" secondAttribute="trailing" id="KJq-Sd-1JY"/>
@@ -761,7 +765,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHw-ip-6UV">
                                         <rect key="frame" x="0.0" y="72" width="414" height="51.5"/>
-                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                        <color key="backgroundColor" red="0.77647060160000003" green="0.1764705926" blue="0.15294116739999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EHw-ip-6UV" secondAttribute="height" multiplier="8:1" id="jZ5-c6-50c"/>
                                         </constraints>
@@ -837,14 +841,36 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="은행선택" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VPZ-cJ-509">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEe-ha-zID">
                                         <rect key="frame" x="0.0" y="80" width="374" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="은행선택" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VPZ-cJ-509">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R9-TU-SJk" userLabel="BankBtn">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="appendBtnAction:" destination="KZa-BX-JxZ" eventType="touchUpInside" id="x0P-fI-pzd"/>
+                                                    <action selector="bankBtnAction:" destination="5yn-9S-ZHA" eventType="touchUpInside" id="kDi-Ve-f5b"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="qCF-qJ-EfS"/>
+                                            <constraint firstItem="VPZ-cJ-509" firstAttribute="top" secondItem="eEe-ha-zID" secondAttribute="top" id="68d-Th-f0a"/>
+                                            <constraint firstItem="VPZ-cJ-509" firstAttribute="leading" secondItem="eEe-ha-zID" secondAttribute="leading" id="Ap0-nz-y1E"/>
+                                            <constraint firstAttribute="bottom" secondItem="VPZ-cJ-509" secondAttribute="bottom" id="EOu-aP-qlu"/>
+                                            <constraint firstItem="5R9-TU-SJk" firstAttribute="top" secondItem="eEe-ha-zID" secondAttribute="top" id="S5u-n9-ccc"/>
+                                            <constraint firstAttribute="trailing" secondItem="VPZ-cJ-509" secondAttribute="trailing" id="TNi-tg-ool"/>
+                                            <constraint firstAttribute="bottom" secondItem="5R9-TU-SJk" secondAttribute="bottom" id="X6F-DV-UhW"/>
+                                            <constraint firstAttribute="height" constant="50" id="cYI-hm-NPI"/>
+                                            <constraint firstItem="5R9-TU-SJk" firstAttribute="leading" secondItem="eEe-ha-zID" secondAttribute="leading" id="vCD-dz-QIt"/>
+                                            <constraint firstAttribute="trailing" secondItem="5R9-TU-SJk" secondAttribute="trailing" id="xYq-Ia-nAj"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="계좌번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVU-1c-crq">
                                         <rect key="frame" x="0.0" y="160" width="374" height="50"/>
                                         <constraints>
@@ -894,8 +920,41 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ta-3y-Mv6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="5yn-9S-ZHA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3832" y="1385"/>
+        </scene>
+        <!--Account ModalVC-->
+        <scene sceneID="Dnj-l7-Jg5">
+            <objects>
+                <viewController storyboardIdentifier="AccountModalVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3ZY-WW-CCV" customClass="AccountModalVC" customModule="RisingTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4l4-2f-o1R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9UC-8A-MnP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="l9d-Sj-Vwi"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4fq-af-IU1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9UC-8A-MnP" firstAttribute="leading" secondItem="4fq-af-IU1" secondAttribute="leading" id="ECJ-5F-NYT"/>
+                            <constraint firstItem="4fq-af-IU1" firstAttribute="trailing" secondItem="9UC-8A-MnP" secondAttribute="trailing" id="dE9-U2-Gxu"/>
+                            <constraint firstItem="9UC-8A-MnP" firstAttribute="top" secondItem="4fq-af-IU1" secondAttribute="top" id="eqK-hk-h8V"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="stackView" destination="9UC-8A-MnP" id="aW7-Gr-z7E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pPQ-QT-tue" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4645" y="1385"/>
         </scene>
     </scenes>
     <resources>
@@ -912,11 +971,11 @@
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

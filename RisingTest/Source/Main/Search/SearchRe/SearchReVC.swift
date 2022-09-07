@@ -78,7 +78,6 @@ extension SearchReVC: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SearchReHeaderView.identifier, for: indexPath) as! SearchReHeaderView
         self.header = header
-
         return header
     }
     func createCompositionalLayout() -> UICollectionViewLayout{
@@ -126,8 +125,14 @@ extension SearchReVC{
 //MARK: -- 네비게이션 관리
 extension SearchReVC{
     func navigationSettings(){
-        let searchBar = UISearchBar()
-        searchBar.placeholder = "검색어를 입력해주세요"
+        let searchBar: UISearchBar = {
+           let sb = UISearchBar()
+           sb.placeholder = "검색어를 입력해주세요"
+           let emptyImage = UIImage()
+           sb.setImage(emptyImage, for: .search, state: .normal)
+           return sb
+        }()
+        searchBar.delegate = self
         searchBar.text = mySearchText ?? ""
         self.navigationItem.titleView = searchBar
         self.navigationItem.leftBarButtonItem = {
@@ -152,6 +157,18 @@ extension SearchReVC{
     }
     @objc func shareView(){
         print("공유 구현 해야한다.")
+    }
+}
+// 검색 창 재검색 가능
+extension SearchReVC: UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchAction(text: searchBar.text!)
+    }
+    func searchAction(text: String){
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SearchReVC.identifier) as! SearchReVC
+        vc.mySearchText = text
+        Dummy.RECTENT_SEARCH.append(text)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 //MARK: -- Categoty 무한 스크롤 데이터 얻기

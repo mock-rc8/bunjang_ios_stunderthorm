@@ -21,6 +21,7 @@ class SettingEntireVC:UIViewController{
         self.tableView.register(UINib(nibName: EntireSetCell.identifier, bundle: nil), forCellReuseIdentifier: EntireSetCell.identifier)
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backVC)),LabelBarButtonItem(text: "설정")                   ]
         self.navigationItem.leftBarButtonItem?.tintColor = .black
+        self.tableView.backgroundColor = #colorLiteral(red: 0.9607843757, green: 0.9607843757, blue: 0.9607843757, alpha: 1)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,6 +49,8 @@ extension SettingEntireVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EntireSetCell.identifier, for: indexPath) as! EntireSetCell
         let idx = indexPath.item
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        cell.textLabel?.textColor = .darkGray
         switch sectionList[indexPath.section]{
         case .logout:
             cell.titlaLabel.text = logoutSetList[idx].rawValue
@@ -88,5 +91,14 @@ extension SettingEntireVC:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sectionList[section] == .logout ? " " : sectionList[section].rawValue
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.red
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.black
+        header.textLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
     }
 }

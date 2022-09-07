@@ -50,13 +50,15 @@ class PayVC: UIViewController{
         self.setPrice()
         self.itemImg.kf.setImage(with: URL(string: self.imgURL))
         self.itemTitleLabel.text =  self.myTitle
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(closeFn))
-        self.navigationItem.leftBarButtonItem?.tintColor = .black
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeFn))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(), style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem?.tintColor = .black
     }
     public func setPrice(){
-        self.itemPriceLabel.text = "\(self.myPrice) 원"
-        self.productPriceLabel.text = "\(self.myPrice) 원"
-        self.totalPayPriceLabel.text = "\(self.myPrice) 원"
+        let priceString = Variable.getMoneyFormat(self.myPrice)
+        self.itemPriceLabel.text = priceString
+        self.productPriceLabel.text = priceString
+        self.totalPayPriceLabel.text = priceString
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -118,9 +120,10 @@ extension PayVC{
         payAgreeStyle()
     }
     func payAgreeStyle(){
+        let red = #colorLiteral(red: 0.846611917, green: 0.04588327557, blue: 0.09413331002, alpha: 1)
         if isPayAgree{
             payToggleImg.image = UIImage(systemName: "circle.fill")
-            payToggleImg.tintColor = .red
+            payToggleImg.tintColor = red
         }else{
             payToggleImg.image = UIImage(systemName: "circle")
             payToggleImg.tintColor = .gray
@@ -141,9 +144,10 @@ extension PayVC{
         }
     }
     func payTypeStyle(){
+        let red = #colorLiteral(red: 0.846611917, green: 0.04588327557, blue: 0.09413331002, alpha: 1)
         if isSafeTyoe{
             self.safePayCircle.image = UIImage(systemName: "circle.fill")
-            self.safePayCircle.tintColor = .red
+            self.safePayCircle.tintColor = red
             self.otherPayCircle.image = UIImage(systemName: "circle")
             self.otherPayCircle.tintColor = .gray
             self.otherPayLabel.textColor = .gray
@@ -152,7 +156,7 @@ extension PayVC{
             self.safePayCircle.image = UIImage(systemName: "circle")
             self.safePayCircle.tintColor = .gray
             self.otherPayCircle.image = UIImage(systemName: "circle.fill")
-            self.otherPayCircle.tintColor = .red
+            self.otherPayCircle.tintColor = red
             self.otherPayLabel.textColor = .black
             self.safePayLabel.textColor = .gray
         }

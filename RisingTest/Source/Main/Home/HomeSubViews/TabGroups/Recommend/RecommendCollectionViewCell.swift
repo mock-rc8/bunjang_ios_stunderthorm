@@ -18,29 +18,62 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var likesBtn: UIButton!
     static let identifier = "RecommendCollectionViewCell"
     var myPostIdx: Int = -1
+    var myData : RecommendResult?
+    var tapDelegate : ((_ postIdx:Int)->())?
+    var myParentVC: UIViewController?
+    lazy var zzimDataManager = ZzimDataManager()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let tap = UITapGestureRecognizer(target: self, action: #selector(cellTap))
+        self.addGestureRecognizer(tap)
+    }
+    @objc func cellTap(){
+        if let tapped = tapDelegate{
+            tapped(self.myData!.postIdx)
+        }
     }
     func setData(_ data: RecommendResult){
-//            if let imgURL = data.postImg_url{
-//                DispatchQueue.main.async {
-//                    self.headImgView.kf.setImage(with: URL(string: imgURL))
-//                }
-//            }else
-//        {
-//                self.headImgView.image = UIImage(named: "onboard1")
-//            }
+        self.myData = data
         self.safePayView.isHidden = data.payStatus
-        self.setHeartStyle(data.zzimStatus)
-        self.priceLabel.text = "\(data.price)원"
+        self.setZzimStyle()
+        self.priceLabel.text = Variable.getMoneyFormat(data.price)
         self.titleLabel.text = data.postTitle
         self.locationLabel.text = data.tradeRegion ?? "지역정보 없음"
         self.uploadDateLabel.text = data.postingTime
         self.myPostIdx = data.postIdx
         likesBtn.setTitle("\(data.likeNum)", for: .normal)
     }
-    func setHeartStyle(_ likes: Bool){
-        self.heartBtn.setImage(UIImage(systemName: likes ? "heart.fill" : "heart"), for: .normal)
+    @IBAction func zzimBtnAction(_ sender: UIButton) {
+        self.myData?.zzimStatus.toggle()
+        self.setZzimStyle()
+        if self.myData!.zzimStatus{
+            self.zzimDataManager.zzimOn(self.myPostIdx, delegate: self)
+        }else{
+            self.zzimDataManager.zzimOff(self.myPostIdx, delegate: self)
+        }
+        NotificationCenter.default.post(name: self.myData!.zzimStatus ? Notification.Name.ZzimOn : Notification.Name.ZzimOff, object: nil)
     }
+    func setZzimStyle(){
+        self.heartBtn.tintColor = self.myData!.zzimStatus ? .systemPink : .white
+        let image = UIImage(systemName: self.myData!.zzimStatus ? "heart.fill" : "heart" ,withConfiguration: UIImage.SymbolConfiguration(pointSize: 18,weight: .bold,scale: .large))
+        self.heartBtn.setImage(image, for: .normal)
+    }
+}
+
+
+extension RecommendCollectionViewCell:ZzimProtocol{
+    func didSuccessZZimOn() {
+        print("찜 성공")
+    }
+    
+    func didSuccessZzimOff() {
+        print("찜 끄기")
+    }
+    
+    func failedToRequest(message: String) {
+        print("찜 대실패")
+    }
+    
+    
 }

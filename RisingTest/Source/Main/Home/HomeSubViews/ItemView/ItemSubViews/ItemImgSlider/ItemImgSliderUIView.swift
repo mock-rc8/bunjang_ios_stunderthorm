@@ -20,7 +20,7 @@ class ItemImgSlider: UIView,SliderDelegate{
         label.textColor = .white
         return label
     }()
-    var data: [String] = []
+    lazy var data: [String] = []
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         //itemImgSliderManager = ItemImgSliderManager(data: [], updater: self)
@@ -80,8 +80,8 @@ class ItemImgSlider: UIView,SliderDelegate{
             
     }
 }
-class ItemImgSliderManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
-    var data:[UIImageView] = []
+final class ItemImgSliderManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
+    lazy var data:[UIImageView] = []
     var controllerProtocol:SliderDelegate!
     private var willIdx: Int = 0
     private var didIdx: Int = 0

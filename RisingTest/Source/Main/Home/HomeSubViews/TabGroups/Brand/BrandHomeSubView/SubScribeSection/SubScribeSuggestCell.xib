@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,10 +17,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="503" height="211"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" horizontalHuggingPriority="231" verticalHuggingPriority="244" horizontalCompressionResistancePriority="742" verticalCompressionResistancePriority="738" translatesAutoresizingMaskIntoConstraints="NO" id="zqy-Hr-rcC" userLabel="ImgWrapper">
+                    <view contentMode="scaleToFill" horizontalHuggingPriority="231" verticalHuggingPriority="244" horizontalCompressionResistancePriority="742" verticalCompressionResistancePriority="738" translatesAutoresizingMaskIntoConstraints="NO" id="zqy-Hr-rcC" userLabel="ImgWrapper" customClass="CornerView" customModule="RisingTest" customModuleProvider="target">
                         <rect key="frame" x="15" y="54" width="85" height="113"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner2" translatesAutoresizingMaskIntoConstraints="NO" id="oXi-yc-sgP">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner2" translatesAutoresizingMaskIntoConstraints="NO" id="oXi-yc-sgP" customClass="CornerImgView" customModule="RisingTest" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="85" height="113"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2Z-WT-kTL">
@@ -58,37 +57,37 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="CYc-Qy-U9h">
-                        <rect key="frame" x="110" y="54" width="393" height="113"/>
+                        <rect key="frame" x="110" y="65.5" width="393" height="90"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RMc-Id-v15">
-                                <rect key="frame" x="0.0" y="0.0" width="259.5" height="52.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="263" height="52.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="270,000원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I65-YF-QjM">
-                                        <rect key="frame" x="0.0" y="0.0" width="259.5" height="25.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="263" height="25.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="센터판 s급 갤럭시Z플립2 5G 256G 블랙(86)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubQ-hc-XjP">
-                                        <rect key="frame" x="0.0" y="35.5" width="259.5" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" systemColor="systemGrayColor"/>
+                                        <rect key="frame" x="0.0" y="35.5" width="263" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nMh-r1-yka">
-                                <rect key="frame" x="0.0" y="98.5" width="105" height="14.5"/>
+                                <rect key="frame" x="0.0" y="74" width="113.5" height="16"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="부천시 송내1동" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pT0-JB-GLD">
-                                        <rect key="frame" x="0.0" y="0.0" width="71.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                         <color key="textColor" systemColor="systemGray2Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2분전" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzg-yx-j0O">
-                                        <rect key="frame" x="76.5" y="0.0" width="28.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <rect key="frame" x="82.5" y="0.0" width="31" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                         <color key="textColor" systemColor="systemGray2Color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -106,7 +105,7 @@
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="CYc-Qy-U9h" secondAttribute="trailing" id="CUj-jt-f6F"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="zqy-Hr-rcC" secondAttribute="top" constant="-10" id="TnI-IH-BSf"/>
                 <constraint firstItem="CYc-Qy-U9h" firstAttribute="leading" secondItem="zqy-Hr-rcC" secondAttribute="trailing" constant="10" id="ZHz-zN-G3n"/>
-                <constraint firstItem="CYc-Qy-U9h" firstAttribute="height" secondItem="zqy-Hr-rcC" secondAttribute="height" id="fSe-Ua-XkD"/>
+                <constraint firstItem="CYc-Qy-U9h" firstAttribute="height" secondItem="zqy-Hr-rcC" secondAttribute="height" multiplier="0.8" id="fSe-Ua-XkD"/>
             </constraints>
             <size key="customSize" width="503" height="211"/>
             <connections>
@@ -130,9 +129,6 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

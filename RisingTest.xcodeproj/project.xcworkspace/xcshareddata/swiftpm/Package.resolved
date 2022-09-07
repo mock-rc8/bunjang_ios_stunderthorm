@@ -64,6 +64,15 @@
       }
     },
     {
+      "identity" : "taglistview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ElaWorkshop/TagListView.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "7496407997c96edef4924f2e7d1e95d860123ffc"
+      }
+    },
+    {
       "identity" : "tweetextfield",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/oleghnidets/TweeTextField.git",

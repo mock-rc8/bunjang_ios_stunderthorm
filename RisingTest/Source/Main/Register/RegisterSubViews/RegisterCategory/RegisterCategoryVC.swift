@@ -10,7 +10,7 @@ import UIKit
 import OrderedCollections
 class RegisterCategoryVC: UIViewController{
     static let identifier = "RegisterCategoryVC"
-    lazy var tableView = UITableView()
+    lazy var tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
     private var categoryDataList : OrderedDictionary<String,[String]>?
     private var headerList : [String]?
     var pageIdx = 0
@@ -23,6 +23,13 @@ class RegisterCategoryVC: UIViewController{
         tableView.dataSource = self
         tableView.register(UINib(nibName: RegisterCategoryTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: RegisterCategoryTableViewCell.identifier)
         tableView.register(UINib(nibName: RegisterCategoryHeader.identifier, bundle: nil), forHeaderFooterViewReuseIdentifier: RegisterCategoryHeader.identifier)
+        self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backVC)),LabelBarButtonItem(text: "카테고리")]
+        self.navigationItem.leftBarButtonItem?.tintColor = .black
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
+    }
+    @objc func backVC(){
+        self.navigationController?.popViewController(animated: true)
     }
     
     func layout(){
@@ -55,6 +62,7 @@ extension RegisterCategoryVC: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RegisterCategoryTableViewCell.identifier) as! RegisterCategoryTableViewCell
         cell.titleLabel.text = categoryDataList?.values[0][indexPath.item]
+        //cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         if (self.pageIdx+1) < RegisterCategoryData.shared.pageData.count{ // 다음 인덱스는 전체 데이터의 수 보다 작아야한다.
             let selectedData: String = (categoryDataList?.values[0][indexPath.item])! //현재 선택된 데이터의 값
             let nextData: String = RegisterCategoryData.shared.pageData[self.pageIdx+1].keys[0] //다음 데이터의 키 값
@@ -83,10 +91,14 @@ extension RegisterCategoryVC: UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: RegisterCategoryHeader.identifier) as! RegisterCategoryHeader
+        
         header.setStack(self.headerList!)
         return header
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 30
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 }

@@ -21,6 +21,7 @@ class KeyWordSetVC: UIViewController{
             view.isHidden = true
         }
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(closeFn))
+        self.navigationItem.leftBarButtonItem?.tintColor = .black
     }
     @objc func closeFn(){
         self.navigationController?.popViewController(animated: true)

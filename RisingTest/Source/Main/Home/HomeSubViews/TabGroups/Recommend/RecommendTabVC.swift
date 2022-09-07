@@ -12,6 +12,7 @@ extension Notification.Name{
     static let ScrollDisabld = Notification.Name("ScrollDisabled")
 }
 class RecommendTabVC: UIViewController{
+    let dummyData = RecommendResult(postIdx: 2, postImg_url: nil, zzimStatus: true, price: 23122, postTitle: "안녕하세요", tradeRegion: "경기도 구리", postingTime: "2달전", payStatus: false, likeNum: 321, sellingStatus: "N")
     @IBOutlet weak var collectionView: UICollectionView!
     static let identifier = "RecommendTabVC"
     var lastScroll:CGFloat = 0
@@ -35,6 +36,7 @@ class RecommendTabVC: UIViewController{
         if dataModel!.nowListCount == 0 {
             self.dataModel?.addMyData()
         }
+        self.collectionView.reloadData() 
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -55,6 +57,7 @@ class RecommendTabVC: UIViewController{
         NotificationCenter.default.removeObserver(self, name: Notification.Name.ScrollDisabld, object: nil)
         NotificationCenter.default.removeObserver(self, name: Notification.Name.ScrollEnabled, object: nil)
     }
+
 }
 //MARK: -- Recommend 무한 스크롤 데이터 얻기
 extension RecommendTabVC:ReloadProtocol{
@@ -94,16 +97,18 @@ extension RecommendTabVC:UICollectionViewDelegate,UICollectionViewDataSource{
         if idx < self.dataModel?.data.count ?? 0, let data: RecommendResult = self.dataModel?.data[idx], let imgView:UIImageView = self.dataModel?.dataImg[idx] {
             cell.headImgView.image = imgView.image
             cell.setData(data)
+        }else{
+            cell.setData(dummyData)
+        }
+        cell.tapDelegate = { postIdx in
+                let nextVC =  self.storyboard?.instantiateViewController(withIdentifier: ItemVC.identifer) as! ItemVC
+                //MARK: -- 서버 열리면 수정!!
+                nextVC.myPostIdx = self.dataModel?.data[indexPath.item].postIdx ?? -1
+                //nextVC.myPostIdx = postIdx
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
         if(idx + 6 == self.dataModel?.nowListCount){self.dataModel?.addMyData()}
         return cell
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nextVC =  self.storyboard?.instantiateViewController(withIdentifier: ItemVC.identifer) as! ItemVC
-        //MARK: -- 서버 열리면 수정!!
-        nextVC.myPostIdx = self.dataModel?.data[indexPath.item].postIdx ?? -1
-        //nextVC.myPostIdx = 1
-        navigationController?.pushViewController(nextVC, animated: true)
     }
     fileprivate func createCompositionalLayout() -> UICollectionViewLayout{
         let layout = UICollectionViewCompositionalLayout{

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 class MyNumberManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
+    var myVC : UIViewController?
     var numberData: [MyNumberType] = MyNumberType.allCases
     var dataNumber: [Int] = [1,0,0,0]
     var myCollectionView: UICollectionView?
@@ -21,6 +22,16 @@ class MyNumberManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
         cell.numberLabel.text = String(dataNumber[idx])
         cell.numberInfoLabel.text = numberData[idx].rawValue
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch numberData[indexPath.item]{
+        case .heart:
+            let vc = UIStoryboard(name: "MyStoryboard", bundle: nil).instantiateViewController(withIdentifier: MyInterVC.identifier) as! MyInterVC
+            self.myVC?.navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
+        }
+
     }
     func setData(myDataNumber:[Int]){
         self.dataNumber = myDataNumber

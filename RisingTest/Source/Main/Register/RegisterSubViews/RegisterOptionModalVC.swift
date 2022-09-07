@@ -19,7 +19,7 @@ class RegisterOptionModalVC: UIViewController{
     var prodStatus: ProdStatus = .used
     var isexchangable = false
     var lastText = ""
-    var itemCount : Int = 0
+    var itemCount : Int = 1
     var completeAction : ((_ prodStatus:ProdStatus,_ isExchangable:Bool,_ itemCount:Int)->())?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +57,10 @@ class RegisterOptionModalVC: UIViewController{
     }
     func setBtnStyle(on: UIButton,off:UIButton){
         DispatchQueue.main.async {
+            let red = #colorLiteral(red: 0.846611917, green: 0.04588327557, blue: 0.09413331002, alpha: 1)
             on.layer.borderColor = UIColor.white.cgColor
-            on.backgroundColor = #colorLiteral(red: 1, green: 0.1764705882, blue: 0.3333333333, alpha: 0.3)
-            on.setTitleColor(.red, for: .normal)
+            on.backgroundColor = #colorLiteral(red: 0.9944986701, green: 0.9352049232, blue: 0.9362998605, alpha: 1)
+            on.setTitleColor(red, for: .normal)
             off.layer.borderColor = UIColor.lightGray.cgColor
             off.setTitleColor(.lightGray, for: .normal)
             off.backgroundColor = .white

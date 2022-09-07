@@ -25,6 +25,7 @@ class UserSetVC: UIViewController{
         self.navigationItem.leftBarButtonItems?.forEach({ view in
             view.tintColor = .black
         })
+        
     }
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)

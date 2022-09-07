@@ -6,6 +6,37 @@
 //
 
 import UIKit
+class RoundView: UIView{
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.layer.cornerRadius = self.frame.height / 2
+    }
+}
+class RoundImageView: UIImageView{
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.layer.cornerRadius = self.frame.height / 2
+    }
+}
+//MARK: -- 살짝 둥근 래퍼 뷰
+class CornerView: UIView{
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.layer.cornerRadius = 10
+    }
+}
+class CornerImgView: UIImageView{
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.layer.cornerRadius = 10
+    }
+}
+class CornerBtn: UIButton{
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.layer.cornerRadius = 10
+    }
+}
 //MARK:-- 패딩 라벨
 @IBDesignable class PaddingLabel: UILabel {
 
@@ -69,7 +100,7 @@ class LabelBarButtonItem:UIBarButtonItem{
         super.init(coder: coder)
     }
     convenience init(text:String){
-        self.init(text: text,fontName: "System",fontSize: 21,color: .black)
+        self.init(text: text,fontName: "System",fontSize: 18,color: .black)
     }
     init(text:String,fontName:String,fontSize:Int,color: UIColor){
         super.init()
@@ -79,7 +110,9 @@ class LabelBarButtonItem:UIBarButtonItem{
             label.text = text
             label.font = UIFont(name:fontName,size: fSize)
             label.textColor = color
-            label.font = UIFont.boldSystemFont(ofSize: fSize)
+            //label.font = UIFont.boldSystemFont(ofSize: fSize)
+            label.font = .systemFont(ofSize: 18, weight: .bold)
+            label.textAlignment = .left
             return label
         }()
     }

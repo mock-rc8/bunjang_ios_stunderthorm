@@ -93,7 +93,7 @@ extension AgreeModalVC{
             let uiColor:UIColor = #colorLiteral(red: 1, green: 0.1764705882, blue: 0.3333333333, alpha: 0.48)
             self.confirmBtn.backgroundColor = uiColor
         }else{
-            self.confirmBtn.backgroundColor = #colorLiteral(red: 1, green: 0.1764705882, blue: 0.3333333333, alpha: 1)
+            self.confirmBtn.backgroundColor = #colorLiteral(red: 0.846611917, green: 0.04588327557, blue: 0.09413331002, alpha: 1)
         }
     }
 }

@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
+    var myVC : UIViewController?
     var data: [RecommendResult] = Dummy.SHOP_LIST
     var isCellInit = true
     var heightMethod : ((_ height: CGFloat)->Void)?
@@ -22,12 +23,18 @@ class ItemShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelega
         }
         let data = self.data[indexPath.item]
         cell.safePayView.isHidden = !data.payStatus
-        cell.priceLabel.text = "\(data.price) 원"
+        cell.priceLabel.text = Variable.getMoneyFormat(data.price)
         cell.titleLabel.text = data.postTitle
         cell.dataLabel.text = data.postingTime
         cell.locationLabel.text = data.tradeRegion ?? "지역정보 없음"
         cell.mainImg.kf.setImage(with: URL(string: data.postImg_url ?? "onboard1"))
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = self.data[indexPath.item]
+        let nextVC = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateViewController(withIdentifier: ItemVC.identifer) as! ItemVC
+        nextVC.myPostIdx = data.postIdx
+        self.myVC?.navigationController?.pushViewController(nextVC, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         print("headerView Init!!")

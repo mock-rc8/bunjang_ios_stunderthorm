@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 import PanModal
+import TagListView
 class ItemVC: UIViewController{
+    @IBOutlet weak var tagListView: TagListView!
     @IBOutlet weak var itemImgSliderView: ItemImgSlider!
     let dummyImgData: [String] = ["https://images.unsplash.com/photo-1661758239207-0410635ad099?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80","https://res.cloudinary.com/roundglass/image/upload/w_1104,h_736,c_fill/q_auto:best,f_auto/v1632484088/rg/collective/media/common-kingfisher-dhritiman-mukherjee-1632484087720.jpg","https://images.unsplash.com/photo-1661758239207-0410635ad099?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
     ]
@@ -18,9 +20,11 @@ class ItemVC: UIViewController{
     @IBOutlet weak var shopCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var adCollectionView: UICollectionView!
     @IBOutlet weak var adCollectionHeight: NSLayoutConstraint!
+    
     lazy var itemDataManager = ItemDataManager()
     lazy var itemShopManager = ItemShopManager()
     lazy var itemImgDataManager = ItemImgDataManager()
+    lazy var hashTagDataManager = HashTagDataManager()
     lazy var adShopManager = AdShopManager(data:AdShopData.shared.adData)
     var myItemData : ItemResult?
     var myPostIdx : Int = -1
@@ -31,6 +35,7 @@ class ItemVC: UIViewController{
             }
         }
     }
+    @IBOutlet weak var tagListHeight: NSLayoutConstraint!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var safePayView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -44,6 +49,7 @@ class ItemVC: UIViewController{
     @IBOutlet weak var deliveryFeeLabel: UILabel!
     @IBOutlet weak var exchangeLabel: UILabel!
     @IBOutlet weak var postContent: UITextView!
+    @IBOutlet weak var zzimBtn: UIButton!
     var itemShopData : [RecommendResult]?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,12 +61,15 @@ class ItemVC: UIViewController{
         self.showIndicator()
         self.itemDataManager.getItem(postIdx: self.myPostIdx,delegate: self)
         self.itemImgDataManager.getItem(postIdx: self.myPostIdx, delegate: self)
+        self.hashTagDataManager.getItem(self.myPostIdx, delegate: self)
 //        self.didSuccessGetItem(dummyData)
 //        self.didSuccessGetItemImg(dummyImgData)
+        tagListView.textFont = .systemFont(ofSize: 14, weight: .semibold)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+        self.setZzimStyle()
     }
     override func viewDidAppear(_ animated: Bool) {
         let height = self.adCollectionView.collectionViewLayout.collectionViewContentSize.height
@@ -68,8 +77,85 @@ class ItemVC: UIViewController{
         self.adCollectionHeight.constant = height
         self.shopCollectionHeight.constant = shopHeight
     }
-    
-    //MARK: -- NavigationItem Settings
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.itemShopData = nil
+        
+    }
+    @IBAction func talkBtnAction(_ sender: UIButton) {
+    }
+    @IBAction func safePayBtnAction(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: SafePayModalVC.identifier) as! SafePayModalVC
+        vc.complation = { isDelivery in
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: PayVC.identifier) as! PayVC
+            vc.myPrice = self.myItemData!.price
+            vc.imgURL = self.itemImgSliderView!.data[0]
+            vc.myTitle = self.myItemData!.postTitle
+            vc.isDelivery = isDelivery
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        presentPanModal(vc)
+    }
+    @IBAction func zzimBtnAction(_ sender: UIButton) {
+        myItemData!.zzimStatus.toggle()
+        self.setZzimStyle()
+        self.presentBottomAlert(message: self.myItemData!.zzimStatus ? "찜 목록에 추가되었어요!" : "찜 해제가 완료되었습니다.")
+    }
+    func setZzimStyle(){
+        if myItemData?.zzimStatus == true{
+            self.zzimBtn.tintColor = .systemPink
+            let image = UIImage(systemName: "heart.fill",withConfiguration: UIImage.SymbolConfiguration(pointSize: 18,weight: .bold,scale: .large))
+            self.zzimBtn.setImage(image, for: .normal)
+            
+        }else{
+            self.zzimBtn.tintColor = .lightGray
+            let image = UIImage(systemName: "heart",withConfiguration: UIImage.SymbolConfiguration(pointSize: 18,weight: .bold,scale: .large))
+            self.zzimBtn.setImage(image, for: .normal)
+        }
+         
+        
+    }
+}
+//MARK: -- 해시태그 가져오기
+extension ItemVC: HashTagDelegate{
+    func didSuccessGetItem(_ data: [HashTagResult]){
+        data.forEach { result in
+            self.tagListView.addTag("#\(result.hashTagName)")
+            tagListHeight.constant = self.tagListView.intrinsicContentSize.height
+        }
+    }
+    func failedToRequest(message: String){
+        self.presentAlert(title: message)
+    }
+}
+//MARK: -- 컬렉션 뷰 설정
+extension ItemVC{
+    //MARK: -- 이 상점의 상품 콜렉션
+    func shopCollectionSettings(){
+        self.itemShopManager.myVC = self
+        self.itemShopManager.heightMethod = { height in self.shopCollectionHeight.constant = height*2}
+        self.shopCollectionView.register(UINib(nibName: ItemShopCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ItemShopCollectionViewCell.identifier)
+        self.shopCollectionView.delegate = itemShopManager
+        self.shopCollectionView.dataSource = itemShopManager
+        self.shopCollectionView.collectionViewLayout = ItemShopManager.createCompositionalLayout()
+        self.shopCollectionView.register(UINib(nibName: ItemHeaderCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: "myHeader", withReuseIdentifier: ItemHeaderCollectionReusableView.identifier)
+    }
+    //MARK: -- 파워쇼핑, 이 상품과 비슷해요 컬렉션
+    func adCollectionSettings(){
+        self.adShopManager.myVC = self
+        self.adCollectionView.register(UINib(nibName: ItemShopCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ItemShopCollectionViewCell.identifier)
+        self.adCollectionView.register(UINib(nibName: AdShopCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: AdShopCollectionViewCell.identifier)
+        self.adCollectionView.register(UINib(nibName: ItemHeaderCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: ItemHeaderCollectionReusableView.identifier)
+        self.adCollectionView.delegate = adShopManager
+        self.adCollectionView.dataSource = adShopManager
+        self.adCollectionView.collectionViewLayout = AdShopManager.createCompositionalLayout()
+    }
+}
+//MARK: -- Navigation 설정
+extension ItemVC{
     func navigationSettings(){
         self.navigationItem.leftBarButtonItem = {
             let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.closeView))
@@ -101,45 +187,13 @@ class ItemVC: UIViewController{
     @objc func shareView(){
         print("공유 구현 해야한다.")
     }
-    @IBAction func talkBtnAction(_ sender: UIButton) {
-    }
-    @IBAction func safePayBtnAction(_ sender: UIButton) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: SafePayModalVC.identifier) as! SafePayModalVC
-        vc.complation = { isDelivery in
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: PayVC.identifier) as! PayVC
-            vc.myPrice = self.myItemData!.price
-            vc.imgURL = self.itemImgSliderView!.data[0]
-            vc.myTitle = self.myItemData!.postTitle
-            vc.isDelivery = isDelivery
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        presentPanModal(vc)
-    }
-    //MARK: -- 이 상점의 상품 콜렉션
-    func shopCollectionSettings(){
-        self.itemShopManager.heightMethod = { height in self.shopCollectionHeight.constant = height*2}
-        self.shopCollectionView.register(UINib(nibName: ItemShopCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ItemShopCollectionViewCell.identifier)
-        self.shopCollectionView.delegate = itemShopManager
-        self.shopCollectionView.dataSource = itemShopManager
-        self.shopCollectionView.collectionViewLayout = ItemShopManager.createCompositionalLayout()
-        self.shopCollectionView.register(UINib(nibName: ItemHeaderCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: "myHeader", withReuseIdentifier: ItemHeaderCollectionReusableView.identifier)
-    }
-    //MARK: -- 파워쇼핑, 이 상품과 비슷해요 컬렉션
-    func adCollectionSettings(){
-        self.adCollectionView.register(UINib(nibName: ItemShopCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ItemShopCollectionViewCell.identifier)
-        self.adCollectionView.register(UINib(nibName: AdShopCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: AdShopCollectionViewCell.identifier)
-        self.adCollectionView.register(UINib(nibName: ItemHeaderCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: "header", withReuseIdentifier: ItemHeaderCollectionReusableView.identifier)
-        self.adCollectionView.delegate = adShopManager
-        self.adCollectionView.dataSource = adShopManager
-        self.adCollectionView.collectionViewLayout = AdShopManager.createCompositionalLayout()
-    }
 }
 //MARK: -- API 통신 델리게이트
 extension ItemVC{
     func didSuccessGetItem(_ result: ItemResult){
         print(#function)
         self.myItemData = result
-        self.priceLabel.text = "\(result.price)원"
+        self.priceLabel.text = Variable.getMoneyFormat(result.price)
         self.safePayView.isHidden = !(result.payStatus)
         self.titleLabel.text = result.postTitle
         if let region = result.tradeRegion{
@@ -147,7 +201,6 @@ extension ItemVC{
         }else{
             self.locationInfoLabel.text = "지역정보 없음"
         }
-        
         self.uploadDateLabel.text = result.postingTime
         self.viewNumBtn.setTitle(String(result.viewNum), for: .normal)
         self.viewNumBtn.titleLabel?.text = String(result.viewNum)
@@ -159,6 +212,7 @@ extension ItemVC{
         self.exchangeLabel.text = result.exchange
         self.postContent.text = result.postContent
         self.isSuccessCount += 1
+        self.setZzimStyle()
     }
     func failedGetItem(message: String){
         self.presentAlert(title: message,message: "나중에 다시 시도하세요.") { action in
@@ -166,7 +220,6 @@ extension ItemVC{
         }
     }
     func didSuccessGetItemImg(_ resultList: [ItemImgResult]){
-        
         let data : [String] = resultList.map { (result:ItemImgResult) -> String in
             return result.postImg_url
         }

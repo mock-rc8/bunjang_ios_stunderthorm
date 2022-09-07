@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vZ-Jy-t8p">
-                        <rect key="frame" x="316" y="0.0" width="30" height="56"/>
+                        <rect key="frame" x="311" y="0.0" width="30" height="56"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="dBh-8Q-Zof"/>
                         </constraints>
@@ -29,13 +28,13 @@
                         </state>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboard1" translatesAutoresizingMaskIntoConstraints="NO" id="0f9-5M-X0S">
-                        <rect key="frame" x="10" y="10" width="36" height="36"/>
+                        <rect key="frame" x="15" y="10" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="0f9-5M-X0S" secondAttribute="height" multiplier="1:1" id="eCz-PY-Ccg"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="518-EM-AEA" userLabel="dateStack">
-                        <rect key="frame" x="285.5" y="12.5" width="25.5" height="31.5"/>
+                        <rect key="frame" x="280.5" y="12.5" width="25.5" height="31.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvr-b2-L4c">
                                 <rect key="frame" x="0.0" y="0.0" width="25.5" height="14.5"/>
@@ -55,16 +54,16 @@
                         </constraints>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JaP-Jq-Ze3">
-                        <rect key="frame" x="56" y="8" width="229.5" height="40.5"/>
+                        <rect key="frame" x="61" y="8" width="219.5" height="40.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="번개장터" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUf-VS-cId">
-                                <rect key="frame" x="0.0" y="0.0" width="229.5" height="19.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="219.5" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="잠자는 물건, 번개장터에서 한번 팔아볼까 말까" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzg-Zn-3CN">
-                                <rect key="frame" x="0.0" y="24.5" width="229.5" height="16"/>
+                                <rect key="frame" x="0.0" y="24.5" width="219.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -78,10 +77,10 @@
                     <constraint firstItem="JaP-Jq-Ze3" firstAttribute="leading" secondItem="0f9-5M-X0S" secondAttribute="trailing" constant="10" id="Ose-rG-8yo"/>
                     <constraint firstItem="518-EM-AEA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="S26-EV-4GD"/>
                     <constraint firstItem="518-EM-AEA" firstAttribute="trailing" secondItem="1vZ-Jy-t8p" secondAttribute="leading" constant="-5" id="atd-pM-hTo"/>
-                    <constraint firstItem="0f9-5M-X0S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="cfG-zD-nVZ"/>
+                    <constraint firstItem="0f9-5M-X0S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="cfG-zD-nVZ"/>
                     <constraint firstItem="JaP-Jq-Ze3" firstAttribute="trailing" secondItem="518-EM-AEA" secondAttribute="leading" id="dSp-vy-sQl"/>
                     <constraint firstAttribute="bottom" secondItem="0f9-5M-X0S" secondAttribute="bottom" constant="10" id="dcH-h9-3xI"/>
-                    <constraint firstAttribute="trailing" secondItem="1vZ-Jy-t8p" secondAttribute="trailing" constant="10" id="fkE-ny-UjL"/>
+                    <constraint firstAttribute="trailing" secondItem="1vZ-Jy-t8p" secondAttribute="trailing" constant="15" id="fkE-ny-UjL"/>
                     <constraint firstItem="1vZ-Jy-t8p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gBD-46-9c8"/>
                     <constraint firstItem="JaP-Jq-Ze3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nDI-aG-jWJ"/>
                     <constraint firstAttribute="bottom" secondItem="1vZ-Jy-t8p" secondAttribute="bottom" id="uwt-R2-EfY"/>
@@ -92,7 +91,7 @@
             <connections>
                 <outlet property="moreBtn" destination="1vZ-Jy-t8p" id="hVH-VQ-O6O"/>
             </connections>
-            <point key="canvasLocation" x="157.97101449275362" y="79.6875"/>
+            <point key="canvasLocation" x="156.52173913043478" y="79.6875"/>
         </tableViewCell>
     </objects>
     <resources>

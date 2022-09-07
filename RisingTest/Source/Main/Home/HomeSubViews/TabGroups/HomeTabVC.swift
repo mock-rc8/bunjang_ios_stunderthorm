@@ -14,7 +14,7 @@ class HomeTabVC: TabmanViewController{
     private var viewControllers = [
         {
         let storyboard = UIStoryboard(name: "HomeStoryboard", bundle: nil)
-            let nextVC = storyboard.instantiateViewController(withIdentifier: RecommendTabVC.identifier) as! RecommendTabVC
+        let nextVC = storyboard.instantiateViewController(withIdentifier: RecommendTabVC.identifier) as! RecommendTabVC
         return nextVC
         }(), {
         let storyboard = UIStoryboard(name : "HomeStoryboard", bundle: nil)
@@ -41,13 +41,19 @@ class HomeTabVC: TabmanViewController{
         bar.layout.contentInset = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
         bar.layoutMargins.left = 100
         bar.indicator.tintColor = .black
-        bar.indicator.weight = .medium
+        bar.indicator.weight = .custom(value: 3)
         let systemBar = bar.systemBar()
-        systemBar.backgroundStyle = .blur(style: .light)
+        systemBar.backgroundStyle = .blur(style: .extraLight)
         systemBar.layoutMargins.left = 100
         self.isScrollEnabled = false
-        //bar.backgroundColor = .white
-        //systemBar.backgroundStyle = .clear//.blur(style: .light)
+        bar.buttons.customize { (button) in
+            button.tintColor = .lightGray
+            button.selectedTintColor = .black
+            button.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+            
+            button.selectedFont = UIFont.systemFont(ofSize: 16, weight: .semibold)
+            
+        }
         // Add to view
         addBar(systemBar, dataSource: self, at: .top)
     }

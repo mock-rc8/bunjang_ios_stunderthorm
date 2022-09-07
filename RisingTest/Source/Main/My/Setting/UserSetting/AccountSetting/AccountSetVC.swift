@@ -60,6 +60,11 @@ class AccountSetVC:UIViewController{
     @IBAction func closeBtnAction(_ sender: UIButton) {
 
     }
+    @IBAction func bankBtnAction(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: AccountModalVC.identifier) as! AccountModalVC
+        vc.completionAction = { data in
+        }
+    }
     @IBAction func appendAccountAction(_ sender: UIButton) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: AppendAccountVC.identifier) as! AppendAccountVC
         self.navigationController?.pushViewController(vc, animated: true)

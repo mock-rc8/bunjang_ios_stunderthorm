@@ -8,6 +8,7 @@
 import UIKit
 
 class SearchReHeaderView: UICollectionReusableView {
+    @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var headerViewTop: NSLayoutConstraint!
     public private(set) var myHeaderWrapperHeight : CGFloat = 0.0
     @IBOutlet weak var scrollCollectionView: UICollectionView!
@@ -22,6 +23,10 @@ class SearchReHeaderView: UICollectionReusableView {
         scrollCollectionView.dataSource = scrollManager
         scrollCollectionView.collectionViewLayout = scrollManager.createCompositionalLayout()
         scrollCollectionView.register(UINib(nibName: RecentSearchCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: RecentSearchCollectionViewCell.identifier)
+        filterBtn.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        filterBtn.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        filterBtn.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+
     }
     
 }

@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 class AdShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate{
+    var myVC : UIViewController?
     var data : [AdShopSection]
     var dummyItem: [RecommendResult] = Dummy.SHOP_LIST
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -22,9 +23,10 @@ class AdShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate
         case .similar(let items):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemShopCollectionViewCell.identifier, for: indexPath) as! ItemShopCollectionViewCell
             print(indexPath.item)
+            if dummyItem.count == 0 {return cell}
             let data = self.dummyItem[indexPath.item]
             cell.safePayView.isHidden = !data.payStatus
-            cell.priceLabel.text = "\(data.price) 원"
+            cell.priceLabel.text = Variable.getMoneyFormat(data.price)
             cell.titleLabel.text = data.postTitle
             cell.dataLabel.text = data.postingTime
             cell.locationLabel.text = data.tradeRegion ?? "지역정보 없음"
@@ -32,13 +34,29 @@ class AdShopManager:NSObject,UICollectionViewDataSource,UICollectionViewDelegate
             return cell
         case .ad(let items):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdShopCollectionViewCell.identifier, for: indexPath) as! AdShopCollectionViewCell
+            if dummyItem.count == 0 {return cell}
             let data = self.dummyItem[indexPath.item+10]
             cell.safePayView.isHidden = !data.payStatus
-            cell.priceLabel.text = "\(data.price) 원"
+            cell.priceLabel.text = Variable.getMoneyFormat(data.price)
             cell.titleLabel.text = data.postTitle
             cell.locationLabel.text = data.tradeRegion ?? "지역정보 없음"
             cell.titleImg.kf.setImage(with: URL(string: data.postImg_url ?? "onboard1"))
             return cell
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if dummyItem.count == 0 {return}
+        let nextVc = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateViewController(withIdentifier: ItemVC.identifer) as! ItemVC
+        
+        switch data[indexPath.section] {
+        case .similar(let items):
+            let data = self.dummyItem[indexPath.item]
+            nextVc.myPostIdx = data.postIdx
+            self.myVC?.navigationController?.pushViewController(nextVc, animated: true)
+        case .ad(let items):
+            let data = self.dummyItem[indexPath.item+10]
+            nextVc.myPostIdx = data.postIdx
+            self.myVC?.navigationController?.pushViewController(nextVc, animated: true)
         }
     }
     init(data: [AdShopSection]){

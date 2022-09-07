@@ -8,9 +8,8 @@
 import Foundation
 import UIKit
 class BrandHomeVC: UIViewController{
+    let brandDummyData = CategoryResult(postIdx: 1, postImg_url: "naver", zzimStatus: false, price: 21231, postTitle: "어서오세요", payStatus: false)
     //브랜드 헤더 불러오기
-    
-    
     @IBOutlet weak var brandCollectionView: UICollectionView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     var brandManager = BrandCategoryManager()
@@ -48,11 +47,17 @@ extension BrandHomeVC: UICollectionViewDelegate,UICollectionViewDataSource{
             return cell
         case .brand:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubScribeSuggestCell.identifier, for: indexPath) as! SubScribeSuggestCell
+            //MARK: -- 서버 수정
             let myData = brandDataList[indexPath.item]
-            cell.priceLabel.text = "\(myData.price) 원"
-            cell.titleLabel.text = myData.postTitle
-            cell.safePayImg.isHidden = !myData.payStatus
+            cell.setData(myData)
             cell.titleImg.kf.setImage(with: URL(string: myData.postImg_url))
+            cell.myParentVC = self
+            cell.pushDelegate = { idx in
+                let nextVC = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateViewController(withIdentifier: ItemVC.identifer) as! ItemVC
+                nextVC.myPostIdx = idx
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
+//            cell.setData(self.brandDummyData)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestMainCell.identifier, for: indexPath) as! SuggestMainCell
@@ -62,7 +67,9 @@ extension BrandHomeVC: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionData[section]{
         case .brand:
+            //MARK: -- 서버 연걸 수정!!
             return brandDataList.count
+            //return 12
         case .append:
             return 1
         default:
@@ -104,7 +111,7 @@ extension BrandHomeVC: UICollectionViewDelegate,UICollectionViewDataSource{
             switch self.collectionData[sectionIndex]{
             case .append:
                 // 아이템에 대한 사이즈 - absolute는 고정값, estimated는 추측, fraction 퍼센트
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(600))
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(350))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 // 아이템 간의 간격 설정
                 item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
@@ -144,8 +151,9 @@ extension BrandHomeVC: UICollectionViewDelegate,UICollectionViewDataSource{
                     elementKind: UICollectionView.elementKindSectionHeader,alignment: .top)
                 sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
                 let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(
-                    layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/5)),
+                    layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)),
                     elementKind: UICollectionView.elementKindSectionFooter,alignment: .bottom)
+                sectionFooter.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
                 section.boundarySupplementaryItems = [sectionHeader,sectionFooter]
                 return section
             default:

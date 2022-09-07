@@ -17,11 +17,12 @@ class SearchVC:UIViewController{
     let trendList = ["트리밍버드","디지몬씰","헤리티지플로스","데상트","버터플라이빈티지","전기스쿠터","이마트","서든sp","세인트제임스","부산"]
     let popularCategories = ["골프","시계","스타굿즈","자전거","여성가방","피규어/인형",
                              "닌텐도/NDS/Wii","헬스/요가/필라테스","인테리어","자전거","CD","카메라/DSLR"]
-    lazy var dummyRecentSearch : [(String,Key?)] = ["아디다스 파이어버드","갤럭시탭 s7 플러스","블랙핑크 콘서트", "에어팟 맥스","쿠팡이츠"].map {($0,nil)}
+    lazy var dummyRecentSearch : [(String,Key?)] = Dummy.RECTENT_SEARCH.map {($0,nil)}
     let dataManager = BrandEntireDataManager()
     let dummyBrandData = BrandEntireResult(brandIdx: 1, brandImg_url: "", brandName: "페이스북", brandEngName: "FaceBook", postNum: 123)
     var entireData: [BrandEntireResult]?
     var entireDataImg: [UIImageView]?
+    var recentHeader : CategoryCollectionReusableView?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataManager.getItem(delegate: self)
@@ -44,6 +45,8 @@ class SearchVC:UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = true
+        self.dummyRecentSearch = Dummy.RECTENT_SEARCH.map {($0,nil)}
+        self.collectionView.reloadData()
     }
     
 }
@@ -73,10 +76,13 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource{
                     let myIndexPath = IndexPath(item: myItemIdx, section: self.searchSection.firstIndex(of: .recent)!)
                     self.collectionView.deleteItems(at:[myIndexPath])
                 }
-                
+                cell.myTitleLabel.bottomInset = 10
+                cell.myTitleLabel.topInset = 10
+                cell.myTitleLabel.leftInset = 10
+                cell.myTitleLabel.rightInset = 10
                 print(self.dummyRecentSearch,myIdxPath.item)
             }
-            
+            cell.labelAction = self.searchAction(text:)
             cell.myNumber = indexPath.item
             cell.myIndexPath = indexPath
             self.dummyRecentSearch[indexPath.item].1 = Key()
@@ -89,6 +95,7 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource{
             TrendSearchCollectionViewCell
             cell.numberLabel.text = indexPath.item+1 < 10 ? "0\(indexPath.item+1)" : "\(indexPath.item+1)"
             cell.productLabel.text = self.trendList[indexPath.item]
+            cell.tapDelegate = self.searchAction(text:)
             return cell
         }
         
@@ -108,9 +115,14 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let secIdx = indexPath.section
         let itemIdx = indexPath.item
+        print("isSelected!!")
         switch searchSection[secIdx]{
         case .recent:
-            print("recent clicked!!")
+            let data = self.dummyRecentSearch[itemIdx].0
+            self.searchAction(text: data)
+        case .brand:
+            let data = self.trendList[itemIdx]
+            searchAction(text: data)
         default:
             break
         }
@@ -120,10 +132,22 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource{
         case UICollectionView.elementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CategoryCollectionReusableView.identifier, for: indexPath) as! CategoryCollectionReusableView
             header.headerLabel.text = searchSection[indexPath.section].rawValue
+            switch searchSection[indexPath.section]{
+            case .recent:
+                if self.dummyRecentSearch.count == 0 {
+                    header.isHidden = true
+                }else{
+                    header.isHidden = false
+                }
+                self.recentHeader = header
+            default:
+                break
+            }
             return header
         case UICollectionView.elementKindSectionFooter:
             if self.searchSection[indexPath.section] == .brand{
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SearchFooterCollectionReusableView.identifier, for: indexPath) as! SearchFooterCollectionReusableView
+                footer.layer.cornerRadius = 5
             return footer
             }else{
                 return UICollectionReusableView()
@@ -153,7 +177,7 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource{
                 let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(
                     layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(1/6)),
                     elementKind: UICollectionView.elementKindSectionFooter,alignment: .bottom)
-                sectionFooter.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
+                sectionFooter.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20)
                 section.boundarySupplementaryItems = [sectionHeader,sectionFooter]
                 return section
             case .category:
@@ -202,9 +226,14 @@ extension SearchVC: UICollectionViewDelegate,UICollectionViewDataSource{
 //MARK: -- Navigation Bar Settings
 extension SearchVC{
     func navigationSettings(){
-        let searchBar = UISearchBar()
+        let searchBar: UISearchBar = {
+           let sb = UISearchBar()
+           sb.placeholder = "검색어를 입력해주세요"
+           let emptyImage = UIImage()
+           sb.setImage(emptyImage, for: .search, state: .normal)
+           return sb
+        }()
         searchBar.delegate = self
-        searchBar.placeholder = "검색어를 입력해주세요"
         self.navigationItem.titleView = searchBar
         self.navigationItem.leftBarButtonItem = {
             let item = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(self.closeView))
@@ -232,8 +261,12 @@ extension SearchVC{
 }
 extension SearchVC: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchAction(text: searchBar.text!)
+    }
+    func searchAction(text: String){
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: SearchReVC.identifier) as! SearchReVC
-        vc.mySearchText = searchBar.text!
+        vc.mySearchText = text
+        Dummy.RECTENT_SEARCH.append(text)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -18,7 +18,7 @@ class LogInVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        kakaoLoginBtn.backgroundColor = .yellow
+        //kakaoLoginBtn.backgroundColor = 
         kakaoLoginBtn.layer.borderColor = UIColor(white: 1, alpha: 1).cgColor
         self.appleLogInView.layer.borderColor = UIColor.black.cgColor
         NotificationCenter.default.addObserver(self, selector: #selector(goHome(notification:)), name: Notification.Name.LogIn, object: nil)

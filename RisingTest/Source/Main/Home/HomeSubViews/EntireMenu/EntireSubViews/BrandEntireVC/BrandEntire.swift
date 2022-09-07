@@ -28,6 +28,7 @@ class BrandEntireVC: UIViewController{
         self.pushStyle()
         self.tableView.register(UINib(nibName: BrandTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: BrandTableViewCell.identifier)
         self.deliveryBtnStyle()
+        self.tabBarController?.tabBar.isHidden = true
     }
     func pushStyle(){
         if self.isHomeCalled{

@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class MyVC: MainUIViewController{
-    
     // 데이터
     var myDataManager = MyDataManager()
     @IBOutlet weak var collectionView: UICollectionView!
@@ -34,12 +33,11 @@ class MyVC: MainUIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.collectionView.reloadData()
+        self.myDataManager.getItem(delegate: self)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.wrapperHeight = self.wrapperHeight ?? ((header?.headerWrapper.frame.height)! + self.topbarHeight)
-        
-        
     }
     @IBAction func alertBtnAction(_ sender: UIBarButtonItem) {
         let vc = UIStoryboard(name: "AlertStoryboard", bundle: nil).instantiateViewController(withIdentifier: AlertVC.identifier) as! AlertVC
@@ -77,7 +75,7 @@ extension MyVC: UICollectionViewDataSource,UICollectionViewDelegate{
             header.headerTitle.text = Variable.USER_NAME
         self.infoSettings(header.shopInfoCollection)
         self.numberInfoSettings(header.numberCollection)
-        
+            
         self.header = header
         return header
         default:
@@ -139,6 +137,7 @@ extension MyVC:UIScrollViewDelegate{
 //MARK: -- 헤더 컬렉션 뷰
 extension MyVC{
     func numberInfoSettings(_ numberInfoCollectionView: UICollectionView){
+        self.myNumberManager.myVC = self
         self.myNumberManager.myCollectionView = numberInfoCollectionView
         numberInfoCollectionView.delegate = self.myNumberManager
         numberInfoCollectionView.dataSource = self.myNumberManager

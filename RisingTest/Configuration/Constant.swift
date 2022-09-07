@@ -6,7 +6,7 @@
 //
 
 import Alamofire
-
+import Foundation
 struct Constant {
     static let BASE_URL = "https://mingyudev.shop"
     //static let KOBIS_BASE_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest"
@@ -33,7 +33,14 @@ struct Variable{
         return (first,second,third)
     }
     static var MY_ACCOUNT : [String] = []
+    static func getMoneyFormat(_ number: Int) -> String{
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let result = numberFormatter.string(for: number)!
+        return "\(result)원"
+    }
 }
 struct Dummy{
     static var SHOP_LIST : [RecommendResult] = []
+    static var RECTENT_SEARCH: [String] = []
 }

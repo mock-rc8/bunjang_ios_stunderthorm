@@ -27,7 +27,8 @@ class AgreeTableViewCell: UITableViewCell {
         print("hello world!!")
     }
     func setStatus(_ data:AgreeData){
-        self.checkImgView.tintColor = data.isChecked ? .red : .gray
+        let red =  #colorLiteral(red: 0.846611917, green: 0.04588327557, blue: 0.09413331002, alpha: 1)
+        self.checkImgView.tintColor = data.isChecked ? red : .gray
         self.AgreeLabel.text = data.agreeTitle
         self.statusLabel.text = data.agreeStatus.rawValue
     }

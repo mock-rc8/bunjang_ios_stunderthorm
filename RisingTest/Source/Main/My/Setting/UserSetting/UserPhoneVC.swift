@@ -23,6 +23,7 @@ class UserPhoneVC:UIViewController{
         self.navigationItem.leftBarButtonItems?.forEach({ view in
             view.tintColor = .black
         })
+        self.textField.becomeFirstResponder()
     }
     
     @objc func closeFn(){

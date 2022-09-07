@@ -15,6 +15,7 @@ class CateMainCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var scrollCollectionView: UICollectionView!
     @IBOutlet weak var categoryImg: UIImageView!
     @IBOutlet weak var categoryTitle: UILabel!
+    @IBOutlet weak var innerWrapper: UIView!
     lazy var scrollManager = CateFilterManager()
     static let identifier = "CateMainCollectionReusableView"
     override func awakeFromNib() {
@@ -39,11 +40,12 @@ class CateFilterManager:NSObject,UICollectionViewDataSource,UICollectionViewDele
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentSearchCollectionViewCell.identifier, for: indexPath) as! RecentSearchCollectionViewCell
         cell.btn.isHidden = true
         cell.myTitleLabel.text = data[indexPath.item]
-        cell.myTitleLabel.font = .systemFont(ofSize: 14, weight: .semibold)
-        cell.myTitleLabel.topInset = 3
-        cell.myTitleLabel.leftInset = 8
-        cell.myTitleLabel.rightInset = 8
-        cell.myTitleLabel.bottomInset = 3
+        cell.myTitleLabel.font = .systemFont(ofSize: 14, weight: .bold)
+        cell.myTitleLabel.topInset = 10
+        cell.myTitleLabel.leftInset = 10
+        cell.myTitleLabel.rightInset = 10
+        cell.myTitleLabel.bottomInset = 10
+        cell.myTitleLabel.textColor = .gray
         cell.setCornerRadius(5)
             return cell
     }
@@ -54,13 +56,14 @@ class CateFilterManager:NSObject,UICollectionViewDataSource,UICollectionViewDele
             let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(100), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             // 아이템 간의 간격 설정
-            item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 5)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 10)
             // 그룹 사이즈
             let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(100), heightDimension: itemSize.heightDimension)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             // 그룹으로 섹션 만들기
             let section = NSCollectionLayoutSection(group: group)
-            section.interGroupSpacing = 5
+            // 스크롤 뷰 간격
+            section.interGroupSpacing = 10
             // 섹션에 대한 간격 설정
             section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0)
             section.orthogonalScrollingBehavior = .continuous

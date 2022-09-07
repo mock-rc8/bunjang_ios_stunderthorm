@@ -12,6 +12,7 @@ class MyHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var shopInfoCollection: UICollectionView!
     @IBOutlet weak var headerWrapper: UIStackView!
     @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet weak var cornerView: UIView!
     var myIdx = 0
     var myVC : UIViewController?
     static let identifier = "MyHeaderCollectionReusableView"
@@ -19,6 +20,7 @@ class MyHeaderCollectionReusableView: UICollectionReusableView {
         super.awakeFromNib()
         // Initialization code
         self.headerTitle.text = Variable.USER_NAME
+        cornerView.layer.cornerRadius = 35
     }
     
     @IBAction func myStoreBtnAction(_ sender: Any) {

@@ -52,4 +52,12 @@ class AppendAccountVC:UIViewController{
         Variable.MY_ACCOUNT.append(self.accountTextField.text!)
         closeFn()
     }
+    @IBAction func appendBtnAction(_ sender: UIButton) {
+        print("btnAction")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: AccountModalVC.identifier) as! AccountModalVC
+        vc.completionAction = { data in
+            self.bankTextField.text = data
+        }
+        presentPanModal(vc)
+    }
 }

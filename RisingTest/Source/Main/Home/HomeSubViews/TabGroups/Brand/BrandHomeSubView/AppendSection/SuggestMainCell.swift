@@ -55,7 +55,7 @@ class SuggestMainCollectionManager:NSObject,UICollectionViewDataSource,UICollect
         let idx = indexPath.item
         if let myData = myDelegate?.scrollDataList[idx]{
             cell.titleLabel.text = myData.postTitle
-            cell.priceLabel.text = "\(myData.price)원"
+            cell.priceLabel.text = Variable.getMoneyFormat(myData.price)
             cell.titleImgView.kf.setImage(with: URL(string: myData.postImg_url))
         }
         return cell
@@ -95,11 +95,11 @@ class SuggestMainCollectionManager:NSObject,UICollectionViewDataSource,UICollect
             // 수평 스크롤 섹션 만들기
             section.orthogonalScrollingBehavior = .continuous
             //섹션 헤더 사이즈 설정
-            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60))
+            let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(70))
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: headerFooterSize,
                 elementKind: UICollectionView.elementKindSectionHeader,alignment: .top)
-            sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            sectionHeader.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 15)
             section.boundarySupplementaryItems = [sectionHeader]
             return section
         }

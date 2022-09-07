@@ -21,21 +21,26 @@ class CategoryMainVC: UIViewController{
     var myTitle : String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //MARK: -- 서버 연결시
         let myNumber = myTitle == "신발" ? 3 : myTitle == "디지털/가전" ? 7 : -1
         self.dataModel = CategoryModel(myIdx: myNumber, reload: self)
         self.dataModel!.addMyData()
         self.showIndicator()
+        
         self.collectionView.register(UINib(nibName: BrandSuggestCell.identifier, bundle: nil), forCellWithReuseIdentifier: BrandSuggestCell.identifier)
         self.collectionView.register(UINib(nibName: CateMainCollectionReusableView.identifier, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CateMainCollectionReusableView.identifier)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.collectionViewLayout = createCompositionalLayout()
+        NotificationCenter.default.addObserver(self, selector: #selector(zzimOn(notification:)), name: Notification.Name.ZzimOn, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(zzimOff(notification:)), name: Notification.Name.ZzimOff, object: nil)
         navigationSettings()
         print(myTitle ?? "없음")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if dataModel!.nowListCount == 0 {
+        if dataModel?.nowListCount == 0 {
             self.dataModel?.addMyData()
         }
     }
@@ -44,8 +49,20 @@ class CategoryMainVC: UIViewController{
         self.wrapperHeight = self.wrapperHeight ?? ((self.header?.headerWrapper.frame.height)! + self.topbarHeight)
         print("navi Height",self.topbarHeight)
     }
+    deinit{
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.ZzimOn, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.ZzimOff, object: nil)
+    }
 }
-
+//MARK: -- 노티피케이션 설정
+extension CategoryMainVC{
+    @objc func zzimOn(notification: Notification){
+        self.presentBottomAlert(message: "찜 목록에 추가되었어요!")
+    }
+    @objc func zzimOff(notification: Notification){
+        self.presentBottomAlert(message: "찜 해제가 완료되었습니다.")
+    }
+}
 // MARK: -- 컬렉션 뷰 설정
 extension CategoryMainVC: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

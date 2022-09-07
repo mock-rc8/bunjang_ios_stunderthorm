@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -23,33 +22,37 @@
                             <rect key="frame" x="0.0" y="0.0" width="624" height="78"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vs5-a1-8m6">
-                                    <rect key="frame" x="20" y="28" width="86" height="22"/>
+                                    <rect key="frame" x="15" y="28" width="95" height="22"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="95" id="bt4-wa-K68"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="가나다순  ">
+                                    <color key="tintColor" systemColor="systemGrayColor"/>
+                                    <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="정확도순">
                                         <color key="titleColor" red="0.02525628307" green="0.02525628307" blue="0.02525628307" alpha="0.97465067979999997" colorSpace="custom" customColorSpace="sRGB"/>
                                         <imageReference key="image" image="chevron.down" catalog="system" symbolScale="small"/>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                                     </state>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CKR-2L-oSd">
-                                    <rect key="frame" x="481" y="29" width="123" height="20"/>
+                                    <rect key="frame" x="491" y="29" width="113" height="20"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFD-M7-dQh">
-                                            <rect key="frame" x="0.0" y="0.0" width="78" height="20"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="68" height="20"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                             <color key="tintColor" systemColor="systemGray2Color"/>
                                             <inset key="contentEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="3" maxY="0.0"/>
-                                            <state key="normal" title="배송비포함">
+                                            <state key="normal" title="안전결제">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <imageReference key="image" image="checkmark.circle" catalog="system" symbolScale="medium"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                             </state>
                                         </button>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SafePay" translatesAutoresizingMaskIntoConstraints="NO" id="Y8D-zY-n6N">
-                                            <rect key="frame" x="83" y="0.0" width="40" height="20"/>
+                                            <rect key="frame" x="73" y="0.0" width="40" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="40b-Uf-zVd"/>
                                                 <constraint firstAttribute="width" secondItem="Y8D-zY-n6N" secondAttribute="height" multiplier="2:1" id="5eG-nB-IP8"/>
@@ -63,7 +66,7 @@
                                 <constraint firstAttribute="width" secondItem="cPb-Zr-BhT" secondAttribute="height" multiplier="8:1" id="A3R-Ia-7Hm"/>
                                 <constraint firstAttribute="trailing" secondItem="CKR-2L-oSd" secondAttribute="trailing" constant="20" id="AN0-J9-6uG"/>
                                 <constraint firstItem="Vs5-a1-8m6" firstAttribute="centerY" secondItem="cPb-Zr-BhT" secondAttribute="centerY" id="qYh-mx-U4p"/>
-                                <constraint firstItem="Vs5-a1-8m6" firstAttribute="leading" secondItem="cPb-Zr-BhT" secondAttribute="leading" constant="20" id="wc4-nE-nOL"/>
+                                <constraint firstItem="Vs5-a1-8m6" firstAttribute="leading" secondItem="cPb-Zr-BhT" secondAttribute="leading" constant="15" id="wc4-nE-nOL"/>
                                 <constraint firstItem="CKR-2L-oSd" firstAttribute="centerY" secondItem="cPb-Zr-BhT" secondAttribute="centerY" id="yNv-ex-9w0"/>
                             </constraints>
                         </view>
@@ -96,6 +99,7 @@
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="leading" secondItem="viZ-zh-mvv" secondAttribute="leading" id="nAy-pR-zYj"/>
             </constraints>
             <connections>
+                <outlet property="filterBtn" destination="Vs5-a1-8m6" id="p6G-c5-a3f"/>
                 <outlet property="headerViewTop" destination="cPb-Zr-BhT" id="X93-45-GLk"/>
                 <outlet property="headerWrapper" destination="cPb-Zr-BhT" id="YFV-VR-YmL"/>
                 <outlet property="scrollCollectionView" destination="pM2-xX-4z8" id="FqZ-5w-MK3"/>
@@ -112,6 +116,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
